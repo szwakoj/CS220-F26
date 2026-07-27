@@ -1,0 +1,2527 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4_test_2_review/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/cs220.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Homework 5 (Due 4/26/26) - CS 220 - Computer Organization</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tinycpu-simulating-a-cpu" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-header__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 220 - Computer Organization
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Homework 5 (Due 4/26/26)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lessons/1_introduction/" class="md-tabs__link">
+          
+  
+  
+  Lessons
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/c_compilation/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../how_to_hand_in/" class="md-tabs__link">
+          
+  
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-nav__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    CS 220 - Computer Organization
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lessons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/1_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/2_reviewing_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reviewing C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/3_binary_hex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/4_bool_logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean/Bitwise Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/5_signed_unsigned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/6_transistors_2_pc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abstraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/7_gates_circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gates and Circuits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/c_compilation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C Compilation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_hand_in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How To Hand In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcc_install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_c_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 (Due 2/27/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_test_1_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 2 (Due 3/13/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_alu_and_gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 3 (Due 4/12/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_test_2_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 4 (Due 4/19/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 5 (Due 4/26/26)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 5 (Due 4/26/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#due-date-42626" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Due Date: 4/26/26
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cpu-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The CPU Spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The CPU Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-set-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instruction Set Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instruction Set Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instruction-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instruction Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operand-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operand Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcode-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opcode Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alu-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALU Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framebuffer-and-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framebuffer and Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU Execution Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reset State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#program-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Program Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#looping-example-draw-a-vertical-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Looping Example - Draw a Vertical Line
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiny-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiny Assembly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-familiarize-yourself-with-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Familiarize Yourself with the Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-isa-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: ISA Implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: ISA Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-tinycpu-struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. The tinyCPU struct
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-tinycpu-main-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 tinyCPU Main Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-test-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Test Pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-run-some-tiny-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Run Some .tiny Programs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-make-your-own-tiny-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Make Your Own .tiny Programs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading-rubric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grading Rubric
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#due-date-42626" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Due Date: 4/26/26
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cpu-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The CPU Spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The CPU Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-set-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instruction Set Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instruction Set Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instruction-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instruction Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operand-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operand Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcode-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opcode Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alu-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALU Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framebuffer-and-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framebuffer and Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU Execution Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reset State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#program-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Program Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#looping-example-draw-a-vertical-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Looping Example - Draw a Vertical Line
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiny-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiny Assembly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-familiarize-yourself-with-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Familiarize Yourself with the Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-isa-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: ISA Implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: ISA Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-tinycpu-struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. The tinyCPU struct
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-tinycpu-main-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 tinyCPU Main Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-test-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Test Pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-run-some-tiny-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Run Some .tiny Programs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-make-your-own-tiny-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Make Your Own .tiny Programs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading-rubric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grading Rubric
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../how_to_hand_in/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Homework
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tinycpu-simulating-a-cpu">tinyCPU: Simulating a CPU</h1>
+<h2 id="due-date-42626">Due Date: 4/26/26</h2>
+<h2 id="description">Description</h2>
+<p>In this homework, you will be building on the previous homework's ideas to create a fleshed out simulated virtual tinyCPU. You will create the CPU struct complete with shared memory, a program counter, registers, and instruction set. Culminating in you making your own programs in the machine code we develop.</p>
+<p>This HW will primarily have you interacting with the fetch-&gt;decode-&gt;execute loop that is at the core of most CPUs. Rather than building this CPU from the simulated gates up, we will be working more top-down, working from the things that a CPU needs to do and then implementing it into code. </p>
+<p>It should be said that this is not exactly how real CPUs work, after all they do not have the liberty of switch cases or the operators in C. This is however technically a virtual machine simulating a fake CPU that I designed. We could go in and develop each NOT/AND/OR/XOR block, make a bit ripple carry adder, and route everything with a big MUX, however here, we want to develop an understanding of the general process the CPU goes through and the fetch-&gt;decode-&gt;execute loop.</p>
+<h2 id="the-cpu-spec">The CPU Spec</h2>
+<p>Before diving into the code, we need to first lay out the spec we are going to be developing. This is something that all CPUs have created as a reference for programmers and hardware manufacturers that codifies the basic operations of the chip and how to interact with it.</p>
+<p>It is also used by virtual machine and emulator developers so the can fully simulate the target system they want. If their simulation follows the spec, it can run the same machine code as the real-life machine. We will be taking the role of a simulator developer implementing the spec in C code.</p>
+<p>Remember this is an <strong>EXTREMELY</strong> simplified look at both real CPU specs and the process of emulation. However, this can be expanded upon to resemble other fully fleshed out CPU specs given enough time.</p>
+<p>Below is the website spec that is a little more explanatory and less true to real CPU specs. I had an LLM Chat bot develop a more real looking spec so you can see how to translate between the two. You can download it <a href="../tinyCPU_spec.docx">here</a>. </p>
+<h3 id="overview">Overview</h3>
+<p>tinyCPU is a simple, 8-bit educational processor designed to do the bare minimum functions of a CPU with the intent of being simulated in code and not brought to reality in hardware (although possible). It has the following core functions:</p>
+<ul>
+<li>Instruction Fetch, Decode, and Execute Cycles</li>
+<li>16 general purpose registers</li>
+<li>A flat memory model</li>
+<li>A simple ALU</li>
+<li>And a frame buffer pixel display (here using ascii)</li>
+</ul>
+<h3 id="hardware-summary">Hardware Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Word size</td>
+<td>8 bits (unsigned)</td>
+</tr>
+<tr>
+<td>Register file</td>
+<td>16 general-purpose registers: R0 – R15</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>256 bytes of flat, byte-addressable RAM (addresses 0x00 – 0xFF)</td>
+</tr>
+<tr>
+<td>Program Counter (PC)</td>
+<td>8-bit, holds byte address of next instruction to fetch</td>
+</tr>
+<tr>
+<td>Instruction Register (IR)</td>
+<td>3 bytes wide - holds one fetched instruction (opcode, A, B)</td>
+</tr>
+<tr>
+<td>Framebuffer / Screen</td>
+<td>64 × 64 monochrome pixel grid (W=64, H=64)</td>
+</tr>
+<tr>
+<td>Instruction width</td>
+<td>Fixed 3 bytes: [opcode][operand A][operand B]</td>
+</tr>
+<tr>
+<td>Instruction count</td>
+<td>20 instructions (opcodes 0 - 19)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="memory-model">Memory Model</h3>
+<p>The memory for both program code and data is stored in an array of 256 bytes (0-255 indexes; perfect for a single byte PC). This means that instructions and data share the same instruction space, just like the Von Neumann specification.</p>
+<p>Programs are loaded in starting at address 0. Because of the 3-byte long instructions, instructions are accessed every 3 bytes in the memory. This means that instruction N is at byte address N x 3. The PC always holds a single byte address and we use offsets to decode the instruction; PC+0 for the op code, PC+1 for the first operand, and PC+2 for the second operand. After the 3 parts have been decoded, we increment the PC forward by 3.</p>
+<p>The jump instructions tell the PC to "jump" to a new address space and resume decoding instructions in the way described above. However note that JMP, JZ, and JNZ jump to the instruction number not the raw address in memory. The CPU will convert it in the following way: byte_address = instruction_number x 3. </p>
+<p>The memory after the last instruction may be used for data that your program can use. This extra space is sometime used for storing things like sprite information for when you want to draw a specific pattern. That space historically has been used for:</p>
+<ul>
+<li>Lookup tables for hard to calculate values (sin/cos, colors, etc)</li>
+<li>String data for messages (if the CPU as a way of doing text output)</li>
+<li>Map data</li>
+</ul>
+<h3 id="registers">Registers</h3>
+<p>There are 16 registers, numbered 0 through 15 (a nibble ;) ). All registers store an 8-bit, unsigned value for use by the current program. There are no special registers, only general purpose ones. These are your "variables" you will use these to store your intermediate data and need to manage them if a program needs more than 16.</p>
+<h3 id="instruction-set-architecture">Instruction Set Architecture</h3>
+<h4 id="instruction-encoding">Instruction Encoding</h4>
+<p>Every instruction is exactly 3 bytes:</p>
+<table>
+<thead>
+<tr>
+<th>Byte 1</th>
+<th>Byte 2</th>
+<th>Byte 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opcode (0-19)</td>
+<td>Operand A</td>
+<td>Operand B</td>
+</tr>
+</tbody>
+</table>
+<p>Both operands are interpreted differently depending on the instruction. If an operand is not being used it should be passed 0 by convention, however there is no enforcement of this.</p>
+<h4 id="operand-conventions">Operand Conventions</h4>
+<p>In the next section, short-hands will be used to explain the instructions available to us. The following table is the naming conventions used for the operands of that later table:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rd</td>
+<td>Destination register (0 - 15)</td>
+</tr>
+<tr>
+<td>Rs</td>
+<td>Source register (0 - 15)</td>
+</tr>
+<tr>
+<td>Ra</td>
+<td>Address register, this value will be used as a memory address</td>
+</tr>
+<tr>
+<td>Rc</td>
+<td>Condition register, tested for zero/nonzero checks</td>
+</tr>
+<tr>
+<td>Rx/Ry</td>
+<td>Register whose value is used as X/Y coordinates for the pixel buffer</td>
+</tr>
+<tr>
+<td>imm8</td>
+<td>8-bit immediate value (0 - 255), this is used just as the raw value of the byte in the operand</td>
+</tr>
+<tr>
+<td>target</td>
+<td>Instruction number for jumps (byte_address = target x 3)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="opcode-table">Opcode Table</h4>
+<p>The following is the Opcode Table. Every ISA has one and it describes the exact function of each available operation and how to use them.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Mnemonic</th>
+<th>A</th>
+<th>B</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Movement</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>LDI</td>
+<td>Rd</td>
+<td>imm8</td>
+<td>Rd = imm8</td>
+</tr>
+<tr>
+<td>1</td>
+<td>MOV</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rs</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LD</td>
+<td>Rd</td>
+<td>Ra</td>
+<td>Rd = mem[Ra]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ST</td>
+<td>Ra</td>
+<td>Rs</td>
+<td>mem[Ra] = Rs</td>
+</tr>
+<tr>
+<td><strong>Arithmetic</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>ADD</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rd + Rs (mod 256)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SUB</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rd − Rs (mod 256)</td>
+</tr>
+<tr>
+<td><strong>Bitwise / Logic</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>AND</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rd &amp; Rs</td>
+</tr>
+<tr>
+<td>7</td>
+<td>OR</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rd | Rs</td>
+</tr>
+<tr>
+<td>8</td>
+<td>XOR</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rd ^ Rs</td>
+</tr>
+<tr>
+<td>9</td>
+<td>NOT</td>
+<td>Rd</td>
+<td>---</td>
+<td>Rd = ~Rd</td>
+</tr>
+<tr>
+<td>10</td>
+<td>LSL</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rd &lt;&lt; (Rs &amp; 7)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>LSR</td>
+<td>Rd</td>
+<td>Rs</td>
+<td>Rd = Rd &gt;&gt; (Rs &amp; 7)</td>
+</tr>
+<tr>
+<td><strong>Control Flow</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>JMP</td>
+<td>target</td>
+<td>---</td>
+<td>PC = target × 3</td>
+</tr>
+<tr>
+<td>13</td>
+<td>JMPI</td>
+<td>Ra</td>
+<td>---</td>
+<td>PC = reg[Ra] × 3</td>
+</tr>
+<tr>
+<td>14</td>
+<td>JNZ</td>
+<td>Rc</td>
+<td>target</td>
+<td>if Rc ≠ 0: PC = target × 3</td>
+</tr>
+<tr>
+<td>15</td>
+<td>JZ</td>
+<td>Rc</td>
+<td>target</td>
+<td>if Rc = 0: PC = target × 3</td>
+</tr>
+<tr>
+<td>16</td>
+<td>HALT</td>
+<td>---</td>
+<td>---</td>
+<td>Stop execution</td>
+</tr>
+<tr>
+<td><strong>Display</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>DRAW</td>
+<td>Rx</td>
+<td>Ry</td>
+<td>screen[Ry][Rx] = 1</td>
+</tr>
+<tr>
+<td>18</td>
+<td>DRAWOFF</td>
+<td>Rx</td>
+<td>Ry</td>
+<td>screen[Ry][Rx] = 0</td>
+</tr>
+<tr>
+<td>19</td>
+<td>CLEAR</td>
+<td>mode</td>
+<td>---</td>
+<td>mode 0: all pixels off | mode 1: all pixels on</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alu-behavior">ALU Behavior</h3>
+<p>The ALU supports eight operations: ADD, SUB, NOT, AND, OR, XOR, LSL, and LSR. All arithmetic is performed on unsigned 8-bit values with natural wrap-around (modulo 256). Shift amounts are masked to the low 3-bits (aka ANDed with 7 to make range 0-7 shifts). There are no carry flags, overflow flags, or signed arithmetic modes.</p>
+<h3 id="framebuffer-and-display">Framebuffer and Display</h3>
+<p>The CPU includes a 64 × 64 monochrome framebuffer. Each pixel is either on (1) or off (0). The framebuffer is separate from the 256-byte memory, it cannot be read or written through LD/ST instructions; it is accessible only via DRAW, DRAWOFF, and CLEAR.</p>
+<p>Coordinate origin (0, 0) is at the top-left corner. The X axis increases to the right; the Y axis increases downward. Pixel (x, y) maps to screen[y][x] in row-major order.  </p>
+<p>DRAW sets a pixel on. DRAWOFF sets a pixel off. CLEAR with mode 0 blanks the entire framebuffer; CLEAR with mode 1 fills it completely. Out-of-bounds DRAW and DRAWOFF instructions (x &gt;= 64 or y &gt;= 64) are silently ignored and have no effect.</p>
+<h3 id="cpu-execution-model">CPU Execution Model</h3>
+<p>The CPU follow a standard three-stage loop:</p>
+<ul>
+<li><strong>Fetch</strong>: Read 3 bytes from memory at address PC, PC+1, and PC+2 into the instruction register. Increment the PC by 3</li>
+<li><strong>Decode</strong>: Interpret IR[0] as the opcode, IR[1] as operand A, and IR[2] as operand B</li>
+<li><strong>Execute</strong>: Carry out the operation, update the registers, memory, framebuffer, or the PC as required</li>
+</ul>
+<p>Execution stops when a HALT instruction is executed, or when the PC would advance past address 253 (last valid address for the 3-byte instructions in a 256-bye memory space). An unrecognized opcode is undefined behavior, however for this homework, to aid in debugging, an unrecognized opcode will result in a warning message and then resume normal execution.</p>
+<h3 id="reset-state">Reset State</h3>
+<p>When the CPU is initialized or when it is reset, all of the following are zeroed out:</p>
+<ul>
+<li>All 16 registers (R0–R15 = 0)    </li>
+<li>Program Counter (PC = 0)</li>
+<li>Zero Flag (ZF = 0)</li>
+<li>Halted flag (false)</li>
+<li>Memory (all 256 bytes = 0)</li>
+<li>Framebuffer (all 64×64 pixels = 0)</li>
+</ul>
+<h3 id="program-encoding">Program Encoding</h3>
+<p>tinyCPU programs are loaded into the CPU as flat byte arrays. Each instruction is exactly 3 consecutive bytes: opcode, operand a, and operand b. Programs can be written directly in the runner code or as separate binary files that are read and then loaded into the CPU memory.</p>
+<p>Example: Load the value 42 into Register 0 and then halt:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// tinyCPU program using raw opcodes</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">uint8_t</span><span class="w"> </span><span class="n">prog</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">     </span><span class="c1">// LDI  RO, 42</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span><span class="c1">// HALT 0, 0</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">};</span>
+</span></code></pre></div>
+<p>To aid in programming, there is an enum that labels the opcodes for you and will map them to their opcode numbers to make programming easier:
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// tinyCPU program using enum labels</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">LDI</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">...</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">HALT</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">...</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">CLEAR</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">}</span><span class="w"> </span><span class="n">Op</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kt">uint8_t</span><span class="w"> </span><span class="n">prog</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">LDI</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">     </span><span class="c1">// 0, 0, 42,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="n">HALT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span><span class="c1">// 16, 0, 0,</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">};</span>
+</span></code></pre></div></p>
+<h3 id="looping-example-draw-a-vertical-line">Looping Example - Draw a Vertical Line</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Instr# Bytes Meaning</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// 0 LDI, 0, 0  R0 = 0 (loop counter / y value)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// 1 LDI, 1, 1  R1 = 1 (increment)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// 2 LDI, 2, 63 R2 = 63 (limit)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">// 3 LDI, 3, 31 R3 = 31 (mid x value)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">// 4 DRAW, 3, 1 Draw pix at the middle of x and an increasing y</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// 5 ADD, 0, 1  R0 += R1</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">// 6 SUB, 2, 0  R2 -= R0 (becomes 0 when R0 reaches 63)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">// 7 JNZ, 2, 4  if R2 != 0 goto instr 2</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">// 8 HALT, 0, 0</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kt">uint8_t</span><span class="w"> </span><span class="n">prog</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="n">LDI</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">   </span><span class="c1">// R0 = 0</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">LDI</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="c1">// R1 = 1</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="n">LDI</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">  </span><span class="c1">// R2 = 63</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">LDI</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">  </span><span class="c1">// R3 = 31</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">DRAW</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">  </span><span class="c1">// Draw(R3, R0)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="n">ADD</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="c1">// R0 += R1</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="n">SUB</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">   </span><span class="c1">// R2 -= R0</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="n">JNZ</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">   </span><span class="c1">// if R2 != 0 goto instr 2</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="n">HALT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">};</span>
+</span></code></pre></div>
+<h3 id="tiny-assembly">Tiny Assembly</h3>
+<p>Instead of doing "in-line tinyCPU coding" in C, I have taken the liberty to program and <strong>tinyCPU assembler</strong> so that we can code tinyCPU code inside .tiny files that a program can read. YOUR JOB in this homework is to make the tinyCPU that will run the machine code generated from this assembler. </p>
+<p>The basics to coding in tiny Assembly is:</p>
+<ul>
+<li>Every instruction is 3 parts<ul>
+<li>operation</li>
+<li>operand a</li>
+<li>operand b</li>
+</ul>
+</li>
+<li>The operation is all caps and based on the above table</li>
+<li>Each operand can only be numbers, usually representing target registers for the operation to work on</li>
+<li>Each part is separated by spaces</li>
+<li>Comments are done using <code>;</code></li>
+<li>When doing jump targets for JMP, JZ, and JNZ, these jump to INSTRUCTION numbers, not line numbers nor absolute memory addresses</li>
+<li>Look at the examples in <code>progs/</code></li>
+</ul>
+<hr />
+<h2 id="project-structure">Project Structure</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>CS220-HW5-LastName/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── include/
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   ├── tinycpu.h             # Your header file
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│   └── RGFW.h                # The graphics library
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>├── src/
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   ├── tinycpu.c             # Your tinycpu implmentations
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   ├── test.c                # Test file
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│   └── main.c                # Diver and tinycpu assembler
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>├── progs/
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│   └── *.tiny                # tinyCPU programs
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>├── answers/                  # Answers for homework short answer questions
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>│   └── *.tiny 
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>└── Makefile            # Provided:do not modify
+</span></code></pre></div>
+<p>All files must compile together:</p>
+<p>Windows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mingw32-make<span class="w"> </span>tinyCPU
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mingw32-make<span class="w"> </span><span class="nb">test</span>
+</span></code></pre></div>
+<p>Linux/Mac:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make<span class="w"> </span>tinyCPU
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>make<span class="w"> </span><span class="nb">test</span>
+</span></code></pre></div>
+<p>Download the starting point <a href="../tinyCPU.zip">here</a>.</p>
+<hr />
+<h2 id="part-1-familiarize-yourself-with-the-code">Part 1: Familiarize Yourself with the Code</h2>
+<p>Before diving into everything, we should take a stroll through the codebase as it is right now so you can best add to it later. In this section are some questions for you to answer about the code base to steer you in the right direction and test understanding.</p>
+<ol>
+<li>What is the purpose of <code>main.c</code>? How do you use the executable that it makes?</li>
+<li>What is an assembler? Generally and in this context.</li>
+<li>After <code>make tinyCPU</code> is ran what happens? </li>
+<li>What two files are your main concern according to code comments?</li>
+<li>What is a <code>.tiny</code> file?</li>
+</ol>
+<p>Answer these inside a <code>part1.txt</code> or some other accepted file format inside of the <code>answers/</code> folder.</p>
+<h2 id="part-2-isa-implementation">Part 2: ISA Implementation</h2>
+<p>With the scaffolding laid, it is your job to fill-in the rest of the ISA for the tinyCPU according to the spec. The first task is to implement both the tinyCPU C struct and its main functions that will simulate the main processes that would occur if the tinyCPU was brought to reality.</p>
+<h3 id="21-the-tinycpu-struct">2.1. The tinyCPU struct</h3>
+<p>You are to fill-in the tinyCPU struct in <code>include/tinycpu.h</code> according to the hardware specification. This is creating the virtual version of the memory and registers available to be used during the run of tinyCPU code. Use the hardware specification documentation as a guide, however here are some general guidelines:</p>
+<ul>
+<li>a "byte" is to be a <code>uint8_t</code> value</li>
+<li>the registers and RAM are arrays of bytes</li>
+<li>the instruction register is separate from the general registers</li>
+<li>the screen is a 2D array of either bytes or bools; up to you</li>
+<li>names for struct members are provided to make certain existing functions work</li>
+<li>use provided constant names but fill them in and use accordingly</li>
+</ul>
+<h3 id="22-tinycpu-main-functions">2.2 tinyCPU Main Functions</h3>
+<p>With the tinyCPU's memory laid out, it is time to fill in the functions that dictate its main operation. Already provided is the main <code>cpu_run()</code> function with required rendering support and basic control flow. You are to fill in the rest of the functions.</p>
+<ol>
+<li><code>void cpu_init(tinyCPU* cpu)</code><ol>
+<li>Sets ALL memory associated with the CPU to 0 to start the process of emulation</li>
+<li>Use <code>memset()</code> to do this in one line reliably, or you can be explicit and set each array and value to 0 manually</li>
+</ol>
+</li>
+<li><code>void cpu_load(tinyCPU* cpu, uint8_t* prog, size_t len)</code><ol>
+<li>Load <code>prog</code> into tinyCPU memory starting at memory address 0</li>
+<li>You can do this anyway you like, however if you look up the docs for <code>memset()</code> you may find a standard function for copying memory as well if you get stuck</li>
+</ol>
+</li>
+<li><code>void cpu_fetch(tinyCPU* cpu)</code><ol>
+<li>Use the program counter to get the current instruction and load each part into its byte array</li>
+<li>Increment the counter by the instruction length</li>
+</ol>
+</li>
+<li><code>uint8_t alu_compute(Op op, uint8_t a, uint8_t b)</code><ol>
+<li>Using the provided named enums for the opcode mnemonics, make a big switch statement for each ALU operation, aka ADD, SUB, AND, OR, XOR, NOT, LSL, and LSR</li>
+<li>It may seem too simple but just implement them according to the docs using C's operators. The idea is that with these primitive operations we are able to program</li>
+<li>Return the result of the operation</li>
+<li>Normally this would be a block of gates but here we implement the simple version. Know that ultimately the idea is that so long as we follow the ISA it doesn't matter what it is made out of</li>
+</ol>
+</li>
+<li><code>void cpu_decode_execute(tinyCPU *cpu)</code><ol>
+<li>This is the combined decode-execute step that will separate out the opcode, operand a, and operand b from the instruction register and then run the correct operation on the CPU memory</li>
+<li>Follow the spec sheet above, the summary table is all you need for this part</li>
+<li>Use the labels for the machine instructions and implement them according to the description</li>
+<li>Keep in mind that we only allow immediate values when we load them into register most of the time, this means that you will be doing a lot of <code>cpu-&gt;reg[a]</code> rather than just using <code>a</code> or <code>b</code></li>
+<li>For opcodes DRAW, DRAWOFF, and CLEAR, YOU MUST SET <code>cpu-&gt;needs_render=1</code>. This signals to the renderer that a screen change has been made and that it must render the screen buffer.</li>
+</ol>
+</li>
+</ol>
+<h3 id="23-test-pass">2.3 Test Pass</h3>
+<p>After you are comfortable that you have some code that compiles, you can run the test code. Use:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>make<span class="w"> </span><span class="nb">test</span>
+</span></code></pre></div>
+<p>To build the test executable. That will create <code>tinyCPU_test</code>, run it and see how you do. It will highlight the main functionality required for the later steps. </p>
+<h3 id="24-run-some-tiny-programs">2.4 Run Some <code>.tiny</code> Programs</h3>
+<p>With the tests passing on your implementation, it is safe to test <code>main.c</code>'s main functionality as the tinyCPU Assembler. When you run:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>make<span class="w"> </span>tinyCPU
+</span></code></pre></div>
+<p>You will build the tinyCPU Assembler and emulator. It will create <code>tinyCPU</code> which you need to run with some command-line arguments. Try this out, you should see a small happy face!</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>tinyCPU progs/sprite.tiny
+</span></code></pre></div>
+<ul>
+<li>Run each and describe what they do visually:<ol>
+<li><code>stripe.tiny</code></li>
+<li><code>spiral.tiny</code></li>
+<li><code>ball.tiny</code></li>
+<li><code>sprite.tiny</code></li>
+<li><code>sprite_moving.tiny</code></li>
+</ol>
+</li>
+</ul>
+<p>Answer these inside a <code>part2.txt</code> or some other accepted file format inside of the <code>answers/</code> folder.</p>
+<h2 id="part-3-make-your-own-tiny-programs">Part 3: Make Your Own <code>.tiny</code> Programs</h2>
+<p>We now have a emulator for a <code>tinyCPU</code> complete with a machine code translator! Might as well code some tiny assembly! Using the previously mentioned <code>.tiny</code> programs and the spec, you are to make your own programs in this little CPU simulator.</p>
+<ol>
+<li><code>progs/cross.tiny</code><ol>
+<li>Use <code>stripe.tiny</code> as a starting point and make a program that will make a cross on the screen, like this:
+<img alt="" src="../../img/tiny_cross.png" /></li>
+</ol>
+</li>
+<li><code>progs/stripes.tiny</code><ol>
+<li>Use <code>stripe.tiny</code> as a starting point and make a program that will make a striping pattern that has white lines separated by <strong>2 spaces each</strong>, like this:
+<img alt="" src="../../img/tiny_stripes.png" /></li>
+</ol>
+</li>
+<li><code>progs/wildcard.tiny</code><ol>
+<li>YOU CHOOSE<ol>
+<li>Make your own program using the examples given and your creativity</li>
+<li>It doesn't need to be crazy and can even be you making your own sprite!</li>
+<li>Make sure it doesn't go over 256 bytes</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Put all <code>.tiny</code> programs in the <code>progs/</code> folder.</p>
+<hr />
+<h2 id="grading-rubric">Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Part 1: All five questions answered thoughtfully</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Part 2.1: tinyCPU struct correctly implemented</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Part 2.2a: <code>cpu_init()</code> correct</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Part 2.2b: <code>cpu_load()</code> correct</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Part 2.2c: <code>cpu_fetch()</code> correct</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Part 2.2d: <code>alu_compute()</code> all 8 operations correct</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Part 2.2e: <code>cpu_decode_execute()</code> all 20 opcodes correct</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Part 2.3: All tests passing</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Part 2.4: Programs run correctly, all 5 described</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Part 3a: <code>cross.tiny</code> correct output</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Part 3b: <code>stripes.tiny</code> correct output</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Part 3c: <code>wildcard.tiny</code> creative and functional</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascript/wcag_fixes.js"></script>
+      
+        <script src="../../javascript/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

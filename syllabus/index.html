@@ -1,0 +1,1939 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../schedule/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/cs220.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Syllabus - CS 220 - Computer Organization</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#course-computer-organization-cs-220" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CS 220 - Computer Organization" class="md-header__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../img/cs220.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 220 - Computer Organization
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Syllabus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../schedule/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../lessons/1_introduction/" class="md-tabs__link">
+          
+  
+  
+  Lessons
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../labs/c_compilation/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../homework/how_to_hand_in/" class="md-tabs__link">
+          
+  
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CS 220 - Computer Organization" class="md-nav__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../img/cs220.png" alt="logo">
+
+    </a>
+    CS 220 - Computer Organization
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#course-computer-organization-cs-220" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course: Computer Organization (CS 220)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#office-hours-and-contact-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Office Hours and Contact Info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-catalog-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Catalog Description:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Objectives:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#student-learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Student Learning Outcomes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-and-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text and Materials:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Schedule:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-of-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method of Evaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method of Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#letter-grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Letter Grading
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accommodations-for-students-with-accessibility-needs-at-suny-polytechnic-institute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accommodations for Students with Accessibility Needs at SUNY Polytechnic Institute:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accommodations for Students with Accessibility Needs at SUNY Polytechnic Institute:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#office-of-student-accessibility-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Office of Student Accessibility Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content Accessibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pregnancy-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pregnancy Statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-assistance-for-students" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Assistance for Students
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#academic-integrity-and-code-of-conduct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Academic Integrity and Code of Conduct
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-and-communications-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing and Communications Center
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plagiarism-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plagiarism Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy-on-submission-of-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy on Submission of Assignments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy-on-missed-classes-make-up-work-andor-extra-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy on Missed Classes, Make-up Work, and/or Extra Credit:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancellation-of-classes-due-to-inclement-weather-or-other-emergency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancellation of Classes Due to Inclement Weather or Other Emergency:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lessons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons/1_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons/2_reviewing_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reviewing C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons/3_binary_hex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons/4_bool_logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean/Bitwise Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons/5_signed_unsigned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons/6_transistors_2_pc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abstraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons/7_gates_circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gates and Circuits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/c_compilation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C Compilation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homework/how_to_hand_in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How To Hand In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homework/gcc_install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homework/1_c_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 (Due 2/27/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homework/2_test_1_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 2 (Due 3/13/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homework/3_alu_and_gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 3 (Due 4/12/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homework/4_test_2_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 4 (Due 4/19/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homework/5_tiny_cpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 5 (Due 4/26/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#course-computer-organization-cs-220" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course: Computer Organization (CS 220)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#office-hours-and-contact-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Office Hours and Contact Info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-catalog-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Catalog Description:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Objectives:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#student-learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Student Learning Outcomes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-and-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text and Materials:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Schedule:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-of-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method of Evaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method of Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#letter-grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Letter Grading
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accommodations-for-students-with-accessibility-needs-at-suny-polytechnic-institute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accommodations for Students with Accessibility Needs at SUNY Polytechnic Institute:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accommodations for Students with Accessibility Needs at SUNY Polytechnic Institute:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#office-of-student-accessibility-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Office of Student Accessibility Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content Accessibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pregnancy-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pregnancy Statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-assistance-for-students" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Assistance for Students
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#academic-integrity-and-code-of-conduct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Academic Integrity and Code of Conduct
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-and-communications-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing and Communications Center
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plagiarism-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plagiarism Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy-on-submission-of-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy on Submission of Assignments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy-on-missed-classes-make-up-work-andor-extra-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy on Missed Classes, Make-up Work, and/or Extra Credit:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancellation-of-classes-due-to-inclement-weather-or-other-emergency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancellation of Classes Due to Inclement Weather or Other Emergency:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Syllabus</h1>
+
+<h2 id="course-computer-organization-cs-220">Course: Computer Organization (CS 220)</h2>
+<p><strong>Section:</strong> 02</p>
+<p><strong>CRN:</strong> 2040</p>
+<p><strong>Semester</strong>: Fall 2026</p>
+<p>On-Campus, 4 Credits</p>
+<p><strong>Room</strong>: Kunsela Hall A129
+<br></p>
+<p><strong>Meeting Times:</strong> Mondays and Wednesdays, 12:00pm - 1:50pm</p>
+<h2 id="office-hours-and-contact-info">Office Hours and Contact Info</h2>
+<p><strong>Instructor:</strong> John Szwakob III (Mr. S)</p>
+<p><strong>Office Location:</strong> Kunsela Hall C127</p>
+<p><strong>Office Hours:</strong>
+- Mondays 2:00pm - 4:00pm</p>
+<ul>
+<li>
+<p>Tuesdays and Thursdays, 10:00am - 12:00pm</p>
+</li>
+<li>
+<p>Friday by appointment</p>
+</li>
+</ul>
+<p><strong>Phone:</strong> (315) 792-7256</p>
+<p><strong>Note:</strong> This is my office phone, I will be in the office guaranteed during the office hours above, however outside of that I may be teaching if you call during school hours. I encourage you to leave a message. The best way to contact me remains through the email below as I can respond much quicker for time sensitive matters.</p>
+<p>Email: szwakoj@sunypoly.edu</p>
+<h2 id="course-catalog-description">Course Catalog Description:</h2>
+<p>Introduces students to the organization and architecture of computer systems as a hierarchy of levels, beginning with the standard von Neumann model and then moving forward to more recent architectural concepts. Topics include digital logic, microprogramming, conventional machine and assembly language levels. Emphasis is given to those aspects of computer hardware that effect programming. Prerequisite: CS 108</p>
+<h2 id="course-objectives">Course Objectives:</h2>
+<ul>
+<li>Give a high-level overview of the organization and architecture of computer systems</li>
+<li>Introduce students to the concept of abstraction in both problem solving and computer systems</li>
+<li>Cover the von Neuman Architecture</li>
+<li>Teach students the binary number system, boolean logic, and digital logic</li>
+<li>Have students program in Assembly and other low-level machine languages</li>
+<li>Show the intersection of computer hardware and software</li>
+</ul>
+<h2 id="student-learning-outcomes">Student Learning Outcomes</h2>
+<p>By the end of this course you will:</p>
+<ul>
+<li>Understand the concept of abstraction</li>
+<li>Be able to explain the Hierarchy of Abstraction in computers and understand which level you are working in</li>
+<li>Know the general organizational and architectural concepts of computer systems at multiple levels</li>
+<li>Convert numbers between binary, decimal, and hexadecimal number systems</li>
+<li>Use basic boolean algebra and k-maps to understand digital logic</li>
+<li>Design basic circuits using logic gates</li>
+<li>Understand how transistors are used to built up to more complex systems</li>
+<li>Create your own Fetch-Decode-Execute systems</li>
+<li>Simulate/Emulate simple CPU processes using bit manipulation in the C programming language</li>
+<li>Code in Assembly and other low-level instruction sets</li>
+</ul>
+<h2 id="text-and-materials">Text and Materials:</h2>
+<p>There is no required text book, most if not all material will be through this site and in class lectures. There are, however suggested resources for those who learn best with a textbook as reference, as well as the sources for the course.</p>
+<p>"Digital Design and Computer Architecture" by Harris and Harris </p>
+<ul>
+<li>
+<p>Textbook that covers a lot of the early information of this course, we will not be covering it exhaustively</p>
+</li>
+<li>
+<p>Not required</p>
+</li>
+</ul>
+<h2 id="course-schedule">Course Schedule:</h2>
+<p>Below is the rough topical structure of the course in the order of coverage, you can find this plan and the most updated schedule at the course website. The schedule is a rough outline and will be changed to best serve the classes needs, any changes made will be in favor of the students and any complications can be rectified over email or in-person.</p>
+<p>These units are a rough organization of the topics in the order covered, they will be about 2-3 weeks each with some time allotted for tests and review. More or less time could be taken depending on the class pace, the latter allowing for more topics to be covered.</p>
+<ul>
+<li>Unit Order<ul>
+<li>Introduction</li>
+<li>Basic Computer Organization</li>
+<li>Binary and Digital Logic</li>
+<li>Circuits, Multiplexers, and Decoders</li>
+<li>Instruction Set Architectures and Assembly</li>
+</ul>
+</li>
+</ul>
+<h2 id="method-of-evaluation">Method of Evaluation</h2>
+<ul>
+<li><strong>Homeworks</strong> <ul>
+<li>Take home assignments meant to instill concepts covered in class</li>
+<li>Will often be based on labs or other in-class activities</li>
+<li>Mostly coding, short answer, and some drawing</li>
+</ul>
+</li>
+<li><strong>Attendance Quizzes</strong><ul>
+<li>Short (2-3 Questions) in-person quizzes given weekly</li>
+<li>Meant to test topics covered the class previous</li>
+<li>Can be given on any class day during the week</li>
+<li>No re-tests</li>
+<li>Three lowest grades dropped from average</li>
+</ul>
+</li>
+<li><strong>Unit Tests</strong><ul>
+<li>Longer form (10 - 15 Questions) in-person tests given at the end of each unit</li>
+<li>Given about every three weeks, announced beforehand</li>
+<li>Will contain short and long answer questions</li>
+<li>Based on lesson, homeworks, labs, and attendance quizzes</li>
+<li>Retests given sparingly and under adequate circumstances</li>
+<li>Lowest grade dropped from average</li>
+</ul>
+</li>
+<li><strong>Labs</strong><ul>
+<li>Ungraded guided exercises that are covered in class </li>
+<li>Students will start them in class and finish them on their own</li>
+<li>Will prepare students for both homeworks and tests</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Academic Work</th>
+<th>% of Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Homework</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>Attendance Quizzes(Weekly)</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Unit Tests</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>Labs(in-class)</td>
+<td>Ungraded</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="letter-grading">Letter Grading</h3>
+<table>
+<thead>
+<tr>
+<th>Letter Grade</th>
+<th>Percentage Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A+</td>
+<td>96⅔ - 100%</td>
+</tr>
+<tr>
+<td>A</td>
+<td>93⅓ - 96⅔%</td>
+</tr>
+<tr>
+<td>A-</td>
+<td>90 - 93⅓%</td>
+</tr>
+<tr>
+<td>B+</td>
+<td>86⅔ - 90%</td>
+</tr>
+<tr>
+<td>B</td>
+<td>83⅓ - 86⅔%</td>
+</tr>
+<tr>
+<td>B-</td>
+<td>80 - 83⅓%</td>
+</tr>
+<tr>
+<td>C+</td>
+<td>76⅔ - 80%</td>
+</tr>
+<tr>
+<td>C</td>
+<td>73⅓ - 76⅔%</td>
+</tr>
+<tr>
+<td>C-</td>
+<td>70 - 73⅓%</td>
+</tr>
+<tr>
+<td>D+</td>
+<td>66⅔ - 70%</td>
+</tr>
+<tr>
+<td>D</td>
+<td>63⅓ - 66⅔%</td>
+</tr>
+<tr>
+<td>D-</td>
+<td>60 - 63⅓%</td>
+</tr>
+<tr>
+<td>F</td>
+<td>0 - 60%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="accommodations-for-students-with-accessibility-needs-at-suny-polytechnic-institute">Accommodations for Students with Accessibility Needs at SUNY Polytechnic Institute:</h2>
+<p>Your access in this course is important to me. In compliance with the Americans with Disabilities Act of 1990 and Section 504 of the Rehabilitation Act of 1973, SUNY Polytechnic Institute is committed to ensuring comprehensive educational access and accommodations for all registered students seeking access to meet course requirements and fully participate in programs and activities. Students with documented disabilities, temporary, or medical conditions are encouraged to request services by contacting Student Accessibility Services (SAS) or filling out the Request for Accommodations form. Please note, requesting accommodations is only the first step. You must provide documentation (the request form may count) to SAS and meet with staff before receiving accommodations. Please do this as early as possible 1) because accommodations are never retroactive and 2) so that we have adequate time to arrange your approved academic accommodation/s.</p>
+<p>Once SAS creates your accommodation plan, it is your responsibility to provide me a copy of the accommodation plan. If you experience any access barriers in this course, such as with printed content, graphics, online materials, etc., reach out to me or SAS right away. For information related to these services or to schedule an appointment, please contact SAS using the information provided below.</p>
+<h3 id="office-of-student-accessibility-services">Office of Student Accessibility Services</h3>
+<p>Email: SAS@sunypoly.edu</p>
+<p>Phone: (315) 792-7170</p>
+<p>Location: Kunsela Hall, B101</p>
+<h2 id="content-accessibility">Content Accessibility</h2>
+<p>SUNY Poly’s goal is for all digital content to be fully accessible but there may be times when remediation is still underway, please let me know if you experience challenges accessing any digital content in this course.</p>
+<p>This course is attempting to start a new standard for the CS department using open-source tools to make content universally accessible according to any accessibility requirements by producing all content sources in Markdown. By creating it in Markdown and pure text, any accessibility reader can be tooled to a students needs, while allowing for the teacher to rapidly create material in a lasting way.</p>
+<p>This process will not be without its bumps, so, if there are any issues with accessing the course material or reading it in any way, please contact me ASAP by email at szwakoj@sunypoly.edu.</p>
+<h2 id="pregnancy-statement">Pregnancy Statement</h2>
+<p>SUNY Poly is committed to fostering an inclusive and supportive environment for all students and it does not discriminate against any student based on the student's pregnancy or related conditions. If you have questions or concerns related to pregnancy or related conditions, please contact the Title IX Coordinator, Kathie Artigiani at artigik@sunypoly.edu.</p>
+<h2 id="technical-assistance-for-students">Technical Assistance for Students</h2>
+<p>The following only applies for technologies and materials offered by the school generally and not the ones that this course uses individually. If there are any issues with the course website, programming tools, or homeworks, email the teacher.</p>
+<p>The SUNY Poly Help Desk is in the Cayan Library on the first floor. You can contact them by phone at 315-792-7440, by email at helpdesk@sunypoly.edu, or by submitting an online help ticket on their website.</p>
+<p>If the SUNY Poly Help Desk is closed, you can obtain assistance from the Open SUNY Help Desk by calling 1-844-OPENSUNY (673-6786). The Open SUNY email is OpenSUNYHelp@suny.edu or you can submit an online help ticket.</p>
+<p>The SUNY Poly ITS website has information about software and hardware that you can access as a student, as well as links to software you may need in your classes. Students are encouraged to save all work in multiple locations. MS Office OneDrive is available for use. For assistance, please contact the ITS Help Desk, helpdesk@sunypoly.edu or 315-792-7440. </p>
+<h2 id="academic-integrity-and-code-of-conduct">Academic Integrity and Code of Conduct</h2>
+<p>SUNY Poly is committed to academic excellence in a climate of honesty, respect, and trust. The mutually respectful exchange of honest ideas is foundational to the intellectual vigor of the SUNY Poly community. The University seeks to maintain and enhance its educational environment through the development, promotion, and enforcement of standards for academic integrity. Please take a few minutes to become familiar with SUNY Poly’s Community Standards, including the Student Handbook and Student Code of Conduct. SUNY Poly’s Academic Integrity Policy, which describes SUNY Poly’s policies regarding plagiarism and other inappropriate academic activities, can be found in the Student Handbook. </p>
+<h2 id="writing-and-communications-center">Writing and Communications Center</h2>
+<p>The Writing and Communications Center (WCC) is here to support all of SUNY Poly’s writers: students, faculty, and staff. We offer one-on-one in-person and remote consultations for writers working on a range of projects at any stage of the writing process (from idea generation to final revisions). WCC consultants work with writers on idea development, brainstorming, content development, structure, source use, style, grammar, punctuation, and more. While we are not a proofreading or editing service and we do not comment on grades, we offer strategies and resources writers can use as they compose, revise, edit, and learn to proofread their own work. The WCC is located on the first floor of the Cayan Library. You can learn more about the WCC or make an appointment by visiting our website: https://sunypoly.edu/writingcenter.html.</p>
+<h2 id="plagiarism-warning">Plagiarism Warning</h2>
+<p>All homeworks, quizzes, tests, and labs are meant to be completed by students independently (unless otherwise stated) and without the assistance of generative AI backed by LLMs including, but not limited to, ChatGPT, Claude, Gemini, and all other text/code generators. All material that is assigned to students is meant to instill lasting critical thinking and problem solving skills that are required to excel in both this course and wherever students may end up in the future. As such, usage of these tools in a fashion akin to plagiarism (not citing, wholesale copying, intent to hide sources) is strictly prohibited in this course. All incidents that can be proven must be brought to the dean and always results in a zero on the grade. This goes for plagiarizing code from other sources, such as StackOverflow, Reddit, Github, other uncited sources, and fellow students.</p>
+<p>That being said, using other sources as reference is not completely out of the question. Peers, tutorials, YouTube videos, existing code, and even LLMs can greatly aid in understanding complex topics. However, they cannot be used without disclosure and proper citation if being used extensively in an assignment. Use other sources and LLMs cautiously as this course is based on the lessons found within the the lectures given in-person.</p>
+<h2 id="policy-on-submission-of-assignments">Policy on Submission of Assignments</h2>
+<p>All assignments will be submitted via Brightspace in the appropriate location identified by each assignment. Specific instructions can be found on the course website.
+Each assignment will be given with an intended due date attached. For each day late an assignment is, a 10% reduction will be removed from the maximum possible grade, capped at 50%, so long as a valid final submission has been made by the end of the semester.</p>
+<h2 id="policy-on-missed-classes-make-up-work-andor-extra-credit">Policy on Missed Classes, Make-up Work, and/or Extra Credit:</h2>
+<p>There is no method of attendance other than the attendance quizzes given weekly</p>
+<h2 id="cancellation-of-classes-due-to-inclement-weather-or-other-emergency">Cancellation of Classes Due to Inclement Weather or Other Emergency:</h2>
+<p>SUNY Poly has a 24-hour hotline, called Snowline, to inform students, faculty, and staff when severe weather prompts the cancellation of all classes. Snowline can be reached by calling 315-792-7385. In the event of severe weather, Snowline will announce only the cancellation of ALL classes. The cancellation of all classes will also be posted online and broadcast on radio and television stations in the Utica Rome and Syracuse areas. The SUNY Poly website also maintains a list of individual class cancellations.</p>
+<p>In addition, all SUNY Poly students and employees are enrolled in the Rave Alert emergency alert service. You can visit the SUNY Poly Rave Alert website to learn more and to adjust your notification preferences. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.sections", "navigation.expand"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascript/wcag_fixes.js"></script>
+      
+        <script src="../javascript/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

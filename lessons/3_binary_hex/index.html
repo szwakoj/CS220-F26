@@ -1,0 +1,2893 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2_reviewing_c/">
+      
+      
+        <link rel="next" href="../4_bool_logic/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/cs220.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Binary and Hex - CS 220 - Computer Organization</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#binary-and-hexadecimal-numbers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-header__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 220 - Computer Organization
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Binary and Hex
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../1_introduction/" class="md-tabs__link">
+          
+  
+  
+  Lessons
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/c_compilation/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../homework/how_to_hand_in/" class="md-tabs__link">
+          
+  
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-nav__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    CS 220 - Computer Organization
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lessons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_reviewing_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reviewing C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#number-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Number Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Number Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-decimal-number-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Decimal Number System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-more-than-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why more than one?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-systems-generally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Number Systems Generally
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Number Systems Generally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-mathematical-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Mathematical Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-10-decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base-10 (Decimal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-5-quinary-an-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base-5 (Quinary) - An Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-binary-number-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Binary Number System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Binary Number System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-decimal-to-binary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Decimal to Binary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-binary-to-decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Binary to Decimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-hexadecimal-number-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Hexadecimal Number System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Hexadecimal Number System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-decimal-to-hexadecimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Decimal to Hexadecimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-hexadecimal-to-decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Hexadecimal to Decimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-connection-between-binary-and-hexadecimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Connection Between Binary and Hexadecimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Terms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Terms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nibble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nibble
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#byte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Byte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Word
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#most-significant-bit-msb-and-least-significant-bit-lsb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Most Significant Bit (MSB) and Least Significant Bit (LSB)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-notation-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Number Notation Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_bool_logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean/Bitwise Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_signed_unsigned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_transistors_2_pc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abstraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_gates_circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gates and Circuits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/c_compilation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C Compilation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/how_to_hand_in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How To Hand In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/gcc_install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/1_c_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 (Due 2/27/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/2_test_1_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 2 (Due 3/13/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/3_alu_and_gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 3 (Due 4/12/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/4_test_2_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 4 (Due 4/19/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/5_tiny_cpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 5 (Due 4/26/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#number-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Number Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Number Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-decimal-number-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Decimal Number System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-more-than-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why more than one?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-systems-generally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Number Systems Generally
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Number Systems Generally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-mathematical-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Mathematical Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-10-decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base-10 (Decimal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-5-quinary-an-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base-5 (Quinary) - An Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-binary-number-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Binary Number System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Binary Number System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-decimal-to-binary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Decimal to Binary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-binary-to-decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Binary to Decimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-hexadecimal-number-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Hexadecimal Number System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Hexadecimal Number System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-decimal-to-hexadecimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Decimal to Hexadecimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-from-hexadecimal-to-decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting from Hexadecimal to Decimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-connection-between-binary-and-hexadecimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Connection Between Binary and Hexadecimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Terms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Terms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nibble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nibble
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#byte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Byte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Word
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#most-significant-bit-msb-and-least-significant-bit-lsb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Most Significant Bit (MSB) and Least Significant Bit (LSB)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-notation-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Number Notation Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../1_introduction/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="binary-and-hexadecimal-numbers">Binary and Hexadecimal Numbers</h1>
+<p>In your previous courses in computer science, the idea of binary numbers must have come up at least once. However, until this point in your learning journey, you probably never had to understand it completely or why it is so deeply connected to computers. All information on the computer is ultimately stored in binary format, as we look deeper into the way a computer is made, we will need to be able to understand this representation of information to be better equipped for designing, fixing, or analyzing software.</p>
+<p>In this lesson, we will cover:</p>
+<ul>
+<li>Number systems generally</li>
+<li>A technical description of the decimal number system we all use</li>
+<li>The binary number system</li>
+<li>How to convert to and from binary and decimal</li>
+<li>The hexadecimal number system</li>
+<li>How to convert to and from hexadecimal and decimal</li>
+<li>How hexadecimal and binary connect to make reading raw data a little easier</li>
+<li>Important terms when speaking of numbers in different systems</li>
+</ul>
+<h2 id="number-systems">Number Systems</h2>
+<p>When we want to communicate verbal information, we pick a system of speaking that formats that information, like a language, and express that information using the rules that the format/language defines. Ultimately that verbal information can be expressed in any format or language and still have the overall meaning but looks very different. Think about how you can say the same thing in any language:</p>
+<ul>
+<li>Ways to greet someone in many languages:<ul>
+<li>English: "Hello"</li>
+<li>Spanish: "Hola"</li>
+<li>Arabic: "مرحباً"</li>
+<li>Swahili: "Jambo"</li>
+<li>Chinese: "你好"</li>
+<li>Russian: "дравствуйте"</li>
+</ul>
+</li>
+</ul>
+<p>Notice that they all mean the same thing, but the form in which they appear changes with the language/format. Each form has its own rules and symbols that inform how that information is received and understood. The information never changes but the form it takes and how many symbols it requires to be properly conveyed can be different.</p>
+<p>The above is the case for verbal information, but what about other kinds of information like numbers, audio, or video? What about a method of storing any kind of information, verbal or otherwise? Something that we will assume going forward is that all information can be represented using numbers, and as such we will focus on <strong>number systems</strong>. This assumption is the main idea of Information Theory as a field.</p>
+<p>A <strong>number system</strong> or <strong>numeral system</strong> is a method of representing values of numbers using a set of symbols or <strong>digits</strong>. The number system that you are most used to is the <strong>decimal number system</strong> also known as <strong>base-10</strong>, as we will see later. This is the standard way of representing numbers using the digits 0-9 for a total of ten digits, making its prefix "deci-" make sense.</p>
+<h3 id="the-decimal-number-system">The Decimal Number System</h3>
+<p>The <strong>decimal number system</strong> isn't anything new to you and will be the "lingua franka" we translate back to when doing number conversions. Although you interact with these numbers every day, seldom does anyone stops to think why they are the way they are. To ensure we are on the same page on the mechanics of the base-10 system and as a means of introducing number systems generally, we will review.</p>
+<p><strong>Digits</strong> are the symbols that numerical systems use to denote values. . For decimal, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. These are the building blocks that construct all numbers.</p>
+<p>To represent values larger than nine, we use <strong>positional notation</strong> where each position represents a different weight. Each position is a power of 10:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Power of 10</strong></td>
+<td><span class="arithmatex">\(10^6\)</span></td>
+<td><span class="arithmatex">\(10^5\)</span></td>
+<td><span class="arithmatex">\(10^4\)</span></td>
+<td><span class="arithmatex">\(10^3\)</span></td>
+<td><span class="arithmatex">\(10^2\)</span></td>
+<td><span class="arithmatex">\(10^1\)</span></td>
+<td><span class="arithmatex">\(10^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Amount</strong></td>
+<td>1,000,000</td>
+<td>100,000</td>
+<td>10,000</td>
+<td>1,000</td>
+<td>100</td>
+<td>10</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Place Name</strong></td>
+<td>Millions</td>
+<td>Hundred-Thousands</td>
+<td>Ten-Thousands</td>
+<td>Thousands</td>
+<td>Hundreds</td>
+<td>Tens</td>
+<td>Ones</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong> The number 90,621 breaks down as:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td><span class="arithmatex">\(10^4\)</span></td>
+<td><span class="arithmatex">\(10^3\)</span></td>
+<td><span class="arithmatex">\(10^2\)</span></td>
+<td><span class="arithmatex">\(10^1\)</span></td>
+<td><span class="arithmatex">\(10^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Digit</strong></td>
+<td>9</td>
+<td>0</td>
+<td>6</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[90621 = 9 \times 10^4 + 0 \times 10^3 + 6 \times 10^2 + 2 \times 10^1 + 1 \times 10^0$$
+$$= 90000 + 0 + 600 + 20 + 1 = 90621\]</div>
+<p>Here, ten is used as the <strong>base</strong>, hence the name base-10 system.</p>
+<h3 id="why-more-than-one">Why more than one?</h3>
+<p>You may be asking yourself, "Well yeah, but isn't that the only number system? Seems like common sense.". You have a point in the day to day of normal life. Base-10 has become the single system that we use to represent numerical values for some time; however it is most definitely not universal. </p>
+<p>Historically, there have been many different kinds of number systems, sprung from different circumstances. Base-10 is a widespread system because we have an implicit knowledge of counting with 10, because of humanity's 10 fingers. However, one of the oldest formal number systems from civilization we have evidence of was a base-60 system from ancient Babylon. The Mayans created a vigesimal (base-20) system independently early in the time record, and tallying (writing numbers using a single symbol) could be thought of as the oldest number system and is technically base-1.</p>
+<p>Which number systems people use ultimately comes down to which system best fits their task and the medium in which that number system will be used. For the task of easily being able to represent numbers for a creature that's bad at math with ten fingers, base-10 becomes a good pick. However, sometimes the task or medium requires a different representation than base-10 for practicality. </p>
+<p>So there have been many other examples of different number systems using different digits and bases than what we use today. But how?</p>
+<h3 id="number-systems-generally">Number Systems Generally</h3>
+<p>All number systems can be explained generally using its base number and its digits, for example here are the number systems we will be learning about along with base-10:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Number System Name</strong></th>
+<th>Decimal</th>
+<th>Binary</th>
+<th>Hexadecimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base Number</strong></td>
+<td>10</td>
+<td>2</td>
+<td>16</td>
+</tr>
+<tr>
+<td><strong>Digits</strong></td>
+<td>0,1,2,3,4,5,6,7,8,9</td>
+<td>0,1</td>
+<td>0-9, A,B,C,D,E,F</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that there are always base number of digits available to represent the number. Ultimately, it doesn't matter what symbols we use, so long as the base defines the number of unique symbols.</p>
+<h4 id="the-mathematical-description">The Mathematical Description</h4>
+<p>For any number system with base <span class="arithmatex">\(b\)</span>, we can describe how to calculate the value of a number using the following components:</p>
+<p><strong>Components of a Number System:</strong></p>
+<ul>
+<li><strong>Base</strong> (<span class="arithmatex">\(b\)</span>): The number of unique digits in the system</li>
+<li><strong>Digits</strong>: A set of <span class="arithmatex">\(b\)</span> symbols, typically <span class="arithmatex">\(0, 1, 2, ..., (b-1)\)</span></li>
+<li><strong>Positions</strong>: Each digit occupies a position, numbered from right to left starting at 0</li>
+</ul>
+<p><strong>The General Formula:</strong></p>
+<p>For a number with digits <span class="arithmatex">\(d_n, d_{n-1}, d_{n-2}, ..., d_1, d_0\)</span> in base <span class="arithmatex">\(b\)</span>:</p>
+<div class="arithmatex">\[\text{Value} = d_n \times b^n + d_{n-1} \times b^{n-1} + d_{n-2} \times b^{n-2} + ... + d_1 \times b^1 + d_0 \times b^0\]</div>
+<p>Or more compactly using summation notation:</p>
+<div class="arithmatex">\[\text{Value} = \sum_{i=0}^{n} d_i \times b^i\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(d_i\)</span> is the digit at position <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(b\)</span> is the base of the number system</li>
+<li><span class="arithmatex">\(i\)</span> is the position index (starting from 0 on the right)</li>
+<li><span class="arithmatex">\(n\)</span> is the position of the leftmost digit</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<p>Let's see how this general formula applies to different bases:</p>
+<h5 id="base-10-decimal">Base-10 (Decimal)</h5>
+<ul>
+<li><strong>Base</strong>: <span class="arithmatex">\(b = 10\)</span></li>
+<li><strong>Digits</strong>: <span class="arithmatex">\(0, 1, 2, 3, 4, 5, 6, 7, 8, 9\)</span> (10 total)</li>
+<li><strong>Position weights</strong>: <span class="arithmatex">\(10^0, 10^1, 10^2, 10^3, ...\)</span></li>
+</ul>
+<p>For the number <span class="arithmatex">\(90621_{10}\)</span>:</p>
+<div class="arithmatex">\[90621_{10} = 9 \times 10^4 + 0 \times 10^3 + 6 \times 10^2 + 2 \times 10^1 + 1 \times 10^0\]</div>
+<div class="arithmatex">\[= 90000 + 0 + 600 + 20 + 1 = 90621\]</div>
+<h5 id="base-5-quinary-an-example">Base-5 (Quinary) - An Example</h5>
+<ul>
+<li><strong>Base</strong>: <span class="arithmatex">\(b = 5\)</span></li>
+<li><strong>Digits</strong>: <span class="arithmatex">\(0, 1, 2, 3, 4\)</span> (5 total)</li>
+<li><strong>Position weights</strong>: <span class="arithmatex">\(5^0, 5^1, 5^2, 5^3, ...\)</span></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td><span class="arithmatex">\(5^3\)</span></td>
+<td><span class="arithmatex">\(5^2\)</span></td>
+<td><span class="arithmatex">\(5^1\)</span></td>
+<td><span class="arithmatex">\(5^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Amount</strong></td>
+<td>125</td>
+<td>25</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>For the number <span class="arithmatex">\(1234_5\)</span> (read as "one-two-three-four base five"):</p>
+<div class="arithmatex">\[1234_5 = 1 \times 5^3 + 2 \times 5^2 + 3 \times 5^1 + 4 \times 5^0\]</div>
+<div class="arithmatex">\[= 1 \times 125 + 2 \times 25 + 3 \times 5 + 4 \times 1\]</div>
+<div class="arithmatex">\[= 125 + 50 + 15 + 4 = 194_{10}\]</div>
+<p>So <span class="arithmatex">\(1234_5 = 194_{10}\)</span>, the same value, just represented differently.</p>
+<p>From this general description, we can identify several important principles that hold for <strong>all</strong> number systems:</p>
+<ol>
+<li>
+<p><strong>The number of digits equals the base</strong>: A base-<span class="arithmatex">\(b\)</span> system has exactly <span class="arithmatex">\(b\)</span> unique digit symbols</p>
+</li>
+<li>
+<p><strong>Digits range from 0 to (b-1)</strong>: The largest single digit in base-<span class="arithmatex">\(b\)</span> is always one less than the base itself</p>
+<ul>
+<li>Base-10: digits are 0–9</li>
+<li>Base-5: digits are 0–4</li>
+<li>Base-2: digits are 0–1</li>
+<li><strong>Position value increases exponentially</strong>: Each position to the left is worth <span class="arithmatex">\(b\)</span> times more than the position to its right</li>
+</ul>
+</li>
+<li>
+<p><strong>The rightmost position is always <span class="arithmatex">\(b^0 = 1\)</span></strong>: No matter the base, the ones place always exists</p>
+</li>
+<li>
+<p><strong>Any value can be represented in any base</strong>: Just like how "hello" can be said in any language, any number can be written in any base</p>
+</li>
+</ol>
+<h2 id="the-binary-number-system">The Binary Number System</h2>
+<p>With a general framework for all number systems, let's shrink back down to what we actually will be doing. Recall that all information on a computer is represented as binary numbers due to being made of transistors. This means all information must be represented using only two symbols, 0 and 1, for the transistors possible off and on state, respectively. This number system is therefore <strong>base-2</strong> and is the reason it is called <strong>binary</strong> (prefix bi- meaning two). </p>
+<p>This results in the following table:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Number System Name</strong></th>
+<th>Binary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base Number</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Digits</strong></td>
+<td>0, 1</td>
+</tr>
+</tbody>
+</table>
+<p>Just like with decimal, binary uses positional notation where each position represents a power of 2:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Power of 2</strong></td>
+<td><span class="arithmatex">\(2^7\)</span></td>
+<td><span class="arithmatex">\(2^6\)</span></td>
+<td><span class="arithmatex">\(2^5\)</span></td>
+<td><span class="arithmatex">\(2^4\)</span></td>
+<td><span class="arithmatex">\(2^3\)</span></td>
+<td><span class="arithmatex">\(2^2\)</span></td>
+<td><span class="arithmatex">\(2^1\)</span></td>
+<td><span class="arithmatex">\(2^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Decimal Value</strong></td>
+<td>128</td>
+<td>64</td>
+<td>32</td>
+<td>16</td>
+<td>8</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong> The binary number <span class="arithmatex">\(1011_2\)</span> breaks down as:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td><span class="arithmatex">\(2^3\)</span></td>
+<td><span class="arithmatex">\(2^2\)</span></td>
+<td><span class="arithmatex">\(2^1\)</span></td>
+<td><span class="arithmatex">\(2^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Digit</strong></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[1011_2 = 1 \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 1 \times 2^0\]</div>
+<div class="arithmatex">\[= 8 + 0 + 2 + 1 = 11_{10}\]</div>
+<p>So the binary number <span class="arithmatex">\(1011_2\)</span> equals the decimal number <span class="arithmatex">\(11_{10}\)</span>.</p>
+<p>Notice that binary numbers get long very quickly. To represent the decimal number 255, you need eight binary digits: <span class="arithmatex">\(11111111_2\)</span>. This is one of the trade-offs of using a smaller base, you need more positions to represent the same values, but you only need to work with two symbols.</p>
+<h3 id="converting-from-decimal-to-binary">Converting from Decimal to Binary</h3>
+<p>There are multiple methods to convert from decimal to binary, but the most straightforward is the <strong>division-by-2 method</strong> (also called the repeated division method).</p>
+<p><strong>The Division-by-2 Method:</strong></p>
+<ol>
+<li>Divide the decimal number by 2</li>
+<li>Record the remainder (this will be either 0 or 1)</li>
+<li>Divide the quotient from step 1 by 2</li>
+<li>Record the remainder</li>
+<li>Repeat until the quotient is 0</li>
+<li>Read the remainders from bottom to top this is your binary number</li>
+</ol>
+<p><strong>Example:</strong> Convert <span class="arithmatex">\(45_{10}\)</span> to binary</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Division</th>
+<th>Quotient</th>
+<th>Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>45 ÷ 2</td>
+<td>22</td>
+<td><strong>1</strong> ←</td>
+</tr>
+<tr>
+<td>2</td>
+<td>22 ÷ 2</td>
+<td>11</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>11 ÷ 2</td>
+<td>5</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>5 ÷ 2</td>
+<td>2</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2 ÷ 2</td>
+<td>1</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>1 ÷ 2</td>
+<td>0</td>
+<td><strong>1</strong> ↑</td>
+</tr>
+</tbody>
+</table>
+<p>Reading the remainders from bottom to top: <span class="arithmatex">\(101101_2\)</span></p>
+<p>We can verify: <span class="arithmatex">\(1 \times 2^5 + 0 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0 = 32 + 8 + 4 + 1 = 45_{10}\)</span> ✓</p>
+<p><strong>Alternative Method: Subtraction Method</strong></p>
+<p>Another approach is to subtract the largest power of 2 that fits into your number, working from left to right:</p>
+<p><strong>Example:</strong> Convert <span class="arithmatex">\(45_{10}\)</span> to binary</p>
+<ol>
+<li>Largest power of 2 ≤ 45 is <span class="arithmatex">\(2^5 = 32\)</span>. Place a 1 in position 5. Remainder: <span class="arithmatex">\(45 - 32 = 13\)</span></li>
+<li>Largest power of 2 ≤ 13 is <span class="arithmatex">\(2^3 = 8\)</span>. Place a 1 in position 3. Remainder: <span class="arithmatex">\(13 - 8 = 5\)</span></li>
+<li>Largest power of 2 ≤ 5 is <span class="arithmatex">\(2^2 = 4\)</span>. Place a 1 in position 2. Remainder: <span class="arithmatex">\(5 - 4 = 1\)</span></li>
+<li>Largest power of 2 ≤ 1 is <span class="arithmatex">\(2^0 = 1\)</span>. Place a 1 in position 0. Remainder: <span class="arithmatex">\(1 - 1 = 0\)</span></li>
+<li>Positions 4 and 1 were skipped, so they get 0s</li>
+</ol>
+<p>Result: <span class="arithmatex">\(101101_2\)</span></p>
+<p>Both methods give the same answer; use whichever makes more sense to you.</p>
+<h3 id="converting-from-binary-to-decimal">Converting from Binary to Decimal</h3>
+<p>Converting from binary to decimal is more straightforward, we simply apply the general formula for number systems that we learned earlier.</p>
+<p><strong>Method:</strong> Multiply each digit by its position weight (power of 2) and sum the results.</p>
+<p><strong>Example 1:</strong> Convert <span class="arithmatex">\(11010_2\)</span> to decimal</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td><span class="arithmatex">\(2^4\)</span></td>
+<td><span class="arithmatex">\(2^3\)</span></td>
+<td><span class="arithmatex">\(2^2\)</span></td>
+<td><span class="arithmatex">\(2^1\)</span></td>
+<td><span class="arithmatex">\(2^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Digit</strong></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>16</td>
+<td>8</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[11010_2 = 1 \times 16 + 1 \times 8 + 0 \times 4 + 1 \times 2 + 0 \times 1 = 16 + 8 + 2 = 26_{10}\]</div>
+<p><strong>Example 2:</strong> Convert <span class="arithmatex">\(10000001_2\)</span> to decimal</p>
+<div class="arithmatex">\[10000001_2 = 1 \times 2^7 + 0 \times 2^6 + 0 \times 2^5 + 0 \times 2^4 + 0 \times 2^3 + 0 \times 2^2 + 0 \times 2^1 + 1 \times 2^0\]</div>
+<div class="arithmatex">\[= 128 + 1 = 129_{10}\]</div>
+<p><strong>Quick Tip:</strong> You only need to add the positions where the digit is 1. All the 0s contribute nothing to the sum, so you can skip them entirely.</p>
+<h2 id="the-hexadecimal-number-system">The Hexadecimal Number System</h2>
+<p>While binary is the language computers speak natively, it has a significant drawback for human use: binary numbers get extremely long very quickly. The number <span class="arithmatex">\(11111111111111111111111111111111_2\)</span> is hard to read, hard to remember, and easy to make mistakes with. This is where <strong>hexadecimal</strong> comes in.</p>
+<p><strong>Hexadecimal</strong> (often shortened to <strong>hex</strong>) is a <strong>base-16</strong> number system. The prefix "hexa-" means six and "decimal" means ten, so hexadecimal literally means "six and ten" or sixteen. Hexadecimal provides a much more compact way to represent binary data while still being easy to convert back and forth.</p>
+<p>The challenge with base-16 is that we need 16 unique digits, but we only have 10 numerical symbols (0-9). The solution? We borrow from the alphabet. The digits A through F represent the values 10 through 15:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Number System Name</strong></th>
+<th>Hexadecimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base Number</strong></td>
+<td>16</td>
+</tr>
+<tr>
+<td><strong>Digits</strong></td>
+<td>0-9, A,B,C,D,E,F</td>
+</tr>
+</tbody>
+</table>
+<p>Here's how the hexadecimal digits map to decimal values:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Hex Digit</strong></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Decimal</strong></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>Just like decimal and binary, hexadecimal uses positional notation with powers of 16:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Power of 16</strong></td>
+<td><span class="arithmatex">\(16^4\)</span></td>
+<td><span class="arithmatex">\(16^3\)</span></td>
+<td><span class="arithmatex">\(16^2\)</span></td>
+<td><span class="arithmatex">\(16^1\)</span></td>
+<td><span class="arithmatex">\(16^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Decimal Value</strong></td>
+<td>65,536</td>
+<td>4,096</td>
+<td>256</td>
+<td>16</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong> The hexadecimal number <span class="arithmatex">\(2A3F_{16}\)</span> breaks down as:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td><span class="arithmatex">\(16^3\)</span></td>
+<td><span class="arithmatex">\(16^2\)</span></td>
+<td><span class="arithmatex">\(16^1\)</span></td>
+<td><span class="arithmatex">\(16^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Digit</strong></td>
+<td>2</td>
+<td>A</td>
+<td>3</td>
+<td>F</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>2</td>
+<td>10</td>
+<td>3</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[2A3F_{16} = 2 \times 16^3 + 10 \times 16^2 + 3 \times 16^1 + 15 \times 16^0\]</div>
+<div class="arithmatex">\[= 2 \times 4096 + 10 \times 256 + 3 \times 16 + 15 \times 1\]</div>
+<div class="arithmatex">\[= 8192 + 2560 + 48 + 15 = 10815_{10}\]</div>
+<p>Notice how much more compact hexadecimal is compared to binary. The decimal number 10,815 would be <span class="arithmatex">\(10101000111111_2\)</span> in binary (14 digits), but only <span class="arithmatex">\(2A3F_{16}\)</span> in hexadecimal (4 digits).</p>
+<h3 id="converting-from-decimal-to-hexadecimal">Converting from Decimal to Hexadecimal</h3>
+<p>Just like with binary, we use the <strong>division method</strong>, but this time we divide by 16.</p>
+<p><strong>The Division-by-16 Method:</strong></p>
+<ol>
+<li>Divide the decimal number by 16</li>
+<li>Record the remainder (this will be 0-15; use A-F for 10-15)</li>
+<li>Divide the quotient from step 1 by 16</li>
+<li>Record the remainder</li>
+<li>Repeat until the quotient is 0</li>
+<li>Read the remainders from bottom to top, this is your hexadecimal number</li>
+</ol>
+<p><strong>Example:</strong> Convert <span class="arithmatex">\(2748_{10}\)</span> to hexadecimal</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Division</th>
+<th>Quotient</th>
+<th>Remainder (Decimal)</th>
+<th>Remainder (Hex)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2748 ÷ 16</td>
+<td>171</td>
+<td>12</td>
+<td><strong>C</strong> ←</td>
+</tr>
+<tr>
+<td>2</td>
+<td>171 ÷ 16</td>
+<td>10</td>
+<td>11</td>
+<td><strong>B</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>10 ÷ 16</td>
+<td>0</td>
+<td>10</td>
+<td><strong>A</strong> ↑</td>
+</tr>
+</tbody>
+</table>
+<p>Reading the remainders from bottom to top: <span class="arithmatex">\(ABC_{16}\)</span></p>
+<p>We can verify: <span class="arithmatex">\(10 \times 16^2 + 11 \times 16^1 + 12 \times 16^0 = 2560 + 176 + 12 = 2748_{10}\)</span> ✓</p>
+<p><strong>Example 2:</strong> Convert <span class="arithmatex">\(255_{10}\)</span> to hexadecimal</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Division</th>
+<th>Quotient</th>
+<th>Remainder (Decimal)</th>
+<th>Remainder (Hex)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>255 ÷ 16</td>
+<td>15</td>
+<td>15</td>
+<td><strong>F</strong> ←</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15 ÷ 16</td>
+<td>0</td>
+<td>15</td>
+<td><strong>F</strong> ↑</td>
+</tr>
+</tbody>
+</table>
+<p>Result: <span class="arithmatex">\(FF_{16}\)</span></p>
+<p>This is a number you'll see frequently in computer science. <span class="arithmatex">\(FF_{16}\)</span> represents the maximum value that can be stored in 8 bits.</p>
+<h3 id="converting-from-hexadecimal-to-decimal">Converting from Hexadecimal to Decimal</h3>
+<p>Converting from hexadecimal to decimal follows the same pattern as binary to decimal.</p>
+<p><strong>Method:</strong> Multiply each digit by its position weight (power of 16) and sum the results. Remember to convert A-F to their decimal equivalents (10-15) before multiplying.</p>
+<p><strong>Example 1:</strong> Convert <span class="arithmatex">\(1F4_{16}\)</span> to decimal</p>
+<table>
+<thead>
+<tr>
+<th><strong>Position</strong></th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td><span class="arithmatex">\(16^2\)</span></td>
+<td><span class="arithmatex">\(16^1\)</span></td>
+<td><span class="arithmatex">\(16^0\)</span></td>
+</tr>
+<tr>
+<td><strong>Digit</strong></td>
+<td>1</td>
+<td>F</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>1</td>
+<td>15</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[1F4_{16} = 1 \times 256 + 15 \times 16 + 4 \times 1 = 256 + 240 + 4 = 500_{10}\]</div>
+<p><strong>Example 2:</strong> Convert <span class="arithmatex">\(DEAD_{16}\)</span> to decimal</p>
+<div class="arithmatex">\[DEAD_{16} = 13 \times 16^3 + 10 \times 16^2 + 10 \times 16^1 + 13 \times 16^0\]</div>
+<div class="arithmatex">\[= 13 \times 4096 + 10 \times 256 + 10 \times 16 + 13 \times 1\]</div>
+<div class="arithmatex">\[= 53248 + 2560 + 160 + 13 = 57005_{10}\]</div>
+<h3 id="the-connection-between-binary-and-hexadecimal">The Connection Between Binary and Hexadecimal</h3>
+<p>Here's where hexadecimal becomes truly useful: there's a remarkably simple relationship between binary and hexadecimal that makes conversion between them trivial. This is because 16 is a power of 2: <span class="arithmatex">\(16 = 2^4\)</span>.</p>
+<p>This means that <strong>one hexadecimal digit perfectly represents exactly four binary digits</strong>. This 4-to-1 mapping is what makes hexadecimal so practical for representing binary data.</p>
+<p>Here's the complete mapping:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Hex</strong></th>
+<th><strong>Binary</strong></th>
+<th><strong>Decimal</strong></th>
+<th><strong>Hex</strong></th>
+<th><strong>Binary</strong></th>
+<th><strong>Decimal</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0000</td>
+<td>0</td>
+<td>8</td>
+<td>1000</td>
+<td>8</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0001</td>
+<td>1</td>
+<td>9</td>
+<td>1001</td>
+<td>9</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0010</td>
+<td>2</td>
+<td>A</td>
+<td>1010</td>
+<td>10</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0011</td>
+<td>3</td>
+<td>B</td>
+<td>1011</td>
+<td>11</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0100</td>
+<td>4</td>
+<td>C</td>
+<td>1100</td>
+<td>12</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0101</td>
+<td>5</td>
+<td>D</td>
+<td>1101</td>
+<td>13</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0110</td>
+<td>6</td>
+<td>E</td>
+<td>1110</td>
+<td>14</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0111</td>
+<td>7</td>
+<td>F</td>
+<td>1111</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Converting Binary to Hexadecimal:</strong></p>
+<ol>
+<li>Group the binary digits into sets of 4, starting from the right</li>
+<li>If the leftmost group has fewer than 4 digits, pad with zeros on the left</li>
+<li>Convert each group of 4 binary digits to its hexadecimal equivalent</li>
+<li>Concatenate the hex digits</li>
+</ol>
+<p><strong>Example 1:</strong> Convert <span class="arithmatex">\(11010111_2\)</span> to hexadecimal</p>
+<ol>
+<li>Group into fours: <span class="arithmatex">\(1101\)</span> <span class="arithmatex">\(0111\)</span></li>
+<li>Convert each group:<ul>
+<li><span class="arithmatex">\(1101_2 = D_{16}\)</span></li>
+<li><span class="arithmatex">\(0111_2 = 7_{16}\)</span></li>
+</ul>
+</li>
+<li>Result: <span class="arithmatex">\(D7_{16}\)</span></li>
+</ol>
+<p><strong>Example 2:</strong> Convert <span class="arithmatex">\(1011111010_2\)</span> to hexadecimal</p>
+<ol>
+<li>Group into fours from right: <span class="arithmatex">\(10\)</span> <span class="arithmatex">\(1111\)</span> <span class="arithmatex">\(1010\)</span></li>
+<li>Pad the leftmost group: <span class="arithmatex">\(0010\)</span> <span class="arithmatex">\(1111\)</span> <span class="arithmatex">\(1010\)</span></li>
+<li>Convert each group:<ul>
+<li><span class="arithmatex">\(0010_2 = 2_{16}\)</span></li>
+<li><span class="arithmatex">\(1111_2 = F_{16}\)</span></li>
+<li><span class="arithmatex">\(1010_2 = A_{16}\)</span></li>
+</ul>
+</li>
+<li>Result: <span class="arithmatex">\(2FA_{16}\)</span></li>
+</ol>
+<p><strong>Converting Hexadecimal to Binary:</strong></p>
+<p>This is even easier, just replace each hex digit with its 4-bit binary equivalent.</p>
+<p><strong>Example 1:</strong> Convert <span class="arithmatex">\(3C_{16}\)</span> to binary</p>
+<ul>
+<li><span class="arithmatex">\(3_{16} = 0011_2\)</span></li>
+<li><span class="arithmatex">\(C_{16} = 1100_2\)</span></li>
+<li>Result: <span class="arithmatex">\(00111100_2\)</span> (or <span class="arithmatex">\(111100_2\)</span> without leading zeros)</li>
+</ul>
+<p><strong>Example 2:</strong> Convert <span class="arithmatex">\(BEEF_{16}\)</span> to binary</p>
+<ul>
+<li><span class="arithmatex">\(B_{16} = 1011_2\)</span></li>
+<li><span class="arithmatex">\(E_{16} = 1110_2\)</span></li>
+<li><span class="arithmatex">\(E_{16} = 1110_2\)</span></li>
+<li><span class="arithmatex">\(F_{16} = 1111_2\)</span></li>
+<li>Result: <span class="arithmatex">\(1011111011101111_2\)</span></li>
+</ul>
+<p>This direct conversion is why hexadecimal is so popular in computer science. Instead of writing out 32 or 64 binary digits, programmers can write 8 or 16 hex digits and convert trivially when needed. It's a human-friendly notation for machine-friendly data.</p>
+<h2 id="important-terms">Important Terms</h2>
+<p>Now that we understand binary and hexadecimal number systems, there are several important terms used in computer science when working with these representations. These terms describe specific quantities and groupings of binary digits that are fundamental to how computers organize and process data.</p>
+<h3 id="bit">Bit</h3>
+<p>A <strong>bit</strong> (short for <strong>binary digit</strong>) is the smallest unit of data in a computer. It can have only two possible values: 0 or 1. This directly corresponds to the two states of a transistor: off or on, no voltage or voltage, false or true.</p>
+<p>Everything in a computer, everything from numbers, letters, images, videos, or even programs, are all ultimately represented as a collection of bits. When we say a computer is "digital," we mean it works exclusively with these discrete binary values.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>The binary number <span class="arithmatex">\(1011_2\)</span> consists of 4 bits</li>
+<li>A single bit can represent: on/off, true/false, yes/no</li>
+<li>The letter 'A' in ASCII is represented as <span class="arithmatex">\(01000001_2\)</span>, which is 8 bits</li>
+</ul>
+<h3 id="nibble">Nibble</h3>
+<p>A <strong>nibble</strong> (sometimes spelled <strong>nybble</strong>) is a group of exactly <strong>4 bits</strong>. The term is a playful reference to a nibble being half of a byte (which we'll discuss next).</p>
+<p>Nibbles are particularly important because of their relationship to hexadecimal: one nibble corresponds exactly to one hexadecimal digit, as we saw in the previous section.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>The binary number <span class="arithmatex">\(1011_2\)</span> is one nibble</li>
+<li>The binary number <span class="arithmatex">\(11010111_2\)</span> consists of two nibbles: <span class="arithmatex">\(1101\)</span> and <span class="arithmatex">\(0111\)</span></li>
+<li>The hexadecimal digit <span class="arithmatex">\(F_{16}\)</span> represents the nibble <span class="arithmatex">\(1111_2\)</span></li>
+</ul>
+<p><strong>Why Nibbles Matter:</strong></p>
+<ul>
+<li>Each hexadecimal digit represents exactly one nibble</li>
+<li>This makes it easy to visually convert between binary and hex</li>
+<li>Nibbles are often used when working with binary-coded decimal (BCD) systems</li>
+<li>They're useful for representing single hexadecimal digits in hardware</li>
+</ul>
+<h3 id="byte">Byte</h3>
+<p>A <strong>byte</strong> is a group of <strong>8 bits</strong> and is the fundamental unit of memory in most modern computers. Almost all computer operations, memory addressing, and data storage are organized around bytes.</p>
+<p>The byte is important enough that it's the standard unit used to measure computer memory and storage capacity. When you see kilobytes (KB), megabytes (MB), or gigabytes (GB), these are all based on bytes.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>The binary number <span class="arithmatex">\(11010111_2\)</span> is one byte</li>
+<li>One byte can represent decimal values from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(255\)</span> (or <span class="arithmatex">\(00000000_2\)</span> to <span class="arithmatex">\(11111111_2\)</span>)</li>
+<li>The hexadecimal number <span class="arithmatex">\(FF_{16}\)</span> represents one byte with all bits set to 1</li>
+<li>One ASCII character is stored in exactly one byte</li>
+</ul>
+<p><strong>Why Bytes Matter:</strong></p>
+<ul>
+<li>Memory addresses typically point to byte locations</li>
+<li>Most data types are measured in bytes (e.g., a 32-bit integer is 4 bytes)</li>
+<li>File sizes are measured in bytes and their multiples</li>
+<li>One byte can represent 256 different values (<span class="arithmatex">\(2^8 = 256\)</span>)</li>
+</ul>
+<p><strong>Important Note:</strong> A byte always has exactly 8 bits. This wasn't always universal historically (some early computers used different byte sizes), but 8 bits per byte has been the standard since the 1960s and is essentially universal today.</p>
+<h3 id="word">Word</h3>
+<p>A <strong>word</strong> is the natural unit of data used by a particular computer architecture. Unlike bit, nibble, and byte, which have fixed sizes, a word's size varies depending on the processor design.</p>
+<p>The word size determines several important characteristics of a computer:</p>
+<ul>
+<li>How much data the processor can handle in a single operation</li>
+<li>The maximum memory address the processor can directly access</li>
+<li>The size of the processor's registers</li>
+</ul>
+<p><strong>Common Word Sizes:</strong></p>
+<ul>
+<li><strong>8-bit processors:</strong> 1 byte (8 bits) <ul>
+<li>early microprocessors like the Intel 8080</li>
+</ul>
+</li>
+<li><strong>16-bit processors:</strong> 2 bytes (16 bits)  <ul>
+<li>processors like the Intel 8086</li>
+</ul>
+</li>
+<li><strong>32-bit processors:</strong> 4 bytes (32 bits) <ul>
+<li>common in desktops from the 1990s-2000s</li>
+</ul>
+</li>
+<li><strong>64-bit processors:</strong> 8 bytes (64 bits) <ul>
+<li>standard in modern computers today</li>
+</ul>
+</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>On a 32-bit system, a word is <span class="arithmatex">\(32\)</span> bits or <span class="arithmatex">\(4\)</span> bytes</li>
+<li>On a 64-bit system, a word is <span class="arithmatex">\(64\)</span> bits or <span class="arithmatex">\(8\)</span> bytes</li>
+<li>A 64-bit processor can process a word like <span class="arithmatex">\(0xFFFFFFFFFFFFFFFF_{16}\)</span> in a single operation</li>
+</ul>
+<p><strong>Why Word Size Matters:</strong></p>
+<ul>
+<li>Determines the maximum amount of RAM that can be directly addressed<ul>
+<li>32-bit: Can address up to <span class="arithmatex">\(2^{32}\)</span> bytes = 4 GB of RAM</li>
+<li>64-bit: Can address up to <span class="arithmatex">\(2^{64}\)</span> bytes = 16 exabytes of RAM (theoretically)</li>
+</ul>
+</li>
+<li>Affects the precision of integer arithmetic operations</li>
+<li>Influences overall system performance and architecture design</li>
+</ul>
+<h3 id="most-significant-bit-msb-and-least-significant-bit-lsb">Most Significant Bit (MSB) and Least Significant Bit (LSB)</h3>
+<p>In any binary number, the bits have different levels of importance based on their position. The <strong>most significant bit (MSB)</strong> is the bit in the highest-value position (leftmost), while the <strong>least significant bit (LSB)</strong> is the bit in the lowest-value position (rightmost).</p>
+<p><strong>Example:</strong> In the byte <span class="arithmatex">\(10110011_2\)</span></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>  MSB                    LSB
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   ↓                      ↓
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   1  0  1  1  0  0  1  1
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  128 64 32 16  8  4  2  1  ← position values
+</span></code></pre></div>
+<ul>
+<li>The MSB is <span class="arithmatex">\(1\)</span> (leftmost), representing <span class="arithmatex">\(128_{10}\)</span></li>
+<li>The LSB is <span class="arithmatex">\(1\)</span> (rightmost), representing <span class="arithmatex">\(1_{10}\)</span></li>
+<li>Changing the MSB changes the value by 128</li>
+<li>Changing the LSB changes the value by only 1</li>
+</ul>
+<p><strong>Why MSB and LSB Matter:</strong></p>
+<ul>
+<li>The MSB in signed integers often represents the sign (positive/negative)</li>
+<li>The LSB is important for parity checks and determining even/odd</li>
+<li>Bit ordering (endianness) refers to whether MSB or LSB is stored first in memory</li>
+<li>When doing bit shifts, knowing which end is which is crucial</li>
+</ul>
+<h3 id="number-notation-conventions">Number Notation Conventions</h3>
+<p>When writing numbers in different bases, it's essential to indicate which base you're using to avoid confusion. There are several common conventions:</p>
+<p><strong>Subscript Notation:</strong></p>
+<ul>
+<li><span class="arithmatex">\(10111_2\)</span> means the number 10111 in binary (base-2)</li>
+<li><span class="arithmatex">\(2F_{16}\)</span> means the number 2F in hexadecimal (base-16)</li>
+<li><span class="arithmatex">\(156_{10}\)</span> means the number 156 in decimal (base-10)</li>
+</ul>
+<p>This is the notation used in mathematical contexts and in this document.</p>
+<p><strong>Prefix Notation (Programming):</strong></p>
+<ul>
+<li><code>0b10111</code> or <code>0B10111</code> -  binary (used in Python, C++14 and later, and others)</li>
+<li><code>0x2F</code> or <code>0X2F</code> - hexadecimal (used in C, C++, Java, Python, and many others)</li>
+<li><code>0o177</code> or <code>0O177</code> - octal, base-8 (used in Python and some others)</li>
+<li>No prefix typically means decimal</li>
+</ul>
+<p><strong>Examples in Code:</strong></p>
+<div class="language-C highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">binary_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b10111</span><span class="p">;</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">Binary</span><span class="o">:</span><span class="w"> </span><span class="mi">23</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">decimal</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">hex_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2F</span><span class="p">;</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Hexadecimal</span><span class="o">:</span><span class="w"> </span><span class="mi">47</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">decimal</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">decimal_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">156</span><span class="p">;</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Decimal</span><span class="o">:</span><span class="w"> </span><span class="mi">156</span>
+</span></code></pre></div>
+<p><strong>Suffix Notation:</strong></p>
+<ul>
+<li>Sometimes you'll see <code>10111b</code> or <code>2Fh</code> to indicate binary and hexadecimal</li>
+<li>This is less common but appears in some assembly languages and documentation</li>
+</ul>
+<p><strong>Context Matters:</strong> When working with computer systems, pay attention to the notation being used. A number like <span class="arithmatex">\(10110\)</span> could mean:</p>
+<ul>
+<li>Ten thousand, one hundred ten in decimal</li>
+<li>Twenty-two in binary (<span class="arithmatex">\(10110_2 = 22_{10}\)</span>)</li>
+<li>Sixty-six thousand, five hundred seventy-six in hexadecimal (<span class="arithmatex">\(10110_{16} = 66576_{10}\)</span>)</li>
+</ul>
+<p>Always check for subscripts, prefixes, or context clues to determine the intended base.</p>
+<h3 id="summary-table">Summary Table</h3>
+<p>Here's a quick reference for these important terms:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Size</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bit</strong></td>
+<td>1 bit</td>
+<td>Smallest unit; single binary digit (0 or 1)</td>
+<td><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td><strong>Nibble</strong></td>
+<td>4 bits</td>
+<td>Half a byte; one hex digit</td>
+<td><span class="arithmatex">\(1011_2 = B_{16}\)</span></td>
+</tr>
+<tr>
+<td><strong>Byte</strong></td>
+<td>8 bits</td>
+<td>Standard unit of memory; two hex digits</td>
+<td><span class="arithmatex">\(11010111_2 = D7_{16}\)</span></td>
+</tr>
+<tr>
+<td><strong>Word</strong></td>
+<td>Varies by architecture</td>
+<td>Natural processing unit (32 or 64 bits typically)</td>
+<td>4 or 8 bytes</td>
+</tr>
+<tr>
+<td><strong>MSB</strong></td>
+<td>Single bit</td>
+<td>Leftmost bit; highest value position</td>
+<td>The <span class="arithmatex">\(1\)</span> in <span class="arithmatex">\(1011\)</span></td>
+</tr>
+<tr>
+<td><strong>LSB</strong></td>
+<td>Single bit</td>
+<td>Rightmost bit; lowest value position</td>
+<td>The <span class="arithmatex">\(1\)</span> in <span class="arithmatex">\(1010\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Understanding these terms is essential for working with computer hardware, low-level programming, network protocols, and data structures. They form the vocabulary that computer scientists and engineers use to discuss how computers represent and manipulate data at the most fundamental level.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascript/wcag_fixes.js"></script>
+      
+        <script src="../../javascript/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

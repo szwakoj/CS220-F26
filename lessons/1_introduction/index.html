@@ -1,0 +1,1561 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../glossary/">
+      
+      
+        <link rel="next" href="../2_reviewing_c/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/cs220.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Introduction - CS 220 - Computer Organization</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-header__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 220 - Computer Organization
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Lessons
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/c_compilation/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../homework/how_to_hand_in/" class="md-tabs__link">
+          
+  
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-nav__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    CS 220 - Computer Organization
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lessons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#computers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analog-and-digital-computers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analog and Digital Computers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turing-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turing Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transistors-to-desktops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transistors to Desktops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transistors to Desktops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#von-neumann-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Von Neumann Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-language-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programming Language Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_reviewing_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reviewing C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_binary_hex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_bool_logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean/Bitwise Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_signed_unsigned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_transistors_2_pc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abstraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_gates_circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gates and Circuits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/c_compilation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C Compilation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/how_to_hand_in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How To Hand In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/gcc_install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/1_c_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 (Due 2/27/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/2_test_1_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 2 (Due 3/13/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/3_alu_and_gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 3 (Due 4/12/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/4_test_2_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 4 (Due 4/19/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/5_tiny_cpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 5 (Due 4/26/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#computers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analog-and-digital-computers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analog and Digital Computers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turing-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turing Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transistors-to-desktops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transistors to Desktops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transistors to Desktops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#von-neumann-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Von Neumann Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-language-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programming Language Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="introduction">Introduction</h1>
+<p>Welcome to CS 220 - Computer Organization! This lesson's purpose is to set the stage and better understand what information will be covered in the course. Computer Organization is a broad topic with many possible deep wells to fall into. In this course, we will attempt to cover a big picture view into how computers work at multiple levels of abstraction, exploring the many facets that each has. Here we introduce:</p>
+<ul>
+<li>Computers</li>
+<li>Turing Machines</li>
+<li>The Abstraction Hierarchy</li>
+<li>Von Neumann Model</li>
+<li>Programming Language Abstraction</li>
+</ul>
+<h2 id="computers">Computers</h2>
+<p>Computers have infiltrated every part of our lives either indirectly or directly for some time now. They sit at the core of every financial transaction, recreational activity, and many social relationships that most human beings experience for the last 20 years. Because of this and the choices that led you to CS, it is highly important to understand computers on a deep level for both career success and for designing a better future.</p>
+<p>The word computer has historically taken on different meanings, however at its most basic is "a thing that computes". The first named computers were human, people who would sit at desks and do repeated numerical calculations for businesses and institutions. The first object to fit the definition "a thing that computes" goes very far back, as far back as the first recorded civilizations. </p>
+<p>Evidence of Sumerian abacuses has been dated between 2700 and 2300 BC, with other examples of clay tablets used to aid in mathematical calculations. </p>
+<p><img alt="A Babylonian mathematical tablet preserved at Yale, circa 1800-1600 B.C.E, from https://en.wikipedia.org/wiki/Babylonian_mathematics" src="../../img/sumerian_tablet_yale.jpg" /></p>
+<p>However, in the modern day, when one says "computer" we do not think about times tables and abacuses, we are talking about <strong>digital computers</strong> (as opposed to the previous <strong>analog computers</strong>). </p>
+<h3 id="analog-and-digital-computers">Analog and Digital Computers</h3>
+<p>Analog computers are devices that model predetermined calculations through the use of voltage, gears, pulleys, or other phenomenon that is related to the calculation in question. Examples include:</p>
+<ul>
+<li>Sphere-based tidal predictions (<a href="https://www.youtube.com/watch?v=IgF3OX8nT0w">Link</a>)</li>
+<li>The Antikythera Mechanism (<a href="https://www.youtube.com/watch?v=k396J-slHaU">Link</a>)</li>
+<li>Slide Rulers (<a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmJVHQyhvAjQ1aeNKmvc1XeyKx51Orhek8XA&amp;s">Link</a>)</li>
+<li>Mechanical Calculators (<a href="https://www.youtube.com/watch?v=s_hbvRTGcUI">Link</a>) </li>
+</ul>
+<p>These computers are:</p>
+<ul>
+<li><strong>Purpose built</strong> - they cannot be reprogrammed and must have their purpose defined beforehand</li>
+<li><strong>No memory</strong> - they do not store memory or act on some bank of stored information that is able to be rewritten</li>
+<li><strong>Difficult to use</strong> - since their design and purpose are so tied, often they were unintuitive to use to the uninitiated, also there were no commonalities between two different analog computers  </li>
+</ul>
+<p><strong>Digital computers</strong> are the modern devices that use discrete numbers to symbolically represent information and does operations on that data using a finite set of general operations. Today, they are made of transistors, small electrical components that can either block or allow pass a electrical signal depending on whether itself is being fed an electrical signal. These transistors are used to make <strong>logic gates</strong> that are copied and repeated billions of times to form the modern idea of a computer. These computers are:</p>
+<ul>
+<li><strong>General Purpose</strong> - they can be made general and can complete any computation task</li>
+<li><strong>Possess Writable Memory</strong> - by having a store of memory it can store programs that change its behavior and store intermediate information</li>
+<li><strong>Expandable</strong> - Interfaces can be developed over time to make working with the computer easier, programs can be rewritten to fix mistakes. Overall, it is easy to use.</li>
+</ul>
+<h3 id="turing-machines">Turing Machines</h3>
+<p>The modern idea of a general-purpose computer or "Universal Computing Machine" was developed by Alan Turing in 1936 with his paper <em>On Computable Numbers</em>. There he proposed such a machine, referred today as a "<strong>universal Turing Machine</strong>", and proved that it was capable of computing anything that is computable by executing instructions stored in memory. Although theoretical in nature, we use the idea of a Turing machine to see if a device meets the criteria of being able to compute anything that is computable; if it is <strong>Turing-complete</strong>.  </p>
+<p><img alt="A computational model of a Universal Turing Machine. It features a read/write head that is informed by a finite state machine. The head is pointing to an infinite tape of cells that can take on the value from a finite alphabet. The head is able to be moved left/right." src="../../img/Turing-machine.png" /></p>
+<p>Any machine can be called Turing-complete so long as it is able to:</p>
+<ul>
+<li>Read and write data to memory</li>
+<li>Perform conditional branching</li>
+<li>Loop or repeat operations</li>
+<li>The possibility of having infinite memory<ul>
+<li>This means that the fundamental mechanism is not limited in its access in memory. Even though infinite memory is physically impossible, we can expand to allow for it to be approached</li>
+</ul>
+</li>
+</ul>
+<p>So long as a device can do the above and simulate a Turing machine, it is Turing-complete, regardless of what it is made out of, or how it accomplishes the above. Modern digital computers use transistors and boolean logic to build up to a general computing system. </p>
+<h2 id="transistors-to-desktops">Transistors to Desktops</h2>
+<p>The conceptual journey of understanding how we are able to do anything with enough transistors will be a central theme to the course.  To demonstrate the overall, big-picture view of a computer and working at these different conceptual layers, computer scientists often use layered abstraction diagrams to organize the many logical structures that build on top of one another.</p>
+<p><img alt="Layers of abstraction diagram. From top to bottom, &quot;Application&quot;, &quot;Algorithm&quot;, &quot;Programming Language&quot;, &quot;Assembly Language&quot;, &quot;Machine Code&quot;, &quot;Instruction Set Architecture&quot;, &quot;Micro Architecture&quot;, &quot;Logic Gates, Registers&quot;, &quot;IC's and Transistors&quot;, and, &quot;Electronics and Physics&quot;. On the left are two scales of magnitude. The first is Complexity, indicating that the &quot;Application&quot; layer is the least complex and the &quot;Electronics and Physics&quot; layer as most complex, with everything in between rated by their organization. The second scale is &quot;Abstraction&quot;, indicating that the &quot;Application&quot; layer is the most abstract and the &quot;Electronics and Physics&quot; layer as least abstract, with everything in between rated by their organization. There is a division on the right separating Software and Hardware, centered at &quot;Instruction Set Architecture&quot;, signifying that everything above is &quot;Software&quot; and everything below as &quot;Hardware&quot;." src="../../img/Layers-Of-Abstraction.jpg" /></p>
+<p>In this <strong>Abstraction Hierarchy</strong>, we can see that working at the application layer is most abstract from what is actually happening at the physical level. Rarely do we ever need to worry about overflowing a memory register when playing Minecraft or Word. Most of the time, as programmers, we work within the "Programming Language" and "Algorithm" layers, since this is where software development takes place. However, in order to interact with the computer in such a way there are a lot of steps that need to happen before we get to use <code>printf()</code>. </p>
+<p>At the bottom of the hierarchy is "Electronics and Physics", these are the natural laws that we harness to represent information. If it was not for the way that electricity flows through wires and our intelligent manipulation of it, the modern computer would not exist. Electricity is not the only method of representing computation, in fact we are trying to find new ways of accomplishing computation:</p>
+<ul>
+<li><strong>Quantum Computers</strong> - Using quantum particles to represent computation</li>
+<li><strong>Optical Computing</strong> - A growing research field in unconventional computation methods is using light to store and operate on data</li>
+<li><strong>DNA Computing</strong> - The very programming language our body runs on can be harnessed to run many repeated operations in a fraction of the time it takes for electronic based computers, although very specialized and very difficult to read the results at the end</li>
+</ul>
+<p>The main way we channel electricity to compute is by use of transistors and other electronics components. Transistors are essentially electrical switches that are themselves controlled by an electric signal. They function like this:</p>
+<p><img alt="An animated gif of a transistor showing its function. It is a three-pronged transistor connected to a light and two batteries. The top prong and bottom prong connect to the light and larger battery to form a circuit. The center prong is attached to a smaller battery and a break in the wire. The animation repeatedly shows the break in the wire being mended to complete the circuit and it breaking to stop the flow of current. This demonstrates the functionality of a transistor as an electronic that is used to switch currents on or off." src="../../img/transistor.gif" /></p>
+<p>Transistors have two states, on and off, giving the smallest unit of information, a <strong>bit</strong>. On and off map directly to True and False, allowing a critical connection to <strong>boolean algebra</strong> and enabling the construction of <strong>logic gates</strong>. These logic gates are a bridge that facilitate building more complex systems from the natural phenomenon of electricity. These logic gates are used to build systems that allow for arithmetic to be done using <strong>binary numbers</strong>, store memory, and control other parts of the computers architecture. Each one of these components are organized according to a computer architecture to form the <strong>central processing unit (CPU)</strong>. The main architecture used for modern computers is the <strong>Von Neumann Architecture or Model</strong>.</p>
+<h3 id="von-neumann-architecture">Von Neumann Architecture</h3>
+<p><img alt="The Von Neumann Model of Computers. It shows the flow of information and organization of a computer. An input device feeds information in from the left. It enters into a larger system  comprised of a Central Processing Unit, itself being made of a Control Unit and Arithmetic/Logic Unit. The Central Processing Unit interacts with the Memory Unit below it. From the Central Processing Unit flows out information to the right, where it is received by an Output Device." src="../../img/Von_Neumann_Architecture.png" /></p>
+<p>The Von Neumann architecture falls at the "Micro Architecture" layer on our abstraction hierarchy and organizes the logic gates into components with concrete purposes to build a general computing platform. The components are:</p>
+<ul>
+<li><strong>The Central Processing Unit (CPU)</strong> - The main computational workhorse, here the CPU reads machine instructions and executes them. It is made of two parts:<ul>
+<li><strong>Control Unit</strong> - Used to sequence operations to be performed by the machine, orchestrating the other components</li>
+<li><strong>Arithmetic/Logic Unit</strong> - Used to perform the instructions from the control unit on the memory unit</li>
+</ul>
+</li>
+<li><strong>Memory Unit</strong> - A bank of memory that stores both instructions and data in the same address space</li>
+<li><strong>Input Device</strong> - The source of information into the CPU, can be new instructions or data</li>
+<li><strong>Output Device</strong> - Receives information from the CPU and routes it to other devices for control signals</li>
+</ul>
+<h3 id="programming-language-abstraction">Programming Language Abstraction</h3>
+<p>While the Micro Architecture defines how instructions map operations done on memory, the Instruction Set Architecture (ISA) defines what instructions there are in the first place. These instructions are what the CPU will execute at the end of the day and is called <strong>machine code</strong>. Each individual instruction must be carefully picked and designed to be as fundamental as possible so that further functionalities can be built on top of them without later alteration. The two most popular instruction set architectures that you may know are:</p>
+<ul>
+<li><strong>Intel's x86-64 instruction set</strong> - The current industry standard instruction set for most consumer PCs. Originally designed to only handle 32-bit length numbers (x86), but was later updated to support 64-bit numbers (x86-64). Owned by Intel, must pay them to create chips with it.</li>
+<li><strong>RISC-V</strong> ("risk-five") - Reduced, optimized instruction set that sees use for environments where computational resources are constrained. Less widely used, but recently has seen more adoption. Open-sourced.</li>
+</ul>
+<p>This machine code is stored and read by the CPU in raw binary in order to be "understood". However, writing programs in raw binary is nearly impossible for a human to do in a reasonable amount of time. To make direct communication with the CPU easier, each machine code instruction was given an identifier written in characters that related to it purpose and a system of writing these more human-readable instructions into programs was developed, resulting in the creation of the <strong>Assembly Language</strong>.</p>
+<p><img alt="Translating Assembly Language into Binary. This shows the process of taking human-readable assembly and putting it into an Assembler to be converted into Binary machine code. Source https://www.cs.uah.edu/~rcoleman/CS121/ClassTopics/ProgrammingLanguages.html" src="../../img/Assembler.jpg" /></p>
+<p>Assembly language made it easier to develop programs, however the instructions were now no longer in a form that the CPU could understand. The CPU directly read instructions as binary codes, and as a result all instructions that intend to be ran must be in that form. This necessitated the creation of the <strong>assembler</strong>, a program that can convert assembly code into binary machine code. </p>
+<p>This idea of creating a level of representation on top of what you are actually doing on the computer for ease of use and development is yet another example of abstraction and working up the hierarchy. Every level above builds on top of assembly in some way, making it the lowest level of abstraction we as programmers can interact with normally. This puts it in a special place, an eventuality that every language designer and chip manufacturer should respect. As a result of this importance, it will be one of the focuses of this course and will be programmed in by the end of the semester.</p>
+<p>From assembly we build all other programming languages, for the purposes of this course we will focus on the C programming language primarily. This is due to the fact that C preserves certain low-level access that other languages hide away. C allows for direct memory access and its compilations object that are in assembly and machine code as easy to access. The next lesson will review programming in the C language and there will be a lab exploring these intermediate representations of your C programs.</p>
+<h2 id="optional-questions">Optional Questions</h2>
+<ol>
+<li>You may have heard of "Moore's Law", if not look it up. Roughly describe it and, in your own words, indicate if you think the trend it identifies will continue or not. Justify your answer with why you think that or how you predict it will happen.</li>
+<li>In C, after you compile and run, you will get a <code>a.exe</code> or <code>a.out</code> file that actually runs your program. What level of the abstraction hierarchy do you think that is working in?</li>
+<li>With what you know about C, can you identify the parts of C that make it Turing-complete? From the criteria of being Turing-complete, can you think of how it is implemented in C?</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascript/wcag_fixes.js"></script>
+      
+        <script src="../../javascript/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

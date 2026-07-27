@@ -1,0 +1,2371 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../3_alu_and_gates/">
+      
+      
+        <link rel="next" href="../5_tiny_cpu/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/cs220.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Homework 4 (Due 4/19/26) - CS 220 - Computer Organization</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-test-2-review-questions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-header__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 220 - Computer Organization
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Homework 4 (Due 4/19/26)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lessons/1_introduction/" class="md-tabs__link">
+          
+  
+  
+  Lessons
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/c_compilation/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../how_to_hand_in/" class="md-tabs__link">
+          
+  
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-nav__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    CS 220 - Computer Organization
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lessons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/1_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/2_reviewing_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reviewing C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/3_binary_hex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/4_bool_logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean/Bitwise Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/5_signed_unsigned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/6_transistors_2_pc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abstraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/7_gates_circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gates and Circuits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/c_compilation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C Compilation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_hand_in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How To Hand In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcc_install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_c_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 (Due 2/27/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_test_1_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 2 (Due 3/13/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_alu_and_gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 3 (Due 4/12/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 4 (Due 4/19/26)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 4 (Due 4/19/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#due-41926" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Due: 4/19/26
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-numbers-and-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Numbers and Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gates-and-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates and Circuits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-hierarchy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-numbers-and-patterns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Numbers and Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gates-and-circuits_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates and Circuits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practice Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-1-signed-numbers-and-patterns-30-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: Signed Numbers and Patterns - /30 Points
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2-boolean-logic-and-gates-20-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 2: Boolean Logic and Gates - /20 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-3-truth-tables-to-circuits-20-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 3: Truth Tables to Circuits - /20 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-4-basic-circuits-20-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 4: Basic Circuits - /20 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-5-design-problems-25-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 5: Design Problems - /25 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#point-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Point Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_tiny_cpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 5 (Due 4/26/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#due-41926" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Due: 4/19/26
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-numbers-and-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Numbers and Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gates-and-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates and Circuits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-hierarchy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-numbers-and-patterns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Numbers and Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gates-and-circuits_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates and Circuits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practice Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-1-signed-numbers-and-patterns-30-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: Signed Numbers and Patterns - /30 Points
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2-boolean-logic-and-gates-20-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 2: Boolean Logic and Gates - /20 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-3-truth-tables-to-circuits-20-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 3: Truth Tables to Circuits - /20 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-4-basic-circuits-20-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 4: Basic Circuits - /20 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-5-design-problems-25-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 5: Design Problems - /25 points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#point-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Point Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../how_to_hand_in/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Homework
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="unit-test-2-review-questions">Unit Test 2 Review Questions</h1>
+<h2 id="due-41926">Due: 4/19/26</h2>
+<h2 id="description">Description</h2>
+<p>This study guide will highlight the topics covered on the Unit 2 Test. Primarily, it focused on circuits and gates and the building up of abstraction. As such it was based on the below lessons, however keep in mind that the topics are cumulative in nature and build on all previous lessons as well:</p>
+<ul>
+<li>Signed Numbers and Bit Patterns<ul>
+<li><a href="../../lessons/5_signed_unsigned/">Signed Representations</a></li>
+</ul>
+</li>
+<li>The Abstraction Hierarchy<ul>
+<li><a href="../../lessons/1_introduction/">Introduction</a></li>
+<li><a href="../../labs/c_compilation/">C Compilation Lab</a></li>
+<li><a href="../../lessons/6_transistors_2_pc/">Transistors To Computers</a></li>
+</ul>
+</li>
+<li>Logical Gates<ul>
+<li><a href="../../lessons/4_bool_logic/">Boolean Logic</a></li>
+<li><a href="../../lessons/7_gates_circuits/">Gates and Circuits</a></li>
+</ul>
+</li>
+<li>Basic Circuits<ul>
+<li><a href="../../lessons/7_gates_circuits/">Gates and Circuits</a></li>
+<li>Slides on Brightspace in Content</li>
+</ul>
+</li>
+</ul>
+<p>The test will have True/False, Multiple Choice, Short Answer, Fill-in-the-Blank, and Number Conversion Type Questions. They will all be based on these short answer questions. Answer each to the best of your ability and use the material and in-class notes to fill in any gaps you find you have. This is meant to be a graded review, simply looking up answers without understanding will not prepare you for the exam, try your best and ask questions during class time.</p>
+<hr />
+<h2 id="topics">Topics</h2>
+<h3 id="abstraction-hierarchy">Abstraction Hierarchy</h3>
+<ul>
+<li><strong>Layers and Abstraction</strong><ul>
+<li>Understand the layers generally</li>
+<li>Difference between hardware and software layers</li>
+<li>Explain the concept of abstraction and how we build complexity from simple concepts</li>
+<li>How C code goes down the hierarchy</li>
+<li>How CPU designers build up the hierarchy</li>
+</ul>
+</li>
+<li><strong>Hardware Abstraction</strong><ul>
+<li>The transistor's basic function</li>
+<li>Turing Machines as a goal of the CPU</li>
+<li>Transistor-&gt;gate-&gt;circuit-&gt;ALU+CU-&gt;CPU-&gt;Computer</li>
+</ul>
+</li>
+</ul>
+<h3 id="signed-numbers-and-patterns">Signed Numbers and Patterns</h3>
+<ul>
+<li><strong>Signed Magnitude, 1's Complement, and 2's Complement</strong><ul>
+<li>Understand each way of encoding negative numbers</li>
+<li>Be able to convert to and from base-10 negative numbers in each system</li>
+<li>Add/subtract numbers in each system<ul>
+<li>Understand subtractions as: a - b -&gt; a + -(b)</li>
+</ul>
+</li>
+<li>Understand each ones drawbacks and why we use 2's Complement</li>
+</ul>
+</li>
+<li><strong>Pattern Encoding</strong><ul>
+<li>Understand the limits of encoding patterns into bit numbers</li>
+<li>Know about overflow and how it might be used or cause problems in an encoding scheme</li>
+<li>Be given an encoding and be able to map binary numbers to the encoding</li>
+</ul>
+</li>
+</ul>
+<h3 id="gates-and-circuits">Gates and Circuits</h3>
+<ul>
+<li><strong>Basic Logic Gates</strong><ul>
+<li>How do they get made from transistors</li>
+<li>Functional Completeness and NAND</li>
+<li>Translate between boolean logic and logical gates</li>
+</ul>
+</li>
+<li><strong>Circuits</strong><ul>
+<li>Construct circuits from truth tables and boolean logic</li>
+<li>Understand each of the below basic circuits conceptually, via truth table, and circuit diagram<ul>
+<li>NAND Circuits </li>
+<li>Half adder</li>
+<li>Full adder</li>
+<li>Ripple Carry Adder</li>
+<li>Bitwise circuit blocks</li>
+<li>MUX's</li>
+<li>Encoder/Decoder</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="example-questions">Example Questions</h2>
+<p>The follow are basic versions of questions to be asked on the test. In the next section, there are more advanced versions and other questions that are closer to be what is expected on the test. Use these as basic versions to build off of in the practice questions.</p>
+<h3 id="abstraction-hierarchy_1">Abstraction Hierarchy</h3>
+<p>This section of questions is conceptual and will be based on the lessons and lectures. The questions are less hands on and more information based. As such, there are no example questions with answers provided.</p>
+<h3 id="signed-numbers-and-patterns_1">Signed Numbers and Patterns</h3>
+<p><strong>NOTE: Unless otherwise stated all SIGNED operations will be done using 2's complement</strong></p>
+<ol>
+<li>What is the maximum number of patterns able to be stored in a 3-bit number?<ul>
+<li>3 bits means <span class="arithmatex">\(2^3=8\)</span> possible patterns</li>
+<li>8 max patterns</li>
+</ul>
+</li>
+<li>What is the number -2 as a 3-bit, <strong>signed magnitude</strong> number?<ul>
+<li><span class="arithmatex">\(2_{10} = 010_2\)</span></li>
+<li>Signed magnitude says MSB is the sign bit</li>
+<li><span class="arithmatex">\(-2_{10} = 110_{2SM}\)</span></li>
+</ul>
+</li>
+<li>What is the number -6 as a 4-bit, <strong>1's Complement</strong> number?<ul>
+<li><span class="arithmatex">\(6_{10} = 0110_2\)</span></li>
+<li>1's Complement says that -n = NOT(N)</li>
+<li><span class="arithmatex">\(-6_{10} = \lnot0110_2 = 1001_{2OC}\)</span></li>
+</ul>
+</li>
+<li>What is the number -6 as a 4-bit, <strong>2's Complement</strong> number?<ul>
+<li><span class="arithmatex">\(6_{10} = 0110_2\)</span></li>
+<li>2's Complement says that -n = NOT(N) + 1</li>
+<li><span class="arithmatex">\(-6_{10} = \lnot0110_2 + 1= 1001_{2} + 1 = 1010_{2TC}\)</span></li>
+</ul>
+</li>
+<li>Perform 3-bit signed addition on the following numbers: <span class="arithmatex">\(-2 + 3\)</span><ol>
+<li><span class="arithmatex">\(-2 = \lnot(010) + 1 = 101 + 1 = 110\)</span></li>
+<li><span class="arithmatex">\(3 = 011\)</span></li>
+<li><span class="arithmatex">\(110 + 011 = 1|001\)</span>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>C 11
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   110
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  +011
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  ----
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> 1|001 = 1
+</span></code></pre></div></li>
+</ol>
+</li>
+<li>Perform 3-bit signed subtraction on the following numbers: <span class="arithmatex">\(3 - 1\)</span><ol>
+<li><span class="arithmatex">\(3 - 1 = 3 + -(1)\)</span></li>
+<li><span class="arithmatex">\(3 = 011\)</span></li>
+<li><span class="arithmatex">\(-1 = \lnot(001) + 1 = 110 + 1 = 111\)</span></li>
+<li><span class="arithmatex">\(011 + 111 = 1|010\)</span>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>C 111
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   011
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  +111
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  ----
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> 1|010 = 2
+</span></code></pre></div></li>
+</ol>
+</li>
+</ol>
+<h3 id="gates-and-circuits_1">Gates and Circuits</h3>
+<ol>
+<li>Generally be able to reproduce the 1-bit version of the circuits and truth tables covered in the class and slides:<ul>
+<li>NAND Circuits</li>
+<li>Bitwise blocks</li>
+<li>Half/Full Adder</li>
+<li>Ripple Carry Adder</li>
+<li>MUX</li>
+</ul>
+</li>
+<li>Implement the following truth table into a circuit:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>Out1</th>
+<th>Out2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Look at each output individually, try to see a pattern between it and the inputs</p>
+<ul>
+<li>Here we can see Out 1 is only on when a is off<ul>
+<li>That's a NOT gate!</li>
+<li>Out1 = NOT(A)</li>
+</ul>
+</li>
+<li>Here we can see Out 2 is on when both a and b are the same<ul>
+<li>No basic gate has that operation...</li>
+<li>However, there is XOR, where it is only on when there is exactly a single input on</li>
+<li>This is the opposite of what we see...</li>
+<li>Apply Not to XOR of both!</li>
+<li>Out2 = NOT(A XOR B)</li>
+</ul>
+</li>
+<li>Apply it into a circuit diagram:
+<img alt="" src="../../img/circuit_1.png" /></li>
+</ul>
+</li>
+<li>
+<p>Make a basic 3-bit ALU with 2 operations. It will take in input a and b, both being 3 bit numbers on wires. Op is a 1 bit control signal that will control what answer is output. 0 will output a AND b; 1 will output a + b. You may use circuit symbols for the Half/Full Adders and 2-to-1 bit MUXes. Label all lines. Note the software I was using to do this uses slightly different schemes than we have used; always label your parts at this stage, it keeps things clear when hand writing. This one is larger only to make it easier to read. Also the one on the test will use 2-bit numbers
+<img alt="" src="../../img/circuit_2.png" /></p>
+</li>
+</ul>
+<h2 id="practice-questions">Practice Questions</h2>
+<h3 id="section-1-signed-numbers-and-patterns-30-points">Section 1: Signed Numbers and Patterns - /30 Points</h3>
+<ol>
+<li>
+<p>What is the maximum number of patterns able to be stored in a 5-bit number? How many of those patterns represent negative numbers in 2's Complement?</p>
+</li>
+<li>
+<p>Convert the following to <strong>4-bit Signed Magnitude</strong>:</p>
+<ul>
+<li>a) -5</li>
+<li>b) -7</li>
+<li>c) +6</li>
+</ul>
+</li>
+<li>Convert the following to <strong>4-bit 1's Complement</strong>:<ul>
+<li>a) -3</li>
+<li>b) -9</li>
+<li>c) -1</li>
+</ul>
+</li>
+<li>Convert the following to <strong>4-bit 2's Complement</strong>:<ul>
+<li>a) -4</li>
+<li>b) -7</li>
+<li>c) -1</li>
+</ul>
+</li>
+<li>Convert the following 4-bit 2's Complement numbers back to base-10:<ul>
+<li>a) <code>1101</code></li>
+<li>b) <code>1000</code></li>
+<li>c) <code>1011</code></li>
+</ul>
+</li>
+<li>Perform <strong>4-bit 2's Complement addition</strong> on the following. Identify whether overflow occurs:<ul>
+<li>a) <span class="arithmatex">\(-3 + 5\)</span></li>
+<li>b) <span class="arithmatex">\(-6 + -4\)</span></li>
+<li>c) <span class="arithmatex">\(7 + 2\)</span></li>
+</ul>
+</li>
+<li>Perform <strong>4-bit 2's Complement subtraction</strong> on the following. Remember: <span class="arithmatex">\(a - b = a + -(b)\)</span><ul>
+<li>a) <span class="arithmatex">\(5 - 3\)</span></li>
+<li>b) <span class="arithmatex">\(2 - 6\)</span></li>
+<li>c) <span class="arithmatex">\(-4 - 3\)</span></li>
+</ul>
+</li>
+<li>You are given an encoding scheme that maps 3-bit patterns to the following values:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Binary</th>
+<th>Encoded Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>A</td>
+</tr>
+<tr>
+<td>001</td>
+<td>B</td>
+</tr>
+<tr>
+<td>010</td>
+<td>C</td>
+</tr>
+<tr>
+<td>011</td>
+<td>D</td>
+</tr>
+<tr>
+<td>100</td>
+<td>E</td>
+</tr>
+<tr>
+<td>101</td>
+<td>F</td>
+</tr>
+<tr>
+<td>110</td>
+<td>G</td>
+</tr>
+<tr>
+<td>111</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>a) How many patterns are available?</li>
+<li>b) If you increment the binary <code>111</code> by 1, what happens? What is this called? If we read <code>111</code> as the encoding and then added 1, what transition of the symbols would occur?</li>
+<li>c) If you needed to encode 10 distinct values, what is the minimum number of bits required?</li>
+</ul>
+<hr />
+<h2 id="section-2-boolean-logic-and-gates-20-points">Section 2: Boolean Logic and Gates - /20 points</h2>
+<ol>
+<li>Write the boolean expression for each of the following gate combinations (simplify if you can):<ul>
+<li>a) NOT(A AND B)</li>
+<li>b) (A OR B) AND (NOT A)</li>
+<li>c) NOT(NOT A AND NOT B)</li>
+</ul>
+</li>
+<li>Convert the following boolean expressions to circuit diagrams (draw the gates and label all wires):<ul>
+<li>a) <code>Out = (A AND B) OR (NOT A AND C)</code></li>
+<li>b) <code>Out = NOT(A OR B) AND C</code></li>
+<li>c) <code>Out = A XOR (B AND C)</code></li>
+</ul>
+</li>
+<li>
+<p>Explain in 1-2 sentences what <strong>functional completeness</strong> means, and give an example of a functionally complete set of gates.</p>
+</li>
+<li>
+<p>Show how to build an <strong>AND gate</strong> using only NAND gates. Provide the circuit diagram and verify with a truth table.</p>
+</li>
+<li>
+<p>Show how to build an <strong>OR gate</strong> using only NAND gates.</p>
+</li>
+</ol>
+<hr />
+<h2 id="section-3-truth-tables-to-circuits-20-points">Section 3: Truth Tables to Circuits -  /20 points</h2>
+<ol>
+<li>Implement the following truth table into a circuit. Derive the boolean expression first, then draw the circuit:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Implement the following two-output truth table into a circuit. Derive boolean expressions for <strong>each output separately</strong>:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Out1</th>
+<th>Out2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Hint: Look at what patterns each output follows relative to the inputs. Do any familiar operations come to mind?</li>
+</ul>
+<hr />
+<h2 id="section-4-basic-circuits-20-points">Section 4: Basic Circuits - /20 points</h2>
+<ol>
+<li>
+<p>Draw the truth table for a <strong>Half Adder</strong>. Label the outputs <code>Sum</code> and <code>Carry</code>. What basic gates make up a half adder?</p>
+</li>
+<li>
+<p>Explain in your own words why a <strong>Full Adder</strong> is needed over a Half Adder. What extra input does it have and what is it used for?</p>
+</li>
+<li>
+<p>Given a <strong>Ripple Carry Adder</strong> built from full adders:</p>
+<ul>
+<li>a) How many full adders would you need to add two 8-bit numbers?</li>
+<li>b) Why is it called a "ripple carry" adder?</li>
+<li>c) What happens if the final carry-out is 1 when working in 2's Complement?</li>
+<li>Fill in the output column of the following <strong>MUX truth table</strong> (2-to-1 MUX with select line S, inputs A and B):</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>S</th>
+<th>A</th>
+<th>B</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Write the boolean expression for a 2-to-1 MUX.</p>
+<ol>
+<li>A <strong>2-to-4 Decoder</strong> takes a 2-bit input and activates exactly one of 4 output lines. Fill in its truth table and write the boolean expression for each output line:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>Out0</th>
+<th>Out1</th>
+<th>Out2</th>
+<th>Out3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="section-5-design-problems-25-points">Section 5: Design Problems - /25 points</h2>
+<ol>
+<li>
+<p>Design a <strong>2-bit ALU</strong> with 3 operations controlled by a 2-bit Op signal. Inputs are 2-bit numbers A and B:</p>
+<ul>
+<li>Op = <code>00</code>: Output A AND B (bitwise)</li>
+<li>Op = <code>01</code>: Output A OR B (bitwise)</li>
+<li>Op = <code>10</code>: Output A + B (addition, ignore carry-out)</li>
+</ul>
+<p>You may use circuit symbols for Half/Full Adders and MUXes. Label all input/output lines and control signals.</p>
+</li>
+<li>
+<p>Design a circuit that takes a 2-bit binary number as input and outputs its <strong>2's Complement negation</strong> as a 2-bit number (ignore overflow). Show your work:</p>
+<ul>
+<li>a) Write out the truth table for all input combinations</li>
+<li>b) Derive the boolean expression for each output bit</li>
+<li>c) Draw the circuit</li>
+<li>
+<p>A <strong>4-bit Ripple Carry Adder</strong> is used to add two 4-bit 2's Complement numbers.</p>
+</li>
+<li>
+<p>a) What is the range of numbers each input can represent?</p>
+</li>
+<li>b) Add <code>0111 + 0001</code>. Does overflow occur? How can you detect overflow in a 2's Complement adder?</li>
+<li>c) Add <code>1010 + 1101</code>. What is the result in base-10?</li>
+</ul>
+</li>
+</ol>
+<h2 id="point-summary">Point Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Section 1: Signed Numbers and Patterns</td>
+<td>/30</td>
+</tr>
+<tr>
+<td>Section 2: Boolean Logic and Gates</td>
+<td>/20</td>
+</tr>
+<tr>
+<td>Section 3: Truth Tables to Circuits</td>
+<td>/20</td>
+</tr>
+<tr>
+<td>Section 4: Basic Circuits</td>
+<td>/20</td>
+</tr>
+<tr>
+<td>Section 5: Design Problems</td>
+<td>/25</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>/115</strong></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascript/wcag_fixes.js"></script>
+      
+        <script src="../../javascript/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2413 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4_bool_logic/">
+      
+      
+        <link rel="next" href="../6_transistors_2_pc/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/cs220.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Signed Representation - CS 220 - Computer Organization</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#number-representations-and-signed-numbers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-header__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 220 - Computer Organization
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Signed Representation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../1_introduction/" class="md-tabs__link">
+          
+  
+  
+  Lessons
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/c_compilation/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../homework/how_to_hand_in/" class="md-tabs__link">
+          
+  
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CS 220 - Computer Organization" class="md-nav__button md-logo" aria-label="CS 220 - Computer Organization" data-md-component="logo">
+      
+  <img src="../../img/cs220.png" alt="logo">
+
+    </a>
+    CS 220 - Computer Organization
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lessons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_reviewing_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reviewing C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_binary_hex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_bool_logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean/Bitwise Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Representation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#patterns-limits-and-overflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns, Limits, and Overflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns, Limits, and Overflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#char-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        char Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signed-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Numbers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signed Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signed-magnitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Magnitude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ones-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One's Complement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#twos-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two's Complement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two&#39;s Complement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition-in-twos-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addition in Two's Complement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negating-a-twos-complement-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negating a Two's Complement Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-representations-on-a-3-bit-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All Representations on a 3-Bit Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-comparison-n-bit-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Range Comparison (\(N\)-bit numbers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_transistors_2_pc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abstraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_gates_circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gates and Circuits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/c_compilation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C Compilation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/how_to_hand_in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How To Hand In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/gcc_install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/1_c_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 (Due 2/27/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/2_test_1_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 2 (Due 3/13/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/3_alu_and_gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 3 (Due 4/12/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/4_test_2_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 4 (Due 4/19/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../homework/5_tiny_cpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 5 (Due 4/26/26)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#patterns-limits-and-overflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns, Limits, and Overflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns, Limits, and Overflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#char-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        char Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signed-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Numbers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signed Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signed-magnitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Magnitude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ones-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One's Complement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#twos-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two's Complement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two&#39;s Complement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition-in-twos-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addition in Two's Complement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negating-a-twos-complement-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negating a Two's Complement Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-representations-on-a-3-bit-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All Representations on a 3-Bit Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-comparison-n-bit-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Range Comparison (\(N\)-bit numbers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../1_introduction/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="number-representations-and-signed-numbers">Number Representations and Signed Numbers</h1>
+<p>In a <a href="../3_binary_hex/">previous lesson</a>, we saw different number systems generally and how binary works as a number system. At the end of that lesson, I showed some common sizes of numbers in a computer. While binary numbers can exist as a mathematical concept, we must find ways to represent them on a computer to represent everything from integers to databases of text data. Because of this we must find ways of using fixed-sized binary numbers to represent the types of data that we desire, and make programs that can understand that representation.</p>
+<p>In this lesson, we will cover,</p>
+<ul>
+<li>Patterns</li>
+<li>Limits</li>
+<li>Overflows</li>
+<li>Signed vs Unsigned</li>
+<li>Signed Magnitude</li>
+<li>1's and 2's Complement</li>
+</ul>
+<h2 id="patterns-limits-and-overflows">Patterns, Limits, and Overflows</h2>
+<p>Any information requires a medium to store it, as such all data needs to be physically stored somewhere and through some medium in order for it to be used. Everything on a modern computer is stored via electrical signals used to represent digital data in the form of binary. This means all data and computation is done in binary. </p>
+<p>However, when that binary data is read/written it can be read/written with a specific format in mind. Due to the physicality of storing any type of data, there is a fixed and limited amount of space that can be used to store this data. With these two ideas in mind, we can see that there is a limited number of <strong>patterns</strong> that can be stored by a binary number of a fixed length. Each binary number in the fixed length storage can be used to represent a unique pattern that can later be interpreted by other programs. For example, this is a 2-bit binary variable being incremented, we can think of the simplest pattern being to convert the binary number directly to its decimal representation:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Binary Number</th>
+<th>Decimal "Pattern"</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>00</td>
+<td>0</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>01</td>
+<td>1</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>11</td>
+<td>3</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>00</td>
+<td>0</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>01</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, because there are only 2 digits able to be used there is a limited number of patterns that can be represented. When you try to represent more values than the number of digits allow, you <strong>overflow</strong> back over to the start of the patterns:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Overflow</th>
+<th style="text-align: left;">Available Space 2-Bits</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">00</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">01</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">10</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">11</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">00</td>
+<td>Overflow!</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">01</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The number that would grow into the next digit is instead cut off and the lower order bits reset. </p>
+<p>The number of patterns a binary number with <span class="arithmatex">\(N\)</span> digits, can represent <span class="arithmatex">\(2^N\)</span> possible patterns. So before with 2 digits, we get <span class="arithmatex">\(2^2 = 4\)</span> possible patterns. This makes sense as you can only count from 0 to 3 with 2 digits. For numerical representations this means there are fundamental <strong>limits</strong> on the maximum and minimum values that that a variable can represent.</p>
+<p>For <strong>unsigned number representation</strong>, numbers without a sign component i.e. only positive, the limits are set at 0 to <span class="arithmatex">\(2^N - 1\)</span> as the possible value range. This checks with the previous example. </p>
+<p>Here is a table with common number sizes with their number of patterns and unsigned limits:</p>
+<table>
+<thead>
+<tr>
+<th>Number Size (<span class="arithmatex">\(N\)</span>)</th>
+<th>Number of Patterns (<span class="arithmatex">\(2^N\)</span>)</th>
+<th>Unsigned Range (<span class="arithmatex">\([0, 2^N-1]\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bit (1)</td>
+<td>2</td>
+<td>[0, 1]</td>
+</tr>
+<tr>
+<td>Nibble (4)</td>
+<td>16</td>
+<td>[0, 15]</td>
+</tr>
+<tr>
+<td>Byte/<code>char</code> (8)</td>
+<td>256</td>
+<td>[0, 255]</td>
+</tr>
+<tr>
+<td>4-Byte <code>int</code> (32)</td>
+<td>4,294,967,296</td>
+<td>[0, 4,294,967,295]</td>
+</tr>
+<tr>
+<td><code>long int</code> (64)</td>
+<td>18,446,744,073,709,551,616</td>
+<td>[0, 18,446,744,073,709,551,615]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="char-patterns"><code>char</code> Patterns</h3>
+<p>While I am only talking about unsigned decimal form, there are many other possible encodings to attribute to the patterns. One that we use regularly is <code>char</code> in C. <code>char</code> is both a integer type and a way of representing characters. The code snippet below will show you the number of characters a <code>char</code> can represent and the number mapping each one is given:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// chars.c - Program to show the chars</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="cm">/* Note, by default on most modern compilers all integer types,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm">     * including chars, are signed. We cover signed representation</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm">     * later this lesson. To make sure it is unsigned we will use</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cm">     * the unsigned keyword.</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cm">     */</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Start at 0 to show them all</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="c1">// Formatting</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;|Dec|Hex|Char|</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="cm">/* Do-while loop going through all numbers possible for an 8-bit</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="cm">     * number. The while statement will only trigger an escape when </span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="cm">     * c == 0, ie only when it overflows.</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="cm">     */</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;|%03d|%02x |  %c |</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The decimal numbers between 0-31 and 128-255 <code>char</code> representations are now system specific, often being UTF-8, however historically it has been based off of the American Standard Code for Information Interchange (ASCII) character format, with almost all subsequent encodings respecting the following tables entries for 32-127:</p>
+<p><img alt="" src="../../img/ascii.png" /></p>
+<p>In the beginning, there was no standard for the values 128 onwards, and instead the final bit was used for detecting errors. This was until computers began to be networked globally and new additions needed to be added to support more languages. Giving the extended ASCII set:</p>
+<p><img alt="" src="../../img/extend_ascii.gif" /></p>
+<p>From there the other representations were created but most derive from ASCII for compatibility reasons. </p>
+<p>This is important to talk about as the 1-byte size for a <code>char</code> did not change for many years and represented the set size of one character. Initially they did not use the full pattern space but slowly grew into it and changed what certain parts meant over the years. However, no matter what each one represented each standard was working with the same 8-bits restricted to <span class="arithmatex">\(2^8\)</span> possible patterns. </p>
+<div class="admonition note">
+<p class="admonition-title">Real-World Overflow: IPv4 Address Exhaustion</p>
+<p>IPv4 addresses are 32-bit unsigned numbers, giving exactly <span class="arithmatex">\(2^{32}\)</span> (~4.3 billion) unique addresses. When the internet was designed in the 1970s, this seemed more than sufficient. As global internet adoption exploded, the address space filled up, IANA issued the last block of unallocated IPv4 addresses in <strong>2011</strong>. Stopgap measures like <strong>NAT</strong> (Network Address Translation) allowed many devices to share a single public IP, buying time. The long-term fix is <strong>IPv6</strong>, which uses 128-bit addresses (<span class="arithmatex">\(2^{128}\)</span>; an astronomically larger space). This is a direct, real-world consequence of choosing a fixed-width number representation without anticipating future scale. To learn more, look up <em>IPv4 exhaustion</em>, <em>CIDR</em>, and <em>the IPv6 transition</em>.</p>
+</div>
+<h2 id="signed-numbers">Signed Numbers</h2>
+<p>Since introducing binary numbers, we have been avoiding the idea of signed binary numbers. <strong>Signed numbers</strong> are number representations that interpret binary data as numbers, both positive and negative. Going off of binary numbers mathematically, we use a sign (-) to indicate if a number is negative or positive. So if we were doing binary math on paper we could indicate the number negative 3 as <span class="arithmatex">\(-11_2\)</span> and we could go about our merry way. However, that sign represents information and in order for us to use that information, it must be physically stored as binary.</p>
+<h3 id="signed-magnitude">Signed Magnitude</h3>
+<p>The simplest method of encoding sign information is called <strong>signed magnitude</strong>. Signed magnitude works under the idea that a number is either positive or negative, a binary relationship. Therefore it should be encoded as a bit in its own right. This bit is always chosen to be the MSB which limits the maximum value able to be reached. This last bit is called the <strong>sign bit</strong>. A signed magnitude number is organized as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Signed Magnitude (4-bit)</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-5</td>
+<td>=</td>
+<td><span class="arithmatex">\(-1 \times\)</span></td>
+<td><span class="arithmatex">\((2^2 \times 1 +\)</span></td>
+<td><span class="arithmatex">\(2^1 \times 0 +\)</span></td>
+<td><span class="arithmatex">\(2^0 \times 1)\)</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Sign Bit</td>
+<td></td>
+<td></td>
+<td>Magnitude</td>
+</tr>
+</tbody>
+</table>
+<p>If the sign bit is 1, the sum of the other positional numbers before it is multiplied by -1. For to show counting with this system, this table displays a 3-bit signed magnitude number being incremented along with the direct decimal conversion:</p>
+<table>
+<thead>
+<tr>
+<th>Raw Binary</th>
+<th>Signed Magnitude</th>
+<th>Decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>010</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>011</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>100</td>
+<td>-0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>101</td>
+<td>-1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>110</td>
+<td>-2</td>
+<td>6</td>
+</tr>
+<tr>
+<td>111</td>
+<td>-3</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see this naïve approach to signed numbers results in -0, a number that does not exist and takes up a spot of our limited pattern space. Not only that but the process of addition/subtraction is now conditional based on the magnitudes:</p>
+<ul>
+<li>The process of addition using Signed Magnitude<ul>
+<li>If the signs are the same:<ol>
+<li>Add the non-sign bits together normally</li>
+<li>Return the value with the original sign bit of both inputs</li>
+</ol>
+</li>
+<li>If the signs are different:<ol>
+<li>Find which number + or - is larger in magnitude</li>
+<li>Subtract the smaller value from the larger</li>
+<li>Return the value with the larger number’s sign</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>This would be a pain to implement at the CPU level and really inefficient considering how many times we add on a computer (its a lot).  Another drawback is that when overflows happen you jump around in magnitude. The previous table shows going from 3 to 0 and then -3 to 0 again, this is something that all programmers would have to work around and is unintuitive.</p>
+<p>To summarize:</p>
+<ul>
+<li><strong>Pros</strong><ul>
+<li>Easy to read / implement initially</li>
+<li>Easy to negate<ul>
+<li>Just flip the MSB</li>
+</ul>
+</li>
+<li>Range is symmetric<ul>
+<li><span class="arithmatex">\([-2^{N-1} - 1, 2^{N-1} - 1]\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Cons</strong><ul>
+<li>Two numbers for zero</li>
+<li>Overflows are unintuitive and annoying </li>
+<li>Operations are conditional based on sign and magnitude</li>
+</ul>
+</li>
+</ul>
+<p>The draw backs are glaring and are the reason there are few to zero actual implementations of this signed representation in the modern day, leading to the development of other representations.</p>
+<h3 id="ones-complement">One's Complement</h3>
+<p>Signed magnitude approached the problem from a perspective that a signed numbers sign is a binary relationship, while true it is not the only trait of signed numbers. Another aspect of signed number is that there is a negation operation that if applied to a number reverses its sign:</p>
+<ul>
+<li>10 -&gt; -(10) - &gt; -10</li>
+<li>-31 -&gt; -(-31) -&gt; 31</li>
+</ul>
+<p>This also means that when applied twice it returns the original value:</p>
+<ul>
+<li>10 -&gt; -(10) - &gt; -10 -&gt; -(-10) -&gt; 10</li>
+<li>-31 -&gt; -(-31) -&gt; 31 -&gt; -(31) -&gt; -31</li>
+</ul>
+<p><strong>One's complement</strong> aims to replicate this process using a bitwise operator with a similar function, the bitwise NOT. In one's complement, the negation operation is defined to be the bitwise NOT due to its reversibility if applied twice and its ability to reverse the binary number line:</p>
+<table>
+<thead>
+<tr>
+<th>Dec(A)</th>
+<th>A</th>
+<th>~A</th>
+<th>Dec(~A)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>000</td>
+<td>111</td>
+<td>7</td>
+</tr>
+<tr>
+<td>1</td>
+<td>001</td>
+<td>110</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>010</td>
+<td>101</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>011</td>
+<td>100</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>100</td>
+<td>011</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>101</td>
+<td>010</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>110</td>
+<td>001</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>111</td>
+<td>000</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>The MSB is still viewed to be the sign bit, where if it exists you negate the number to find its unsigned magnitude, resulting in the following table for 3-bit one's complement numbers:</p>
+<table>
+<thead>
+<tr>
+<th>Raw Binary</th>
+<th>One's Complement</th>
+<th>Decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>010</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>011</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>100</td>
+<td>-3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>101</td>
+<td>-2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>110</td>
+<td>-1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>111</td>
+<td>-0</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>This makes for a nicer overflow behavior where we wrap from our max to our min and the zeros wrap back in on themselves. It also fixes part of the problem of addition/subtraction where for the most part you can treat them as if they are unsigned, however there is an edge case to be aware of:</p>
+<ul>
+<li>
+<p>-3 + 2 = -1
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a> 100
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>+010
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>----
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> 110 = -1
+</span></code></pre></div></p>
+</li>
+<li>
+<p>In the event of a overflowed carry, add it back in</p>
+</li>
+<li>
+<p>3 + (-1) = 2
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>  1 &lt;- Carry
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  011
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> +110
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a> ----
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>1|001
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  1 
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a> 001
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>+  1
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>----
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a> 010 = 2
+</span></code></pre></div></p>
+</li>
+<li>
+<p>-2 + 2 = 0
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a> 101
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>+010
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>----
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> 111 = -0
+</span></code></pre></div></p>
+</li>
+</ul>
+<p>This means you need to write programs that read both 000 and 111 as zero which leads to some annoying checks and error prone code if coders are not careful. Plus, we have yet to solve the issue of the negative -0 which does not exist.</p>
+<ul>
+<li><strong>Pros</strong><ul>
+<li>Easy to negate<ul>
+<li>Just apply NOT</li>
+</ul>
+</li>
+<li>Range is symmetric<ul>
+<li><span class="arithmatex">\([-2^{N-1} - 1, 2^{N-1} - 1]\)</span></li>
+</ul>
+</li>
+<li>Overflows are nice and wrap around </li>
+</ul>
+</li>
+<li><strong>Cons</strong><ul>
+<li>Still two numbers for zero</li>
+<li>Slightly harder to read offhand</li>
+<li>Adding contains one edge case for carry ops</li>
+</ul>
+</li>
+</ul>
+<p>This is a lot easier to handle and fixes the main issue which was conditional adding. Although it still requires adding the carry, but the same operation is used and not conditional on sign or magnitude.</p>
+<p>The goal ultimately is to have a system that requires as few edge cases as possible and makes frequent operations like addition easy to implement.</p>
+<h3 id="twos-complement">Two's Complement</h3>
+<p>While overflowing may seem like a bug that we must work around, it can be used to our benefit.</p>
+<p>Recall how one's complement still left us with two representations of zero. The root cause is that the bitwise NOT maps 0 to its "mirror" on the other end of the number line, and those two endpoints are both zero-adjacent. What if instead of landing exactly on <span class="arithmatex">\(-0\)</span>, we shifted the entire negative half of the number line by one? That is precisely what <strong>two's complement</strong> does.</p>
+<p>Two's complement defines negation as the bitwise NOT <strong>plus one</strong>:</p>
+<div class="arithmatex">\[-A = \sim A + 1\]</div>
+<p>Let's verify that applying this twice returns the original value, as any self-respecting negation operation should:</p>
+<ul>
+<li>Start with <span class="arithmatex">\(A\)</span></li>
+<li>Apply once: <span class="arithmatex">\(\sim A + 1\)</span></li>
+<li>Apply again: <span class="arithmatex">\(\sim(\sim A + 1) + 1 = A - 1 + 1 = A\)</span> </li>
+</ul>
+<p>Another way to think about two's complement (and the way hardware actually interprets it) is that the MSB carries a <strong>negative</strong> positional weight. In an <span class="arithmatex">\(N\)</span>-bit two's complement number, the MSB has weight <span class="arithmatex">\(-2^{N-1}\)</span> while all lower bits keep their normal positive weights:`</p>
+<table>
+<thead>
+<tr>
+<th>Two's Complement (4-bit)</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-5</td>
+<td>=</td>
+<td><span class="arithmatex">\(-(2^3) \times 1\ +\)</span></td>
+<td><span class="arithmatex">\(2^2 \times 0\ +\)</span></td>
+<td><span class="arithmatex">\(2^1 \times 1\ +\)</span></td>
+<td><span class="arithmatex">\(2^0 \times 1\)</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Sign Bit (<span class="arithmatex">\(-8\)</span>)</td>
+<td></td>
+<td></td>
+<td>Magnitude</td>
+</tr>
+</tbody>
+</table>
+<p>So <span class="arithmatex">\(1011_2 = -8 + 0 + 2 + 1 = -5\)</span>. This means you can decode any two's complement number directly without needing to negate anything, just treat the MSB as a negative power of two and sum the rest normally.</p>
+<p>The resulting bit patterns for a 3-bit number look like this:</p>
+<table>
+<thead>
+<tr>
+<th>Raw Binary</th>
+<th>Two's Complement</th>
+<th>Decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>010</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>011</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>100</td>
+<td>-4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>101</td>
+<td>-3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>110</td>
+<td>-2</td>
+<td>6</td>
+</tr>
+<tr>
+<td>111</td>
+<td>-1</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that <span class="arithmatex">\(-0\)</span> is gone entirely. Applying two's complement negation to <code>000</code> gives ~<code>000</code> + 1 = <code>111</code> + 1 = <code>000</code>; zero maps to itself, as it should.</p>
+<p>The tradeoff is that the range is now <strong>asymmetric</strong>: there is one extra negative value with no positive counterpart. For 3 bits, that is <span class="arithmatex">\(-4\)</span>. In general the range is <span class="arithmatex">\([-2^{N-1},\ 2^{N-1} - 1]\)</span>.</p>
+<h4 id="addition-in-twos-complement">Addition in Two's Complement</h4>
+<p>The payoff for this extra negative value is that addition requires <strong>zero special cases</strong>. Simply add the bits as if they were unsigned and discard any carry out of the MSB:</p>
+<ul>
+<li>3 + (-1) = 2</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>  011
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>+ 111
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>-----
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>1|010  →  discard carry  →  010 = 2  
+</span></code></pre></div>
+<ul>
+<li>(-3) + 1 = -2</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>  101
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>+ 001
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>-----
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  110 = -2  
+</span></code></pre></div>
+<ul>
+<li>(-1) + 1 = 0</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>  111
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>+ 001
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>-----
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>1|000  →  discard carry  →  000 = 0  
+</span></code></pre></div>
+<p>No carry-add step, no sign checks, no magnitude comparisons, the hardware just adds. This is why virtually every modern CPU uses two's complement for signed integers.</p>
+<h4 id="negating-a-twos-complement-number">Negating a Two's Complement Number</h4>
+<p>To negate any value, flip all the bits then add one:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Binary</th>
+<th>Step 1: NOT</th>
+<th>Step 2: +1</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>011</td>
+<td>100</td>
+<td>101</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>110</td>
+<td>001</td>
+<td>010</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>001</td>
+<td>110</td>
+<td>111</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>-4</td>
+<td>100</td>
+<td>011</td>
+<td>100</td>
+<td>-4 (!)</td>
+</tr>
+</tbody>
+</table>
+<p>That last row is not a mistake. <span class="arithmatex">\(-4\)</span> has no positive counterpart in 3-bit two's complement, attempting to negate it wraps back to itself. This is the one quirk to be aware of when working near the minimum value of the range.</p>
+<ul>
+<li><strong>Pros</strong><ul>
+<li>Single representation of zero</li>
+<li>Addition and subtraction require no special cases</li>
+<li>Carries out of the MSB are safely discarded</li>
+<li>Overflow wraps naturally from max positive to min negative</li>
+</ul>
+</li>
+<li><strong>Cons</strong><ul>
+<li>Asymmetric range: one more negative value than positive</li>
+<li>Negation requires two operations (NOT then +1)</li>
+<li>Minimum value cannot be negated within the same bit width</li>
+</ul>
+</li>
+</ul>
+<p>Two's complement is the dominant signed integer representation in modern hardware and is what C, C++, Java, and virtually every other systems language uses under the hood.</p>
+<hr />
+<h2 id="summary-tables">Summary Tables</h2>
+<h3 id="all-representations-on-a-3-bit-number">All Representations on a 3-Bit Number</h3>
+<table>
+<thead>
+<tr>
+<th>Raw Binary</th>
+<th>Unsigned</th>
+<th>Signed Magnitude</th>
+<th>One's Complement</th>
+<th>Two's Complement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>010</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>011</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>100</td>
+<td>4</td>
+<td>-0</td>
+<td>-3</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>101</td>
+<td>5</td>
+<td>-1</td>
+<td>-2</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>110</td>
+<td>6</td>
+<td>-2</td>
+<td>-1</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>111</td>
+<td>7</td>
+<td>-3</td>
+<td>-0</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="range-comparison-n-bit-numbers">Range Comparison (<span class="arithmatex">\(N\)</span>-bit numbers)</h3>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>Minimum</th>
+<th>Maximum</th>
+<th>Distinct Zeros</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unsigned</td>
+<td><span class="arithmatex">\(0\)</span></td>
+<td><span class="arithmatex">\(2^N - 1\)</span></td>
+<td>1</td>
+<td>Full pattern space used</td>
+</tr>
+<tr>
+<td>Signed Magnitude</td>
+<td><span class="arithmatex">\(-(2^{N-1}-1)\)</span></td>
+<td><span class="arithmatex">\(2^{N-1} - 1\)</span></td>
+<td>2 (+0 and -0)</td>
+<td>One pattern wasted on -0</td>
+</tr>
+<tr>
+<td>One's Complement</td>
+<td><span class="arithmatex">\(-(2^{N-1}-1)\)</span></td>
+<td><span class="arithmatex">\(2^{N-1} - 1\)</span></td>
+<td>2 (+0 and -0)</td>
+<td>One pattern wasted on -0</td>
+</tr>
+<tr>
+<td>Two's Complement</td>
+<td><span class="arithmatex">\(-2^{N-1}\)</span></td>
+<td><span class="arithmatex">\(2^{N-1} - 1\)</span></td>
+<td>1</td>
+<td>Asymmetric; no wasted patterns</td>
+</tr>
+</tbody>
+</table>
+<p>For the common <strong>8-bit (<code>char</code>) case</strong> these work out to:</p>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>Minimum</th>
+<th>Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unsigned</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr>
+<td>Signed Magnitude</td>
+<td>-127</td>
+<td>127</td>
+</tr>
+<tr>
+<td>One's Complement</td>
+<td>-127</td>
+<td>127</td>
+</tr>
+<tr>
+<td>Two's Complement</td>
+<td>-128</td>
+<td>127</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascript/wcag_fixes.js"></script>
+      
+        <script src="../../javascript/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
