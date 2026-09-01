@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../6_transistors_2_pc/">
-      
-      
-        <link rel="next" href="../../labs/c_compilation/">
       
       
         
@@ -23,7 +19,7 @@
     
     
       
-        <title>Gates and Circuits - CS 220 - Computer Organization</title>
+        <title>Gates and Circuits: From Transistors to Computation - CS 220 - Computer Organization</title>
       
     
     
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gates and Circuits
+              Gates and Circuits: From Transistors to Computation
             
           </span>
         </div>
@@ -278,12 +274,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../1_introduction/" class="md-tabs__link">
           
   
@@ -486,31 +480,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -528,7 +519,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -618,337 +609,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../4_bool_logic/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Boolean/Bitwise Ops
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5_signed_unsigned/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Signed Representation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../6_transistors_2_pc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Abstraction
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Gates and Circuits
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Gates and Circuits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#from-transistors-to-gates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        From Transistors to Gates
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="From Transistors to Gates">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-seven-gates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Seven Gates
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Seven Gates">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#not" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NOT
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#and" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AND
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#or" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OR
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        XOR
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nand-nor-xnor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NAND, NOR, XNOR
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functional-completeness-why-nand-rules-everything" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Functional Completeness: Why NAND Rules Everything
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-circuits" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Building Circuits
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building Circuits">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-half-adder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Half Adder
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-full-adder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Full Adder
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-ripple-carry-adder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Ripple Carry Adder
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#other-critical-circuits" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Other Critical Circuits
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connecting-it-back-gates-to-cpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Connecting It Back: Gates to CPU
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1147,146 +807,6 @@
     
   
     Install Software
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../homework/1_c_review/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Homework 1 (Due 2/27/26)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../homework/2_test_1_review/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Homework 2 (Due 3/13/26)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../homework/3_alu_and_gates/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Homework 3 (Due 4/12/26)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../homework/4_test_2_review/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Homework 4 (Due 4/19/26)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../homework/5_tiny_cpu/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Homework 5 (Due 4/26/26)
   
 
     
@@ -1522,46 +1042,6 @@
 
   
 
-
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../1_introduction/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Lessons
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
 
               
               <article class="md-content__inner md-typeset">
