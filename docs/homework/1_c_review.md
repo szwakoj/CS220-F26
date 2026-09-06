@@ -1,330 +1,191 @@
-# C Review: Binary Image Memory Reading/Writing
+# C Review: Building a Mini `xxd` — Binary File Inspector
 
-## Due Date: 2/27/26
+## Due Date: 9/19/ (recommended ~2 weeks before HW1)
 
 ## Description
 
-In this homework, you will be learning to manipulate information using raw binary. In order to visualize the various binary operations we are doing, we will be using the PBM/PGM/PPM  image formats as a way of quickly writing pixel information directly to memory.
+Before we get into manipulating image files at the byte level in HW1, we're going to warm up the C muscles that assignment depends on: pointers and arrays, structs, dynamic memory, string handling, and file I/O — including opening a file in **binary mode** and reading its raw bytes.
 
-For more info on the PBM/PGM/PPM file format, the Wikipedia page for them is a pretty good resource along side the specifications that I could find:
-
-- [Netpbm Wikipedia Page](https://en.wikipedia.org/wiki/Netpbm)
-- [Netpbm Specifications](https://netpbm.sourceforge.net/)
-	- [PBM Spec](https://netpbm.sourceforge.net/doc/pbm.html)
-	- [PGM Spec](https://netpbm.sourceforge.net/doc/pgm.html)
-	- [PPM Spec](https://netpbm.sourceforge.net/doc/ppm.html)
-
-The spark notes version is that "Netpbm" or "**Net**work **P**ortable **B**it**m**ap Format" is a collection of tools and specifications for portable graphics file formats. They have three main types of portable formats that can be opened by nearly any text editor:
-
-- **PBM** (Portable BitMap Format) - Each pixel is either a 1 or 0, for white or black respectively
-- **PGM** (Portable GreyMap Format) - Typically, each pixel can be any number between 0-255 signifying how grey the pixel is, with 0 being black and 255 being white
-- **PPM** (Portable PixMap Format) - Each pixel now has three numbers ranging from 0-255, for each red, green, and blue color channels
-
-Each type of file defines ways of writing pixels to an image file in a very general way, it is so general I can show the raw form of the file format. The basic one, PBM, binary numbers, 0 to turn off a pixel and 1 to turn it on. The following .pbm file stores a happy face:
+To do this, you're going to build a simplified version of a real, extremely common Unix utility: `xxd`. If you've used it before (including in lab), you already know what it does — it dumps the raw contents of any file as hexadecimal bytes, with a readable ASCII sidebar next to each row. If you haven't used it, try it now on any file you have lying around:
 
 ```
-P1
-10 10
-1
-0 0 0 0 0 0 0 0 0 0
-0 0 1 0 0 0 0 1 0 0
-0 0 1 0 0 0 0 1 0 0
-0 0 1 0 0 0 0 1 0 0
-0 0 0 0 0 0 0 0 0 0
-1 0 0 0 0 0 0 0 0 1
-0 1 0 0 0 0 0 0 1 0
-0 0 1 1 1 1 1 1 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
+xxd myfile.txt | head
 ```
 
-Let's explain line-by-line:
+You'll see output that looks something like this:
 
-1. `P2` - This is the "magic number" it ultimately decides what format we are using. `P2` specifically refers to the Portable GreyMap Format in ascii, rather than in raw bytes, more on this later.
-2. `10 10` -  After the magic number, there is two numbers to represent the width and height in that order. These are used to read the rest of the file, automatically making sure that each pixel is put in the correct location.
-3. `1` - This is the scale of all of the numbers, this is saying that the grey scale is maxed at 1 meaning there is only black, 0, and white 1
-4. `0 0 0 0 ...` - This is the actual contents of the file. For black and white grey scale images each number represents the value for that pixel to be drawn to the screen.
+```
+00000000: 4865 6c6c 6f2c 2077 6f72 6c64 2100 0a          Hello, world!...
+```
 
-That "magic number" is the format that is used for identifying how the data will be stored, either as ascii chars that are viewable, or raw binary format for being compact and closer to reality. These are the magic numbers for `.pbm`, `.pgm`, and `.ppm`
+Reading left to right:
 
-- `P1`, `P2`, `P3` = ASCII format (human-readable)
-- `P4`, `P5`, `P6` = Raw binary format (more compact)
+- `00000000:` — the **offset** into the file, in hex, telling you which byte this row starts at
+- `4865 6c6c 6f2c 2077 6f72 6c64 2100 0a` — the raw bytes of the file, each shown as a two-digit hex number
+- `Hello, world!...` — the same bytes, shown as ASCII characters where printable, and a placeholder (usually `.`) where not
 
-Fortunately, Sublime Text and other text editors like VSCode and view this images as they live update. Unfortunately, Sublime Text only supports it for `.pgm` and `.ppm` and only in magic number modes `P5` and `P6`, meaning you will only be able to view the ones after you have generated in binary. With this in mind, we will be focusing on `.pgm` and `.ppm` and be generating in raw binary and then viewing the files.
+That's it. That's the whole tool. It's simple to describe, but building it touches almost everything you'll need for the rest of the semester:
 
-These types of files were picked for this assignment because they are a simple format that represents very closely to how we write directly to memory. With this in mind, we will only be allowing the the use of C binary and hexadecimal numbers for all values other than powers of 2 (0, 1, 2, 4, 8, 16, ...) and heavily relying on C binary/bitwise operators.
+- Opening and reading a file in **binary mode**, not just text mode
+- Treating a file's contents as a plain array of bytes
+- Using a **struct** to represent one row of output
+- Growing a **dynamic array** of those rows as you read more of the file
+- Formatting output carefully with `printf`
+- Parsing command-line arguments (flags like `-c`, `-s`, `-l`)
 
-To use C binary and hexadecimal number representations:
+Notably, none of this requires you to know or use bitwise operators (`&`, `|`, `^`, `<<`, `>>`) or hex/binary literal notation in your own code — you're just *printing* bytes as hex using `printf`'s `%x` format specifier. That part comes in HW1. Consider this the on-ramp: by the time HW1 asks you to open a file in `"rb"` mode, parse a header, and read raw pixel bytes, you'll have already done exactly that once here.
 
-- Prefix with `0b` for binary numbers
-	- `0b1010` for the number 10
-- Prefix with `0x` for hex numbers
-	- `0xABC` for the number 2748
+**A note on verification:** unlike a lot of homework, you can check your own work exactly, byte for byte, against the real thing:
 
-Using these ideas in this homework you will:
+```
+xxd myfile.txt > real_output.txt
+./myxxd myfile.txt > my_output.txt
+diff real_output.txt my_output.txt
+```
 
-- Write/edit simple binary images in black and white
-- Write more complex color images
+If `diff` shows nothing, you match. Use this constantly while developing — don't wait until submission to find out you're off by one somewhere.
 
-**Section 1**: Black and White & Greyscale Images
+## Overview
 
-- Random Noise (BW and Greyscale)
-- Bit-Plane an Image
-- Bitwise Patterns
+Using the starting point provided, you are to create a C project with two main files:
 
-**Section 2**: Color Images
+1. `xxd_clone.c` — Your function implementations
+2. `main.c` — Argument parsing and driver logic that calls your functions
+	1. Should `#include "xxd_clone.c"`
 
-- Random Noise 
-- Bitwise Patterns
-- Bit-Plane an Image
-- Color Channel Fragmentation and Mixing
+The starter zip includes a few sample files of varying size (including at least one whose length is *not* a clean multiple of 16 bytes — pay attention to how your program handles the last, partial row).
 
-## **Section 1**: Black and White & Greyscale Images
+### Task 1: Reading a File into a Byte Buffer (15 points)
 
-Click [here](../homework/HW1_start.zip), to download the starting point that I have created for you. It is also on Brightspace, under Content->Homework 1. Unzip it into the place you are completing Homework 1, Section 1. 
-
-This code will output a simple greyscale image that is a gradient that goes from left to right. Nothing special.
-
-It also contains the images you will read in and use for the parts that require inputs.
-
-### Overview
-
-Using the starting point as a going off point you are to create a C project with two main files for this section:
-
-1. `black_and_white.c` - Function declarations for each problem without them being used
-2. `main.c` - Using all of the aforementioned functions to generate all images in the current directory with correct names
-	1. Should `#include "black_and_white.c"`
-
-All generated images are to be saved as `.pgm` files in this section.
-
-### Task 1: Random Noise Generator (15 points)
-
-Create a function that generates random noise images in both black & white and greyscale
+Create a function that reads an entire file's raw contents into memory.
 
 **Function signature:**
 
 ```c
-void generate_random_noise_bw(const char* filename, int width, int height);
-void generate_random_noise_grey(const char* filename, int width, int height);
+unsigned char* read_file_bytes(const char* filename, long* out_size);
 ```
 
 **Requirements:**
 
-- Use `rand()` to generate random pixel values
-- For black & white: each pixel should be randomly 0 or 1
-	- This means that the max value must be set at 1
-- For greyscale: each pixel should be a random value between 0-255
-- Write in binary format (P5)
-- Both images should be 256x256 pixels
+- Open the file in binary mode (`"rb"`), not text mode
+- Determine the file's size (`fseek`/`ftell`, or `stat`)
+- `malloc` a buffer of the right size
+- `fread` the entire file into that buffer
+- Set `*out_size` to the number of bytes read
+- Return `NULL` (and set `*out_size` to `0`) if the file can't be opened
+- The caller is responsible for `free`-ing the returned buffer — document this clearly with a comment
 
 **Hints:**
 
-- Use `rand() % 2` for binary values
-- Use `rand() % 0xFF` for greyscale values
-- Remember to seed the random number generator with `srand(time(NULL))` in main
+- `fseek(fp, 0, SEEK_END)` followed by `ftell(fp)` is a classic way to get file size, followed by `fseek(fp, 0, SEEK_SET)` to rewind before reading
+- Don't forget to `fclose` before returning
 
-### Task 2: Bit-Plane Extraction (20 points)
+### Task 2: Struct-Based Row Representation (20 points)
 
-Create a function that extracts individual bit planes from a greyscale image.
+Rather than printing directly from the raw buffer, you'll organize the file's contents into an array of rows first. This is good practice for representing structured data with structs, and it's a pattern you'll reuse constantly.
+
+**Struct definition (put this in your header/source, adjust as needed):**
+
+```c
+typedef struct {
+    long offset;                  // byte offset this row starts at
+    unsigned char bytes[16];      // the raw bytes in this row
+    int byte_count;               // how many bytes are actually valid (last row may be partial)
+} HexRow;
+```
 
 **Function signature:**
 
 ```c
-void extract_bit_plane(const char* input_file, const char* output_file, int bit_position);
+HexRow* build_hex_rows(const unsigned char* data, long size, int bytes_per_line, int* out_row_count);
 ```
 
 **Requirements:**
 
-- Read a PGM image
-- Extract the specified bit plane (0-7, where 0 is LSB and 7 is MSB)
-- Create a new PGM where pixels are either 0 or 255 based on that bit
-- Use bitwise AND operation to check if a bit is set
-- Must use binary/hex number representation (0b...)(0x...)
+- Given the byte buffer from Task 1, break it into rows of `bytes_per_line` bytes each
+- Use `malloc`/`realloc` to build a dynamically growing array of `HexRow`s — do not hardcode a maximum file size
+- The final row may have fewer than `bytes_per_line` valid bytes — set `byte_count` accordingly, and make sure you don't read past the end of `data`
+- Set `*out_row_count` to the total number of rows created
+- Caller is responsible for freeing the returned array
 
-**Example:** If a pixel value is `0b10110101` (181):
+### Task 3: Printing the Hex + ASCII Dump (25 points)
 
-- Bit plane 0 (LSB): 1 → output 255
-- Bit plane 4: 0 → output 0
-- Bit plane 7 (MSB): 1 → output 255
+Create the function that actually produces `xxd`-style output from your row array.
 
-### Task 3: Bitwise Pattern Generation (25 points)
-
-Create functions that generate images using bitwise operations on pixel coordinates.
-
-**Function signatures:**
+**Function signature:**
 
 ```c
-void generate_xor_pattern(const char* filename, int width, int height);
-void generate_and_pattern(const char* filename, int width, int height);
-void generate_or_pattern(const char* filename, int width, int height);
+void print_hex_rows(const HexRow* rows, int row_count, int bytes_per_line);
 ```
 
 **Requirements:**
 
-- For each pixel at position (x, y), calculate the pixel value using:
-    - x XOR y
-    - x AND y
-    - x OR y
-- All operations must use binary operators and hex notation 
-- Generate 256x256 images
-- Output as PGM files
+- For each row, print:
+    - The offset in 8-digit hex, followed by `:`
+    - Each byte in the row as a two-digit hex value (use `%02x`), separated by spaces
+    - If the row is partial (fewer than `bytes_per_line` bytes), pad the hex section with spaces so the ASCII column still lines up for every row
+    - An ASCII sidebar: each byte shown as its character if printable (`isprint`), or `.` if not
+- Match the general shape of real `xxd` output closely enough that a human can visually compare them; exact spacing (e.g. `xxd`'s grouping of bytes in pairs) is a stretch goal, not a requirement — see Task 5
 
 **Hints:**
 
-- These operations create interesting geometric patterns
-- The XOR pattern is particularly famous for creating diagonal lines
+- `isprint()` from `<ctype.h>` tells you whether a byte is a printable ASCII character
+- Build the hex portion and ASCII portion as you go, one row at a time — don't try to build the whole output as one giant string first
 
-### Section 1 Grading Rubric
+### Task 4: Command-Line Flags (25 points)
 
-- Task 1: Random noise generation (15 points)
-- Task 2: Bit-plane extraction (20 points)
-- Task 3: Bitwise patterns (25 points)
-- Code style and comments (10 points)
-- Proper binary/hex notation usage (10 points)
-- Memory management (10 points)
-- Proper file I/O (10 points)
-- **Total: 100 points**
+Update `main.c` to parse real command-line flags, the way actual `xxd` does.
 
-## **Section 2**: Color Images
+**Required flags:**
 
-### Overview
-
-Now you'll work with PPM (color) images. Each pixel has three color channels: Red, Green, and Blue, each ranging from 0-255.
-
-This calls for the `P6` magic number.
-
-In the section folder, create a new file `color_images.c` with the following functions and use them in `main.c` the same as the previous.
-
-### Task 1: Color Random Noise (15 points)
-
-Create a function that generates random color noise.
-
-**Function signature:**
-
-```c
-void generate_random_noise_color(const char* filename, int width, int height);
-```
+- `-c <width>` — bytes per line (default 16 if not specified)
+- `-s <offset>` — start dumping from this byte offset instead of the beginning of the file
+- `-l <length>` — only dump this many bytes, instead of the whole file
+- `-o <output_file>` — write output to a file instead of `stdout`
 
 **Requirements:**
 
-- Generate 256x256 image
-- Each color channel (R, G, B) should be random (0-255)
-- Write in binary format (P6)
-- Must write RGB values sequentially for each pixel
-
-### Task 2: Color Bitwise Patterns (20 points)
-
-Create functions that generate color patterns using bitwise operations.
-
-**Function signatures:**
-
-```c
-void generate_rgb_pattern_1(const char* filename, int width, int height);
-void generate_rgb_pattern_2(const char* filename, int width, int height);
-void generate_rgb_pattern_3(const char* filename, int width, int height);
-```
-
-**Requirements:**
-
-- Create three DIFFERENT color pattern generators
-- Each function must generate a 256x256 PPM image
-- Each color channel (R, G, B) must be calculated using a DIFFERENT combination of:
-    - The pixel's x-coordinate
-    - The pixel's y-coordinate
-    - At least TWO different bitwise operations per pattern
-- You must use at least 4 of these bitwise operations across all three patterns:
-    - XOR (`^`)
-    - AND (`&`)
-    - OR (`|`)
-    - Left shift (`<<`)
-    - Right shift (`>>`)
-    - NOT (`~`)
-- Each channel's formula must produce values in the range 0-255
-- You may NOT use the same formula for all three channels in a single pattern
-- All numeric constants must be in hexadecimal (0x...) or binary (0b...) notation
-
-**Examples of valid operations:**
-
-```c
-// Using coordinates with bitwise ops
-R = (x ^ y) & 0xFF;           // XOR coordinates, mask to byte
-G = ((x << 2) | y) & 0xFF;    // Shift and OR
-B = (~(x & y)) & 0xFF;        // AND then invert
-```
-
-**Grading:**
-
-- Pattern 1: Uses at least 2 different bitwise operators (7 points)
-- Pattern 2: Uses at least 2 different bitwise operators, different from pattern 1 (7 points)
-- Pattern 3: Most creative/interesting pattern (6 points)
+- Parse `argv` manually using `strcmp` (no `getopt` requirement, though you're welcome to use it if you already know it)
+- Validate arguments — if a filename is missing, or a flag's value doesn't parse as a number, print a usage message and exit cleanly rather than crashing
+- `-s` and `-l` should affect *which* bytes get read/dumped, not just which get displayed — i.e., don't read the whole file if `-l` says you only need the first 100 bytes
+- If `-o` is given, all dump output goes to that file instead of the terminal
 
 **Hints:**
 
-- Start by experimenting with simple combinations
-- The `& 0xFF` operation ensures your result stays in 0-255 range
-- Different shift amounts create different visual effects
-- Combining operators (like `(x ^ y) & (x | y)`) creates complex patterns
-- View your images to see if they're interesting before submitting!
+- `atoi`/`strtol` for parsing numeric flag values
+- A minimal usage message (e.g. `Usage: myxxd [-c width] [-s offset] [-l length] [-o outfile] <file>`) is expected if arguments are malformed
 
-### Task 3: Bit-Plane Color Extraction (20 points)
+### Task 5: Stretch Goals (not required, up to 15 bonus points)
 
-Extract bit planes from color images for each channel separately.
+Pick any of the following if you want to push further:
 
-**Function signature:**
+- Match real `xxd`'s exact spacing, including its grouping of bytes into pairs with an extra space every 8 bytes
+- Add a `-r` "reverse" mode that reads a hex dump back in and reconstructs the original binary file
+- Add a byte-pattern search: given a short ASCII string, scan the buffer and print every offset where it occurs
+- Add a `-g` flag to change the byte-grouping width in the hex output (matches real `xxd`'s `-g`)
 
-```c
-void extract_color_bit_plane(const char* input_file, const char* output_file, 
-                             char channel, int bit_position);
-```
+## Grading Rubric
 
-**Requirements:**
+- Task 1: Reading a file into a byte buffer (15 points)
+- Task 2: Struct-based row representation (20 points)
+- Task 3: Hex + ASCII dump output (25 points)
+- Task 4: Command-line flag parsing (25 points)
+- Code style and comments (5 points)
+- Memory management — no leaks, no missing frees (10 points)
+- **Total: 100 points** (+ up to 15 bonus for Task 5)
 
-- `channel` parameter: 'R', 'G', or 'B'
-- Extract specified bit plane from chosen channel
-- Output a greyscale PGM showing that bit plane
-- Other channels' bits should be ignored
+## Verifying Your Work
 
-For this ones implementation, show each channel in a different image.
-### Task 4: Channel Fragmentation and Mixing (25 points)
+Before submitting, run your program against real `xxd` on at least three different files (including one whose size is not a multiple of 16, and one that's empty or very small) and confirm with `diff` that your output matches. Include a short note in your submission (a comment in `main.c` or a `NOTES.md`) listing which files you tested and confirming they matched.
 
-Create functions to separate and recombine color channels.
+## Looking Ahead
 
-**Function signatures:**
-
-```c
-void separate_channels(const char* input_file, const char* r_out, 
-                       const char* g_out, const char* b_out);
-void mix_channels(const char* input_file_a, const char* input_file_b, 
-					const char* output_file);
-```
-
-**Requirements:**
-
-- `separate_channels`: Create three color images, for each color channel, where all other color channels are removed
-- `mix_channels`: Take two images and xor their color channels together
-
-### Section 2 Grading Rubric
-
-- Task 1: Color random noise (15 points)
-- Task 2: Color bitwise patterns (20 points)
-- Task 3: Color bit-plane extraction (20 points)
-- Task 4: Channel operations (25 points)
-- Code style and comments (10 points)
-- Proper binary/hex notation (10 points)
-- **Total: 100 points**
+The pattern you're building here — open a file in binary mode, read raw bytes into a buffer, interpret those bytes according to some structure, and produce readable output — is exactly the pattern HW1 (the Netpbm image assignment) builds on, except there the "structure" is a PGM/PPM header and pixel grid instead of a generic hex dump. It's also the same basic pattern you'll eventually use to inspect and build memory/register state in a CPU simulator later in the course, so it's worth understanding solidly now.
 
 ## Submission Guidelines
 
 ### What to Submit
-#### Section 1 (in folder named `section1/`):
 
-- `black_and_white.c` - Your function implementations
-- `main.c` - Driver program that calls all functions
-- All generated `.pgm` files from your program
-
-#### Section 2 (in folder named `section2/`):
-
-- `color_images.c` - Your function implementations
-- `main.c` - Driver program that calls all functions (can include black_and_white.c if you want both sections in one main)
-- All generated `.ppm` and `.pgm` files from your program
-
+- `xxd_clone.c` — Your function implementations
+- `main.c` — Driver program with argument parsing
+- A short `NOTES.md` documenting the files you tested against real `xxd` and confirming your output matched

@@ -1,6 +1,6 @@
 # CS220 - Computer Organization
 
-Welcome to CS 220, Spring 2026!
+Welcome to CS 220, Fall 2026!
 
 This site serves as the main entry point for the course and will be the means of distributing course material. All information on here will be translated to Brightspace for grades, due dates, and handing in assignments.
 
