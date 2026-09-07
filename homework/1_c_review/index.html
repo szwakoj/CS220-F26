@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../gcc_install/">
+      
       
       
         
@@ -19,7 +21,7 @@
     
     
       
-        <title>C Review: Binary Image Memory Reading/Writing - CS 220 - Computer Organization</title>
+        <title>Homework 1 - xxd - CS 220 - Computer Organization</title>
       
     
     
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#c-review-binary-image-memory-readingwriting" class="md-skip">
+        <a href="#c-review-building-xxd-a-binary-file-explorer" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              C Review: Binary Image Memory Reading/Writing
+              Homework 1 - xxd
             
           </span>
         </div>
@@ -314,10 +316,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../how_to_hand_in/" class="md-tabs__link">
           
   
@@ -714,28 +718,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -753,7 +760,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -820,6 +827,203 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 - xxd
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 - xxd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#due-date-91926" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Due Date: 9/19/26
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-1-reading-a-file-into-a-byte-buffer-15-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 1: Reading a File into a Byte Buffer (15 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-2-struct-based-row-representation-20-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 2: Struct-Based Row Representation (20 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-3-printing-the-hex-ascii-dump-25-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 3: Printing the Hex + ASCII Dump (25 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-4-command-line-flags-25-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 4: Command-Line Flags (25 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading-rubric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grading Rubric
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submission-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submission Guidelines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Submission Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-to-submit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to Submit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -854,10 +1058,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#due-date-22726" class="md-nav__link">
+  <a href="#due-date-91926" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Due Date: 2/27/26
+        Due Date: 9/19/26
       
     </span>
   </a>
@@ -876,18 +1080,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#section-1-black-and-white-greyscale-images" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Section 1: Black and White &amp; Greyscale Images
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Section 1: Black and White &amp; Greyscale Images">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -896,13 +1088,14 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#task-1-random-noise-generator-15-points" class="md-nav__link">
+  <a href="#task-1-reading-a-file-into-a-byte-buffer-15-points" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task 1: Random Noise Generator (15 points)
+        Task 1: Reading a File into a Byte Buffer (15 points)
       
     </span>
   </a>
@@ -910,10 +1103,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-2-bit-plane-extraction-20-points" class="md-nav__link">
+  <a href="#task-2-struct-based-row-representation-20-points" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task 2: Bit-Plane Extraction (20 points)
+        Task 2: Struct-Based Row Representation (20 points)
       
     </span>
   </a>
@@ -921,10 +1114,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-3-bitwise-pattern-generation-25-points" class="md-nav__link">
+  <a href="#task-3-printing-the-hex-ascii-dump-25-points" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task 3: Bitwise Pattern Generation (25 points)
+        Task 3: Printing the Hex + ASCII Dump (25 points)
       
     </span>
   </a>
@@ -932,10 +1125,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#section-1-grading-rubric" class="md-nav__link">
+  <a href="#task-4-command-line-flags-25-points" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Section 1 Grading Rubric
+        Task 4: Command-Line Flags (25 points)
       
     </span>
   </a>
@@ -948,85 +1141,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#section-2-color-images" class="md-nav__link">
+  <a href="#grading-rubric" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Section 2: Color Images
+        Grading Rubric
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Section 2: Color Images">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#overview_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-1-color-random-noise-15-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 1: Color Random Noise (15 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-2-color-bitwise-patterns-20-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 2: Color Bitwise Patterns (20 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-3-bit-plane-color-extraction-20-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 3: Bit-Plane Color Extraction (20 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-4-channel-fragmentation-and-mixing-25-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 4: Channel Fragmentation and Mixing (25 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#section-2-grading-rubric" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Section 2 Grading Rubric
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1050,34 +1171,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="What to Submit">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#section-1-in-folder-named-section1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Section 1 (in folder named section1/):
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#section-2-in-folder-named-section2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Section 2 (in folder named section2/):
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1104,6 +1197,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../how_to_hand_in/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Homework
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -1111,293 +1244,137 @@
 
 
 
-<h1 id="c-review-binary-image-memory-readingwriting">C Review: Binary Image Memory Reading/Writing</h1>
-<h2 id="due-date-22726">Due Date: 2/27/26</h2>
+<h1 id="c-review-building-xxd-a-binary-file-explorer">C Review: Building <code>xxd</code>, a binary file explorer</h1>
+<h2 id="due-date-91926">Due Date: 9/19/26</h2>
 <h2 id="description">Description</h2>
-<p>In this homework, you will be learning to manipulate information using raw binary. In order to visualize the various binary operations we are doing, we will be using the PBM/PGM/PPM  image formats as a way of quickly writing pixel information directly to memory.</p>
-<p>For more info on the PBM/PGM/PPM file format, the Wikipedia page for them is a pretty good resource along side the specifications that I could find:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Netpbm">Netpbm Wikipedia Page</a></li>
-<li><a href="https://netpbm.sourceforge.net/">Netpbm Specifications</a><ul>
-<li><a href="https://netpbm.sourceforge.net/doc/pbm.html">PBM Spec</a></li>
-<li><a href="https://netpbm.sourceforge.net/doc/pgm.html">PGM Spec</a></li>
-<li><a href="https://netpbm.sourceforge.net/doc/ppm.html">PPM Spec</a></li>
-</ul>
-</li>
-</ul>
-<p>The spark notes version is that "Netpbm" or "<strong>Net</strong>work <strong>P</strong>ortable <strong>B</strong>it<strong>m</strong>ap Format" is a collection of tools and specifications for portable graphics file formats. They have three main types of portable formats that can be opened by nearly any text editor:</p>
-<ul>
-<li><strong>PBM</strong> (Portable BitMap Format) - Each pixel is either a 1 or 0, for white or black respectively</li>
-<li><strong>PGM</strong> (Portable GreyMap Format) - Typically, each pixel can be any number between 0-255 signifying how grey the pixel is, with 0 being black and 255 being white</li>
-<li><strong>PPM</strong> (Portable PixMap Format) - Each pixel now has three numbers ranging from 0-255, for each red, green, and blue color channels</li>
-</ul>
-<p>Each type of file defines ways of writing pixels to an image file in a very general way, it is so general I can show the raw form of the file format. The basic one, PBM, binary numbers, 0 to turn off a pixel and 1 to turn it on. The following .pbm file stores a happy face:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>P1
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>10 10
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>1
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>0 0 0 0 0 0 0 0 0 0
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>0 0 1 0 0 0 0 1 0 0
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>0 0 1 0 0 0 0 1 0 0
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>0 0 1 0 0 0 0 1 0 0
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>0 0 0 0 0 0 0 0 0 0
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>1 0 0 0 0 0 0 0 0 1
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>0 1 0 0 0 0 0 0 1 0
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>0 0 1 1 1 1 1 1 0 0
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>0 0 0 0 0 0 0 0 0 0
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>0 0 0 0 0 0 0 0 0 0
+<p>In order to refresh up your C skills and begin getting comfortable with memory at a fundamental level, we will be making a small clone of <code>xxd</code> a binary file explorer. <code>xxd</code> was used in the Compilation Lab to examine the process of compilation by viewing the different by products of <code>gcc</code>. Here we will be making a clone of the program in order to start understanding memory generally, while getting your hands warmed up for the rest of the semester.</p>
+<p><code>xxd</code> dumps the raw contents of any file as hexadecimal bytes, with a readable ASCII sidebar next to each row. If you haven't used it, try it now on any file you have lying around:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>xxd myfile.txt | head
 </span></code></pre></div>
-<p>Let's explain line-by-line:</p>
+<p>You'll see output that looks something like this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>00000000: 4865 6c6c 6f2c 2077 6f72 6c64 2100 0a          Hello, world!...
+</span></code></pre></div>
+<p>Reading left to right:</p>
+<ul>
+<li><code>00000000:</code> - the offset into the file, in hex, telling you which byte this row starts at</li>
+<li><code>4865 6c6c 6f2c 2077 6f72 6c64 2100 0a</code> - the raw bytes of the file, each shown as a two-digit hex number</li>
+<li><code>Hello, world!...</code> - the same bytes, shown as ASCII characters where printable, and a placeholder (usually <code>.</code>) where not</li>
+</ul>
+<p>That's it. That's the whole tool. It's simple to describe, but building it touches almost everything you'll need for the rest of the semester:</p>
+<ul>
+<li>Opening and reading a file in <strong>binary mode</strong>, not just text mode</li>
+<li>Treating a file's contents as a plain array of bytes</li>
+<li>Using a <strong>struct</strong> to represent one row of output</li>
+<li>Growing a <strong>dynamic array</strong> of those rows as you read more of the file</li>
+<li>Formatting output carefully with <code>printf</code></li>
+</ul>
+<p><strong>A note on verification:</strong> unlike a lot of homework, you can check your own work exactly, byte for byte, against the real thing:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>xxd myfile.txt &gt; real_output.txt
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>./myxxd myfile.txt &gt; my_output.txt
+</span></code></pre></div>
+<h2 id="overview">Overview</h2>
+<p>Using the starting point provided, you are to create a C project with two main files:</p>
 <ol>
-<li><code>P2</code> - This is the "magic number" it ultimately decides what format we are using. <code>P2</code> specifically refers to the Portable GreyMap Format in ascii, rather than in raw bytes, more on this later.</li>
-<li><code>10 10</code> -  After the magic number, there is two numbers to represent the width and height in that order. These are used to read the rest of the file, automatically making sure that each pixel is put in the correct location.</li>
-<li><code>1</code> - This is the scale of all of the numbers, this is saying that the grey scale is maxed at 1 meaning there is only black, 0, and white 1</li>
-<li><code>0 0 0 0 ...</code> - This is the actual contents of the file. For black and white grey scale images each number represents the value for that pixel to be drawn to the screen.</li>
-</ol>
-<p>That "magic number" is the format that is used for identifying how the data will be stored, either as ascii chars that are viewable, or raw binary format for being compact and closer to reality. These are the magic numbers for <code>.pbm</code>, <code>.pgm</code>, and <code>.ppm</code></p>
-<ul>
-<li><code>P1</code>, <code>P2</code>, <code>P3</code> = ASCII format (human-readable)</li>
-<li><code>P4</code>, <code>P5</code>, <code>P6</code> = Raw binary format (more compact)</li>
-</ul>
-<p>Fortunately, Sublime Text and other text editors like VSCode and view this images as they live update. Unfortunately, Sublime Text only supports it for <code>.pgm</code> and <code>.ppm</code> and only in magic number modes <code>P5</code> and <code>P6</code>, meaning you will only be able to view the ones after you have generated in binary. With this in mind, we will be focusing on <code>.pgm</code> and <code>.ppm</code> and be generating in raw binary and then viewing the files.</p>
-<p>These types of files were picked for this assignment because they are a simple format that represents very closely to how we write directly to memory. With this in mind, we will only be allowing the the use of C binary and hexadecimal numbers for all values other than powers of 2 (0, 1, 2, 4, 8, 16, ...) and heavily relying on C binary/bitwise operators.</p>
-<p>To use C binary and hexadecimal number representations:</p>
-<ul>
-<li>Prefix with <code>0b</code> for binary numbers<ul>
-<li><code>0b1010</code> for the number 10</li>
-</ul>
-</li>
-<li>Prefix with <code>0x</code> for hex numbers<ul>
-<li><code>0xABC</code> for the number 2748</li>
-</ul>
-</li>
-</ul>
-<p>Using these ideas in this homework you will:</p>
-<ul>
-<li>Write/edit simple binary images in black and white</li>
-<li>Write more complex color images</li>
-</ul>
-<p><strong>Section 1</strong>: Black and White &amp; Greyscale Images</p>
-<ul>
-<li>Random Noise (BW and Greyscale)</li>
-<li>Bit-Plane an Image</li>
-<li>Bitwise Patterns</li>
-</ul>
-<p><strong>Section 2</strong>: Color Images</p>
-<ul>
-<li>Random Noise </li>
-<li>Bitwise Patterns</li>
-<li>Bit-Plane an Image</li>
-<li>Color Channel Fragmentation and Mixing</li>
-</ul>
-<h2 id="section-1-black-and-white-greyscale-images"><strong>Section 1</strong>: Black and White &amp; Greyscale Images</h2>
-<p>Click <a href="../HW1_start.zip">here</a>, to download the starting point that I have created for you. It is also on Brightspace, under Content-&gt;Homework 1. Unzip it into the place you are completing Homework 1, Section 1. </p>
-<p>This code will output a simple greyscale image that is a gradient that goes from left to right. Nothing special.</p>
-<p>It also contains the images you will read in and use for the parts that require inputs.</p>
-<h3 id="overview">Overview</h3>
-<p>Using the starting point as a going off point you are to create a C project with two main files for this section:</p>
-<ol>
-<li><code>black_and_white.c</code> - Function declarations for each problem without them being used</li>
-<li><code>main.c</code> - Using all of the aforementioned functions to generate all images in the current directory with correct names<ol>
-<li>Should <code>#include "black_and_white.c"</code></li>
+<li><code>xxd_clone.c</code> - Your function implementations</li>
+<li><code>xxd_clone.h</code> - Your function declarations</li>
+<li><code>main.c</code> - Argument parsing and driver logic that calls your functions<ol>
+<li>Should <code>#include "xxd_clone.h"</code></li>
 </ol>
 </li>
 </ol>
-<p>All generated images are to be saved as <code>.pgm</code> files in this section.</p>
-<h3 id="task-1-random-noise-generator-15-points">Task 1: Random Noise Generator (15 points)</h3>
-<p>Create a function that generates random noise images in both black &amp; white and greyscale</p>
+<h3 id="task-1-reading-a-file-into-a-byte-buffer-15-points">Task 1: Reading a File into a Byte Buffer (15 points)</h3>
+<p>Create a function that reads an entire file's raw contents into memory.</p>
 <p><strong>Function signature:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_random_noise_bw</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_random_noise_grey</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">read_file_bytes</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="o">*</span><span class="w"> </span><span class="n">out_size</span><span class="p">);</span>
 </span></code></pre></div>
 <p><strong>Requirements:</strong></p>
 <ul>
-<li>Use <code>rand()</code> to generate random pixel values</li>
-<li>For black &amp; white: each pixel should be randomly 0 or 1<ul>
-<li>This means that the max value must be set at 1</li>
-</ul>
-</li>
-<li>For greyscale: each pixel should be a random value between 0-255</li>
-<li>Write in binary format (P5)</li>
-<li>Both images should be 256x256 pixels</li>
+<li>Open the file in binary mode (<code>"rb"</code>), not text mode</li>
+<li>Determine the file's size (<code>fseek</code>/<code>ftell</code>, or <code>stat</code>)</li>
+<li><code>malloc</code> a buffer of the right size</li>
+<li><code>fread</code> the entire file into that buffer</li>
+<li>Set <code>*out_size</code> to the number of bytes read</li>
+<li>Return <code>NULL</code> (and set <code>*out_size</code> to <code>0</code>) if the file can't be opened</li>
+<li>The caller is responsible for <code>free</code>-ing the returned buffer</li>
 </ul>
 <p><strong>Hints:</strong></p>
 <ul>
-<li>Use <code>rand() % 2</code> for binary values</li>
-<li>Use <code>rand() % 0xFF</code> for greyscale values</li>
-<li>Remember to seed the random number generator with <code>srand(time(NULL))</code> in main</li>
+<li><code>fseek(fp, 0, SEEK_END)</code> followed by <code>ftell(fp)</code> is a classic way to get file size, followed by <code>fseek(fp, 0, SEEK_SET)</code> to rewind before reading</li>
+<li>Don't forget to <code>fclose</code> before returning</li>
 </ul>
-<h3 id="task-2-bit-plane-extraction-20-points">Task 2: Bit-Plane Extraction (20 points)</h3>
-<p>Create a function that extracts individual bit planes from a greyscale image.</p>
+<h3 id="task-2-struct-based-row-representation-20-points">Task 2: Struct-Based Row Representation (20 points)</h3>
+<p>Rather than printing directly from the raw buffer, you'll organize the file's contents into an array of rows first. This is good practice for representing structured data with structs, and it's a pattern you'll reuse constantly.</p>
+<p><strong>Struct definition (put this in your header, adjust as needed):</strong></p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w">                  </span><span class="c1">// byte offset this row starts at</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">bytes</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w">      </span><span class="c1">// the raw bytes in this row</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">byte_count</span><span class="p">;</span><span class="w">               </span><span class="c1">// how many bytes are actually valid (last row may be partial)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span><span class="w"> </span><span class="n">HexRow</span><span class="p">;</span>
+</span></code></pre></div>
 <p><strong>Function signature:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">extract_bit_plane</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">output_file</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bit_position</span><span class="p">);</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">HexRow</span><span class="o">*</span><span class="w"> </span><span class="nf">build_hex_rows</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bytes_per_line</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">out_row_count</span><span class="p">);</span>
 </span></code></pre></div>
 <p><strong>Requirements:</strong></p>
 <ul>
-<li>Read a PGM image</li>
-<li>Extract the specified bit plane (0-7, where 0 is LSB and 7 is MSB)</li>
-<li>Create a new PGM where pixels are either 0 or 255 based on that bit</li>
-<li>Use bitwise AND operation to check if a bit is set</li>
-<li>Must use binary/hex number representation (0b...)(0x...)</li>
+<li>Given the byte buffer from Task 1, break it into rows of <code>bytes_per_line</code> bytes each</li>
+<li>Use <code>malloc</code>/<code>realloc</code> to build a dynamically growing array of <code>HexRow</code>s, do not hardcode a maximum file size</li>
+<li>The final row may have fewer than <code>bytes_per_line</code> valid bytes, set <code>byte_count</code> accordingly, and make sure you don't read past the end of <code>data</code></li>
+<li>Set <code>*out_row_count</code> to the total number of rows created</li>
+<li>Caller is responsible for freeing the returned array</li>
 </ul>
-<p><strong>Example:</strong> If a pixel value is <code>0b10110101</code> (181):</p>
-<ul>
-<li>Bit plane 0 (LSB): 1 → output 255</li>
-<li>Bit plane 4: 0 → output 0</li>
-<li>Bit plane 7 (MSB): 1 → output 255</li>
-</ul>
-<h3 id="task-3-bitwise-pattern-generation-25-points">Task 3: Bitwise Pattern Generation (25 points)</h3>
-<p>Create functions that generate images using bitwise operations on pixel coordinates.</p>
-<p><strong>Function signatures:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_xor_pattern</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_and_pattern</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_or_pattern</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
+<h3 id="task-3-printing-the-hex-ascii-dump-25-points">Task 3: Printing the Hex + ASCII Dump (25 points)</h3>
+<p>Create the function that produces <code>xxd</code>-style output from your row array.</p>
+<p><strong>Function signature:</strong></p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">print_hex_rows</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HexRow</span><span class="o">*</span><span class="w"> </span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">row_count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bytes_per_line</span><span class="p">);</span>
 </span></code></pre></div>
 <p><strong>Requirements:</strong></p>
 <ul>
-<li>For each pixel at position (x, y), calculate the pixel value using:<ul>
-<li>x XOR y</li>
-<li>x AND y</li>
-<li>x OR y</li>
+<li>For each row, print:<ul>
+<li>The offset in 8-digit hex, followed by <code>:</code></li>
+<li>Each byte in the row as a two-digit hex value (use <code>%02x</code>), separated by spaces</li>
+<li>If the row is partial (fewer than <code>bytes_per_line</code> bytes), pad the hex section with spaces so the ASCII column still lines up for every row</li>
+<li>An ASCII sidebar: each byte shown as its character if printable (<code>isprint</code>), or <code>.</code> if not</li>
 </ul>
 </li>
-<li>All operations must use binary operators and hex notation </li>
-<li>Generate 256x256 images</li>
-<li>Output as PGM files</li>
+<li>Match the general shape of real <code>xxd</code> output closely enough that a human can visually compare them</li>
 </ul>
 <p><strong>Hints:</strong></p>
 <ul>
-<li>These operations create interesting geometric patterns</li>
-<li>The XOR pattern is particularly famous for creating diagonal lines</li>
+<li><code>isprint()</code> from <code>&lt;ctype.h&gt;</code> tells you whether a byte is a printable ASCII character</li>
+<li>Build the hex portion and ASCII portion as you go, one row at a time — don't try to build the whole output as one giant string first</li>
 </ul>
-<h3 id="section-1-grading-rubric">Section 1 Grading Rubric</h3>
-<ul>
-<li>Task 1: Random noise generation (15 points)</li>
-<li>Task 2: Bit-plane extraction (20 points)</li>
-<li>Task 3: Bitwise patterns (25 points)</li>
-<li>Code style and comments (10 points)</li>
-<li>Proper binary/hex notation usage (10 points)</li>
-<li>Memory management (10 points)</li>
-<li>Proper file I/O (10 points)</li>
-<li><strong>Total: 100 points</strong></li>
-</ul>
-<h2 id="section-2-color-images"><strong>Section 2</strong>: Color Images</h2>
-<h3 id="overview_1">Overview</h3>
-<p>Now you'll work with PPM (color) images. Each pixel has three color channels: Red, Green, and Blue, each ranging from 0-255.</p>
-<p>This calls for the <code>P6</code> magic number.</p>
-<p>In the section folder, create a new file <code>color_images.c</code> with the following functions and use them in <code>main.c</code> the same as the previous.</p>
-<h3 id="task-1-color-random-noise-15-points">Task 1: Color Random Noise (15 points)</h3>
-<p>Create a function that generates random color noise.</p>
-<p><strong>Function signature:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_random_noise_color</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-</span></code></pre></div>
+<h3 id="task-4-command-line-flags-25-points">Task 4: Command-Line Flags (25 points)</h3>
+<p>Update <code>main.c</code> to take in a filename as a command line argument and utilize the functions you created to finalize your version of <code>xxd</code>.</p>
 <p><strong>Requirements:</strong></p>
 <ul>
-<li>Generate 256x256 image</li>
-<li>Each color channel (R, G, B) should be random (0-255)</li>
-<li>Write in binary format (P6)</li>
-<li>Must write RGB values sequentially for each pixel</li>
+<li>Validate argument - if a filename is missing, print a usage message and exit cleanly rather than crashing</li>
+<li>Use your functions in the way they were intended</li>
 </ul>
-<h3 id="task-2-color-bitwise-patterns-20-points">Task 2: Color Bitwise Patterns (20 points)</h3>
-<p>Create functions that generate color patterns using bitwise operations.</p>
-<p><strong>Function signatures:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_rgb_pattern_1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_rgb_pattern_2</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">generate_rgb_pattern_3</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
-</span></code></pre></div>
-<p><strong>Requirements:</strong></p>
+<h2 id="grading-rubric">Grading Rubric</h2>
 <ul>
-<li>Create three DIFFERENT color pattern generators</li>
-<li>Each function must generate a 256x256 PPM image</li>
-<li>Each color channel (R, G, B) must be calculated using a DIFFERENT combination of:<ul>
-<li>The pixel's x-coordinate</li>
-<li>The pixel's y-coordinate</li>
-<li>At least TWO different bitwise operations per pattern</li>
-</ul>
-</li>
-<li>You must use at least 4 of these bitwise operations across all three patterns:<ul>
-<li>XOR (<code>^</code>)</li>
-<li>AND (<code>&amp;</code>)</li>
-<li>OR (<code>|</code>)</li>
-<li>Left shift (<code>&lt;&lt;</code>)</li>
-<li>Right shift (<code>&gt;&gt;</code>)</li>
-<li>NOT (<code>~</code>)</li>
-</ul>
-</li>
-<li>Each channel's formula must produce values in the range 0-255</li>
-<li>You may NOT use the same formula for all three channels in a single pattern</li>
-<li>All numeric constants must be in hexadecimal (0x...) or binary (0b...) notation</li>
-</ul>
-<p><strong>Examples of valid operations:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Using coordinates with bitwise ops</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w">           </span><span class="c1">// XOR coordinates, mask to byte</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w">    </span><span class="c1">// Shift and OR</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w">        </span><span class="c1">// AND then invert</span>
-</span></code></pre></div>
-<p><strong>Grading:</strong></p>
-<ul>
-<li>Pattern 1: Uses at least 2 different bitwise operators (7 points)</li>
-<li>Pattern 2: Uses at least 2 different bitwise operators, different from pattern 1 (7 points)</li>
-<li>Pattern 3: Most creative/interesting pattern (6 points)</li>
-</ul>
-<p><strong>Hints:</strong></p>
-<ul>
-<li>Start by experimenting with simple combinations</li>
-<li>The <code>&amp; 0xFF</code> operation ensures your result stays in 0-255 range</li>
-<li>Different shift amounts create different visual effects</li>
-<li>Combining operators (like <code>(x ^ y) &amp; (x | y)</code>) creates complex patterns</li>
-<li>View your images to see if they're interesting before submitting!</li>
-</ul>
-<h3 id="task-3-bit-plane-color-extraction-20-points">Task 3: Bit-Plane Color Extraction (20 points)</h3>
-<p>Extract bit planes from color images for each channel separately.</p>
-<p><strong>Function signature:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">extract_color_bit_plane</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">output_file</span><span class="p">,</span><span class="w"> </span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">                             </span><span class="kt">char</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bit_position</span><span class="p">);</span>
-</span></code></pre></div>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li><code>channel</code> parameter: 'R', 'G', or 'B'</li>
-<li>Extract specified bit plane from chosen channel</li>
-<li>Output a greyscale PGM showing that bit plane</li>
-<li>Other channels' bits should be ignored</li>
-</ul>
-<p>For this ones implementation, show each channel in a different image.</p>
-<h3 id="task-4-channel-fragmentation-and-mixing-25-points">Task 4: Channel Fragmentation and Mixing (25 points)</h3>
-<p>Create functions to separate and recombine color channels.</p>
-<p><strong>Function signatures:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">separate_channels</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">r_out</span><span class="p">,</span><span class="w"> </span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">g_out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">b_out</span><span class="p">);</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">mix_channels</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">input_file_a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">input_file_b</span><span class="p">,</span><span class="w"> </span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">output_file</span><span class="p">);</span>
-</span></code></pre></div>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li><code>separate_channels</code>: Create three color images, for each color channel, where all other color channels are removed</li>
-<li><code>mix_channels</code>: Take two images and xor their color channels together</li>
-</ul>
-<h3 id="section-2-grading-rubric">Section 2 Grading Rubric</h3>
-<ul>
-<li>Task 1: Color random noise (15 points)</li>
-<li>Task 2: Color bitwise patterns (20 points)</li>
-<li>Task 3: Color bit-plane extraction (20 points)</li>
-<li>Task 4: Channel operations (25 points)</li>
-<li>Code style and comments (10 points)</li>
-<li>Proper binary/hex notation (10 points)</li>
-<li><strong>Total: 100 points</strong></li>
+<li>Task 1: Reading a file into a byte buffer (15 points)</li>
+<li>Task 2: Struct-based row representation (20 points)</li>
+<li>Task 3: Hex + ASCII dump output (25 points)</li>
+<li>Task 4: Main file (25 points)</li>
+<li>Code style and comments (5 points)</li>
+<li>Memory management - no leaks, no missing frees (10 points)</li>
+<li><strong>Total: 100 points</strong> (+ up to 15 bonus for Task 5)</li>
 </ul>
 <h2 id="submission-guidelines">Submission Guidelines</h2>
 <h3 id="what-to-submit">What to Submit</h3>
-<h4 id="section-1-in-folder-named-section1">Section 1 (in folder named <code>section1/</code>):</h4>
 <ul>
-<li><code>black_and_white.c</code> - Your function implementations</li>
-<li><code>main.c</code> - Driver program that calls all functions</li>
-<li>All generated <code>.pgm</code> files from your program</li>
+<li><code>xxd_clone.c</code> - Your function implementations</li>
+<li><code>xxd_clone.h</code> - Your function declarations</li>
+<li><code>main.c</code> - Driver program </li>
 </ul>
-<h4 id="section-2-in-folder-named-section2">Section 2 (in folder named <code>section2/</code>):</h4>
-<ul>
-<li><code>color_images.c</code> - Your function implementations</li>
-<li><code>main.c</code> - Driver program that calls all functions (can include black_and_white.c if you want both sections in one main)</li>
-<li>All generated <code>.ppm</code> and <code>.pgm</code> files from your program</li>
-</ul>
+<p>Organize them like so:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>└── CS220-HW1-Lastname/
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    ├── xxd_clone.c
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    ├── xxd_clone.h
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    └── main.c
+</span></code></pre></div></p>
+<p>Compress the folder into <code>CS220-HW1-Lastname</code> before handing into Brightspace. </p>
 
 
 
