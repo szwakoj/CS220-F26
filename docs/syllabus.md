@@ -5,7 +5,7 @@
 **CRN:** 1031
 
 
-**Semester**: Spring 2026
+**Semester**: Fall 2026
 
 On-Campus, 4 Credits
 
