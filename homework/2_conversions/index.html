@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../gcc_install/">
+        <link rel="prev" href="../1_c_review/">
       
-      
-        <link rel="next" href="../2_conversions/">
       
       
         
@@ -23,7 +21,7 @@
     
     
       
-        <title>Homework 1 - xxd - CS 220 - Computer Organization</title>
+        <title>Homework 2 - Conversions - CS 220 - Computer Organization</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#c-review-building-xxd-a-binary-file-explorer" class="md-skip">
+        <a href="#homework-2-number-conversions" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Homework 1 - xxd
+              Homework 2 - Conversions
             
           </span>
         </div>
@@ -833,6 +831,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_c_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework 1 - xxd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -852,7 +878,7 @@
   <span class="md-ellipsis">
     
   
-    Homework 1 - xxd
+    Homework 2 - Conversions
   
 
     
@@ -870,7 +896,7 @@
   <span class="md-ellipsis">
     
   
-    Homework 1 - xxd
+    Homework 2 - Conversions
   
 
     
@@ -896,10 +922,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#due-date-91926" class="md-nav__link">
+  <a href="#due-sunday-101026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Due Date: 9/19/26
+        Due Sunday 10/10/26
       
     </span>
   </a>
@@ -910,7 +936,7 @@
   <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Description
+        Description:
       
     </span>
   </a>
@@ -918,22 +944,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#how-to-hand-in" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        How to Hand In
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-1-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: Conversions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 1: Conversions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#task-1-reading-a-file-into-a-byte-buffer-15-points" class="md-nav__link">
+  <a href="#part-a-converting-to-decimal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task 1: Reading a File into a Byte Buffer (15 points)
+        Part A: Converting to Decimal
       
     </span>
   </a>
@@ -941,32 +978,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-2-struct-based-row-representation-20-points" class="md-nav__link">
+  <a href="#part-b-converting-from-decimal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task 2: Struct-Based Row Representation (20 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-3-printing-the-hex-ascii-dump-25-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 3: Printing the Hex + ASCII Dump (25 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-4-command-line-flags-25-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 4: Command-Line Flags (25 points)
+        Part B: Converting from Decimal
       
     </span>
   </a>
@@ -979,33 +994,94 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grading-rubric" class="md-nav__link">
+  <a href="#section-2-converter-program" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Grading Rubric
+        Section 2: Converter Program
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 2: Converter Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#submission-guidelines" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#task-1-define-your-symbol-set" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Submission Guidelines
+        Task 1: Define Your Symbol Set
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Submission Guidelines">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-2-base-conversion-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 2: Base Conversion Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-3-file-processing-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 3: File Processing and Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grading Breakdown
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grading Breakdown">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-to-submit" class="md-nav__link">
+  <a href="#verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What to Submit
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hints
       
     </span>
   </a>
@@ -1021,34 +1097,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2_conversions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Homework 2 - Conversions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1088,10 +1136,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#due-date-91926" class="md-nav__link">
+  <a href="#due-sunday-101026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Due Date: 9/19/26
+        Due Sunday 10/10/26
       
     </span>
   </a>
@@ -1102,7 +1150,7 @@
   <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Description
+        Description:
       
     </span>
   </a>
@@ -1110,22 +1158,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#how-to-hand-in" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        How to Hand In
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-1-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: Conversions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 1: Conversions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#task-1-reading-a-file-into-a-byte-buffer-15-points" class="md-nav__link">
+  <a href="#part-a-converting-to-decimal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task 1: Reading a File into a Byte Buffer (15 points)
+        Part A: Converting to Decimal
       
     </span>
   </a>
@@ -1133,32 +1192,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-2-struct-based-row-representation-20-points" class="md-nav__link">
+  <a href="#part-b-converting-from-decimal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task 2: Struct-Based Row Representation (20 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-3-printing-the-hex-ascii-dump-25-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 3: Printing the Hex + ASCII Dump (25 points)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-4-command-line-flags-25-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task 4: Command-Line Flags (25 points)
+        Part B: Converting from Decimal
       
     </span>
   </a>
@@ -1171,33 +1208,94 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grading-rubric" class="md-nav__link">
+  <a href="#section-2-converter-program" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Grading Rubric
+        Section 2: Converter Program
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 2: Converter Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#submission-guidelines" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#task-1-define-your-symbol-set" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Submission Guidelines
+        Task 1: Define Your Symbol Set
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Submission Guidelines">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-2-base-conversion-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 2: Base Conversion Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-3-file-processing-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 3: File Processing and Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grading Breakdown
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grading Breakdown">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-to-submit" class="md-nav__link">
+  <a href="#verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What to Submit
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hints
       
     </span>
   </a>
@@ -1274,137 +1372,169 @@
 
 
 
-<h1 id="c-review-building-xxd-a-binary-file-explorer">C Review: Building <code>xxd</code>, a binary file explorer</h1>
-<h2 id="due-date-91926">Due Date: 9/19/26</h2>
-<h2 id="description">Description</h2>
-<p>In order to refresh up your C skills and begin getting comfortable with memory at a fundamental level, we will be making a small clone of <code>xxd</code> a binary file explorer. <code>xxd</code> was used in the Compilation Lab to examine the process of compilation by viewing the different by products of <code>gcc</code>. Here we will be making a clone of the program in order to start understanding memory generally, while getting your hands warmed up for the rest of the semester.</p>
-<p><code>xxd</code> dumps the raw contents of any file as hexadecimal bytes, with a readable ASCII sidebar next to each row. If you haven't used it, try it now on any file you have lying around:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>xxd myfile.txt | head
-</span></code></pre></div>
-<p>You'll see output that looks something like this:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>00000000: 4865 6c6c 6f2c 2077 6f72 6c64 2100 0a          Hello, world!...
-</span></code></pre></div>
-<p>Reading left to right:</p>
+<h1 id="homework-2-number-conversions">Homework 2: Number Conversions</h1>
+<h2 id="due-sunday-101026">Due Sunday 10/10/26</h2>
+<h2 id="description">Description:</h2>
+<p>Number systems are fundamental to computer science. In this assignment, you'll convert numbers between various bases both by hand and programmatically. The first section tests your understanding of the mechanics of base conversion. The second section has you build a general-purpose base converter that works with any base from 2 to 64.</p>
+<h2 id="how-to-hand-in">How to Hand In</h2>
 <ul>
-<li><code>00000000:</code> - the offset into the file, in hex, telling you which byte this row starts at</li>
-<li><code>4865 6c6c 6f2c 2077 6f72 6c64 2100 0a</code> - the raw bytes of the file, each shown as a two-digit hex number</li>
-<li><code>Hello, world!...</code> - the same bytes, shown as ASCII characters where printable, and a placeholder (usually <code>.</code>) where not</li>
-</ul>
-<p>That's it. That's the whole tool. It's simple to describe, but building it touches almost everything you'll need for the rest of the semester:</p>
-<ul>
-<li>Opening and reading a file in <strong>binary mode</strong>, not just text mode</li>
-<li>Treating a file's contents as a plain array of bytes</li>
-<li>Using a <strong>struct</strong> to represent one row of output</li>
-<li>Growing a <strong>dynamic array</strong> of those rows as you read more of the file</li>
-<li>Formatting output carefully with <code>printf</code></li>
-</ul>
-<p><strong>A note on verification:</strong> unlike a lot of homework, you can check your own work exactly, byte for byte, against the real thing:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>xxd myfile.txt &gt; real_output.txt
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>./myxxd myfile.txt &gt; my_output.txt
-</span></code></pre></div>
-<h2 id="overview">Overview</h2>
-<p>Using the starting point provided, you are to create a C project with two main files:</p>
-<ol>
-<li><code>xxd_clone.c</code> - Your function implementations</li>
-<li><code>xxd_clone.h</code> - Your function declarations</li>
-<li><code>main.c</code> - Argument parsing and driver logic that calls your functions<ol>
-<li>Should <code>#include "xxd_clone.h"</code></li>
-</ol>
-</li>
-</ol>
-<h3 id="task-1-reading-a-file-into-a-byte-buffer-15-points">Task 1: Reading a File into a Byte Buffer (15 points)</h3>
-<p>Create a function that reads an entire file's raw contents into memory.</p>
-<p><strong>Function signature:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">read_file_bytes</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="o">*</span><span class="w"> </span><span class="n">out_size</span><span class="p">);</span>
-</span></code></pre></div>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li>Open the file in binary mode (<code>"rb"</code>), not text mode</li>
-<li>Determine the file's size (<code>fseek</code>/<code>ftell</code>, or <code>stat</code>)</li>
-<li><code>malloc</code> a buffer of the right size</li>
-<li><code>fread</code> the entire file into that buffer</li>
-<li>Set <code>*out_size</code> to the number of bytes read</li>
-<li>Return <code>NULL</code> (and set <code>*out_size</code> to <code>0</code>) if the file can't be opened</li>
-<li>The caller is responsible for <code>free</code>-ing the returned buffer</li>
-</ul>
-<p><strong>Hints:</strong></p>
-<ul>
-<li><code>fseek(fp, 0, SEEK_END)</code> followed by <code>ftell(fp)</code> is a classic way to get file size, followed by <code>fseek(fp, 0, SEEK_SET)</code> to rewind before reading</li>
-<li>Don't forget to <code>fclose</code> before returning</li>
-</ul>
-<h3 id="task-2-struct-based-row-representation-20-points">Task 2: Struct-Based Row Representation (20 points)</h3>
-<p>Rather than printing directly from the raw buffer, you'll organize the file's contents into an array of rows first. This is good practice for representing structured data with structs, and it's a pattern you'll reuse constantly.</p>
-<p><strong>Struct definition (put this in your header, adjust as needed):</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w">                  </span><span class="c1">// byte offset this row starts at</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">bytes</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w">      </span><span class="c1">// the raw bytes in this row</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">byte_count</span><span class="p">;</span><span class="w">               </span><span class="c1">// how many bytes are actually valid (last row may be partial)</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span><span class="w"> </span><span class="n">HexRow</span><span class="p">;</span>
-</span></code></pre></div>
-<p><strong>Function signature:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">HexRow</span><span class="o">*</span><span class="w"> </span><span class="nf">build_hex_rows</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bytes_per_line</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">out_row_count</span><span class="p">);</span>
-</span></code></pre></div>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li>Given the byte buffer from Task 1, break it into rows of <code>bytes_per_line</code> bytes each</li>
-<li>Use <code>malloc</code>/<code>realloc</code> to build a dynamically growing array of <code>HexRow</code>s, do not hardcode a maximum file size</li>
-<li>The final row may have fewer than <code>bytes_per_line</code> valid bytes, set <code>byte_count</code> accordingly, and make sure you don't read past the end of <code>data</code></li>
-<li>Set <code>*out_row_count</code> to the total number of rows created</li>
-<li>Caller is responsible for freeing the returned array</li>
-</ul>
-<h3 id="task-3-printing-the-hex-ascii-dump-25-points">Task 3: Printing the Hex + ASCII Dump (25 points)</h3>
-<p>Create the function that produces <code>xxd</code>-style output from your row array.</p>
-<p><strong>Function signature:</strong></p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">print_hex_rows</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HexRow</span><span class="o">*</span><span class="w"> </span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">row_count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bytes_per_line</span><span class="p">);</span>
-</span></code></pre></div>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li>For each row, print:<ul>
-<li>The offset in 8-digit hex, followed by <code>:</code></li>
-<li>Each byte in the row as a two-digit hex value (use <code>%02x</code>), separated by spaces</li>
-<li>If the row is partial (fewer than <code>bytes_per_line</code> bytes), pad the hex section with spaces so the ASCII column still lines up for every row</li>
-<li>An ASCII sidebar: each byte shown as its character if printable (<code>isprint</code>), or <code>.</code> if not</li>
-</ul>
-</li>
-<li>Match the general shape of real <code>xxd</code> output closely enough that a human can visually compare them</li>
-</ul>
-<p><strong>Hints:</strong></p>
-<ul>
-<li><code>isprint()</code> from <code>&lt;ctype.h&gt;</code> tells you whether a byte is a printable ASCII character</li>
-<li>Build the hex portion and ASCII portion as you go, one row at a time — don't try to build the whole output as one giant string first</li>
-</ul>
-<h3 id="task-4-command-line-flags-25-points">Task 4: Command-Line Flags (25 points)</h3>
-<p>Update <code>main.c</code> to take in a filename as a command line argument and utilize the functions you created to finalize your version of <code>xxd</code>.</p>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li>Validate argument - if a filename is missing, print a usage message and exit cleanly rather than crashing</li>
-<li>Use your functions in the way they were intended</li>
-</ul>
-<h2 id="grading-rubric">Grading Rubric</h2>
-<ul>
-<li>Task 1: Reading a file into a byte buffer (15 points)</li>
-<li>Task 2: Struct-based row representation (20 points)</li>
-<li>Task 3: Hex + ASCII dump output (25 points)</li>
-<li>Task 4: Main file (25 points)</li>
-<li>Code style and comments (5 points)</li>
-<li>Memory management - no leaks, no missing frees (10 points)</li>
-<li><strong>Total: 100 points</strong> (+ up to 15 bonus for Task 5)</li>
-</ul>
-<h2 id="submission-guidelines">Submission Guidelines</h2>
-<h3 id="what-to-submit">What to Submit</h3>
-<ul>
-<li><code>xxd_clone.c</code> - Your function implementations</li>
-<li><code>xxd_clone.h</code> - Your function declarations</li>
-<li><code>main.c</code> - Driver program </li>
-</ul>
-<p>Organize them like so:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>└── CS220-HW1-Lastname/
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    ├── xxd_clone.c
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    ├── xxd_clone.h
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    └── main.c
+<li>
+<p>Follow instructions to produce the following files:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── CS220-HW2-Lastname/
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── conversions.png/.jpg/.pdf
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    └── converter.c
 </span></code></pre></div></p>
-<p>Compress the folder into <code>CS220-HW1-Lastname</code> before handing into Brightspace. </p>
+</li>
+<li>
+<p>With all of the above files in a folder, zip it and name it:</p>
+<ul>
+<li>CS220-HW2-Lastname.zip</li>
+<li>Replace "LastName" with your last name</li>
+</ul>
+</li>
+<li>Submit the zip file to Brightspace</li>
+</ul>
+<h2 id="section-1-conversions">Section 1: Conversions</h2>
+<p>Do these conversions by hand. You can write them out on paper, take a picture, scan them, or do it digitally, whatever works. Just make sure your final answer shows your work and is legible. For each conversion, show the steps you took to get there.</p>
+<h3 id="part-a-converting-to-decimal">Part A: Converting to Decimal</h3>
+<p>Convert the following numbers to decimal (base 10). Identify the base of the original number using subscripts.</p>
+<ol>
+<li>10110₂ (binary)</li>
+<li>1A3₁₆ (hexadecimal)</li>
+<li>42₈ (octal)</li>
+<li>23₅ (base 5)</li>
+<li>F2₁₆ (hexadecimal)</li>
+<li>1101₂ (binary)</li>
+<li>341₉ (base 9)</li>
+<li>56₁₂ (base 12)</li>
+</ol>
+<h3 id="part-b-converting-from-decimal">Part B: Converting from Decimal</h3>
+<p>Convert the following decimal numbers to the specified base. Show your work (whether you're using division/modulo or repeated subtraction).</p>
+<ol>
+<li>47 → binary (base 2)</li>
+<li>255 → hexadecimal (base 16)</li>
+<li>100 → octal (base 8)</li>
+<li>82 → base 5</li>
+<li>1024 → binary (base 2)</li>
+<li>300 → base 12</li>
+<li>199 → hexadecimal (base 16)</li>
+<li>64 → base 4</li>
+</ol>
+<h2 id="section-2-converter-program">Section 2: Converter Program</h2>
+<p>You're going to build a program that converts numbers between any two bases from 2 to 64. </p>
+<h3 id="setup">Setup</h3>
+<p>Your program will read from a file (provided on the command line). Each line in the file contains three pieces of data:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;source_base&gt; &lt;number_string&gt; &lt;target_base&gt;
+</span></code></pre></div>
+<p>For example:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>16 FF 2
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>10 255 16
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>2 11111111 10
+</span></code></pre></div>
+<p>Your program should convert the number string from the source base to the target base, and write each result to <code>output.txt</code>.</p>
+<p>A zip containing some test files and the generator script for the test files is given to you <a href="../testing_files.zip">here</a>. The max length of digits that I used to generate the test sets was 10.</p>
+<h3 id="task-1-define-your-symbol-set">Task 1: Define Your Symbol Set</h3>
+<p>Create a character array containing all 64 symbols you'll use as "digits" across all bases, in order. You must use these symbols as I used them in the generator script</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">SYMBOLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/&quot;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Place this at the top of your file where all functions can access it.</p>
+<h3 id="task-2-base-conversion-function">Task 2: Base Conversion Function</h3>
+<p>Create a function with this signature:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">convert_base</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">number_string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">source_base</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target_base</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">symbols</span><span class="p">);</span>
+</span></code></pre></div>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Takes a <code>number_string</code> in the <code>source_base</code> and converts it to the <code>target_base</code></li>
+<li><code>symbols</code> is your character array of 64 possible digits</li>
+<li><code>malloc</code> a buffer large enough to hold the result, convert the number, and return a pointer to that buffer</li>
+<li>The caller is responsible for <code>free</code>-ing the returned buffer; document this with a comment</li>
+<li>You may use either <strong>division/modulo</strong> or <strong>repeated subtraction</strong> for the conversion (or a combination)  use whichever makes sense to you<ul>
+<li>I will say that the division/modulo method is the most mechanistic</li>
+</ul>
+</li>
+<li>For invalid input (unknown symbols, bases outside 2-64), return <code>NULL</code></li>
+</ul>
+<p><strong>High-level approach:</strong></p>
+<ol>
+<li>Convert the input string from <code>source_base</code> to decimal (intermediate representation)</li>
+<li>Convert the decimal result to <code>target_base</code></li>
+<li>Return the result as a string</li>
+</ol>
+<h3 id="task-3-file-processing-and-output">Task 3: File Processing and Output</h3>
+<p>Update <code>main()</code> to:</p>
+<ul>
+<li>Accept a command-line argument: the name of the input file</li>
+<li>Read each line from the input file</li>
+<li>For each line, parse the source base, number string, and target base</li>
+<li>Call <code>convert_base()</code> with those values</li>
+<li>Write the result to <code>output.txt</code> in the format: <code>&lt;original_number&gt; (base &lt;source&gt;) = &lt;result&gt; (base &lt;target&gt;)</code></li>
+<li>If a conversion fails, write an error message to <code>output.txt</code> instead</li>
+</ul>
+<p><strong>Example output file:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>FF (base 16) = 11111111 (base 2)
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>255 (base 10) = FF (base 16)
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>11111111 (base 2) = 255 (base 10)
+</span></code></pre></div>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>If no input file is provided on the command line, print a usage message and exit cleanly</li>
+<li>If the input file can't be opened, print an error and exit cleanly</li>
+<li>All results go to <code>output.txt</code> (create it if it doesn't exist, overwrite if it does)</li>
+</ul>
+<h2 id="grading-breakdown">Grading Breakdown</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Section 1: Hand Conversions (8 problems)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Task 1: Symbol Set Definition</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Task 2: Base Conversion Function</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Task 3: File Processing and Output</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Code style and comments</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Memory management — no leaks, all buffers freed properly</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Correct file/folder naming &amp; zip submission</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="verification">Verification</h3>
+<p>Test your program with a few known conversions:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./converter test_file_1.txt
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cat output.txt
+</span></code></pre></div>
+<h3 id="hints">Hints</h3>
+<ul>
+<li>When converting <em>from</em> an arbitrary base, you need to look up each character's value in your symbol set (reverse lookup)</li>
+<li>When converting <em>to</em> an arbitrary base, you use the symbol set to map each digit value back to its character</li>
+</ul>
 
 
 
