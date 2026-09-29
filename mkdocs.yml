@@ -57,6 +57,10 @@ nav:
     - Introduction: lessons/1_introduction.md
     - Reviewing C: lessons/2_reviewing_c.md
     - Binary and Hex: lessons/3_binary_hex.md
+    - Boolean Logic: lessons/4_bool_logic.md
+    - Signed Numbers: lessons/5_signed_unsigned.md
+    - Transistors->CPU: lessons/6_transistors_2_pc.md
+    - Gates and Circuits: lessons/7_gates_circuits.md
   - Labs:
     - C Compilation: labs/c_compilation.md
   - Homework:
