@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../4_bool_logic/">
+      
+      
+        <link rel="next" href="../6_transistors_2_pc/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>Number Representations and Signed Numbers - CS 220 - Computer Organization</title>
+        <title>Signed Numbers - CS 220 - Computer Organization</title>
       
     
     
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Number Representations and Signed Numbers
+              Signed Numbers
             
           </span>
         </div>
@@ -274,10 +278,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../1_introduction/" class="md-tabs__link">
           
   
@@ -480,28 +486,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -519,7 +528,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -601,6 +610,310 @@
     
   
     Binary and Hex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_bool_logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean Logic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Numbers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signed Numbers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#patterns-limits-and-overflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns, Limits, and Overflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns, Limits, and Overflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#char-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        char Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signed-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Numbers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signed Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signed-magnitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Magnitude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ones-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One's Complement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#twos-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two's Complement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two&#39;s Complement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition-in-twos-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addition in Two's Complement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negating-a-twos-complement-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negating a Two's Complement Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-representations-on-a-3-bit-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All Representations on a 3-Bit Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-comparison-n-bit-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Range Comparison (\(N\)-bit numbers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_transistors_2_pc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transistors->CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_gates_circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gates and Circuits
   
 
     
@@ -1071,6 +1384,46 @@
 
   
 
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../1_introduction/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
 
               
               <article class="md-content__inner md-typeset">
