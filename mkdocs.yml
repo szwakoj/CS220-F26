@@ -68,3 +68,5 @@ nav:
     - Install Software: homework/gcc_install.md
     - Homework 1 - xxd: homework/1_c_review.md
     - Homework 2 - Conversions: homework/2_conversions.md
+    - Homework 3 - ALU Diagram: homework/3_gates_circuits.md
+    - Homework 4 - ALU Program: homework/4_alu_and_gates.md

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Circuits 2: MUX and ALU
 
 To make a CPU fully work, we need more than just the circuits that do the basic operations that we want; AND, OR, adding, etc. We also need a method of conditionally choosing which operation's result we want on the output. This is the job of the Arithmetic and Logic Unit (ALU) in the CPU; it takes in two operand numbers and an operation signal in order to output the result of one operation built into it.
@@ -195,3 +196,7 @@ Take note of the Full Adder Block that is taking the AND result in order to do t
 ### Expanding to More Bits
 
 To expand to more bits on the input and output, the circuit is expanded by adding 1-bit ALU Slices for each input bit and then passing the same operation signals to each one. Each bit of the inputs is fed into each ALU in order to construct the output, bit-by-bit. For more information or an example, check the full adder block diagram from Circuits 1.
+=======
+# More Circuits: MUX's, Decoders, and Registers
+
+>>>>>>> 20ac58f51154dc6c3f1dd22dca32d882ea5c832f
