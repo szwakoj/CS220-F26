@@ -35,7 +35,7 @@ Later we will implement the following op-code table in the demonstration ALU:
 
 Chip designers aim to reduce signal propagation delay as much as possible and strive to make everything happen in parallel when power is supplied, changing functionality based on signals as they are that moment. This translates to the ALU calculating every operation available and selecting from one of the results to connect to out. This allows there to always be a result on the output signal and when the operation signal changes the result is already there to be switched to. It looks like this if we use a component for the Multiplexer:
 
-![](alu_2_1_mux_0.png)
+![](../img/alu_2_1_mux_0.png)
 
 
 ## Multiplexers (MUXs)
@@ -97,7 +97,7 @@ Since Sel and Not(Sel) can never be 1 at the same time, this means that only one
 
 This gives the following circuit diagram::
 
-![](mux_2_1.png)
+![](../img/mux_2_1.png)
 
 
 ### 4-1 MUX
@@ -140,7 +140,7 @@ Using 3-terminal AND gates:
 
 You can also construct larger MUXs from simpler ones. The following is a 4-1 MUX made using 2-1 MUXs.
 
-![](mux_4_1_mux.png)
+![](../img/mux_4_1_mux.png)
 
 This approach is used in real chip designs today in certain situations. If one counted, they would see that this takes fewer gates (excluding NOTs) than the method doing the full derivation of the 4-1 MUX. The reason why it is not used always and the construction of these "MUX Trees" must be limited is that for every layer of 2-1 MUXs used, there is a propagation delay in order for the information to transmit through each layer and gate.
 
@@ -160,7 +160,7 @@ This pattern scales up to both more bits and more inputs:
 We will now expand on the original diagram to show the full 1-bit 2-Op ALU. 1-bit ALUs are called slices and they will be used to construct larger ALUs later. 
 ### 1-Bit 2-OP ALU Slice
 
-![](alu_2_1_mux_0.png)
+![](../img/alu_2_1_mux_0.png)
 
 | Op  | Out            |
 | --- | -------------- |
@@ -187,7 +187,7 @@ Let's expand naturally to the next power of 2 for the number of operations and m
 | 1   | 0   | Out <- NOT(A)  |
 | 1   | 1   | Out <- A + B   |
 
-![[alu_1_4.png]]
+![](../img/alu_1_4.png)
 
 In the diagram above, there are 4 distinct blocks of operation that is then fed into a 4-1 MUX circuit.
 
@@ -196,7 +196,4 @@ Take note of the Full Adder Block that is taking the AND result in order to do t
 ### Expanding to More Bits
 
 To expand to more bits on the input and output, the circuit is expanded by adding 1-bit ALU Slices for each input bit and then passing the same operation signals to each one. Each bit of the inputs is fed into each ALU in order to construct the output, bit-by-bit. For more information or an example, check the full adder block diagram from Circuits 1.
-=======
-# More Circuits: MUX's, Decoders, and Registers
 
->>>>>>> 20ac58f51154dc6c3f1dd22dca32d882ea5c832f

@@ -61,6 +61,7 @@ nav:
     - Signed Numbers: lessons/5_signed_unsigned.md
     - Transistors->CPU: lessons/6_transistors_2_pc.md
     - Gates and Circuits: lessons/7_gates_circuits.md
+    - Circuits 2 - MUX and ALU: lessons/8_circuits_2.md
   - Labs:
     - C Compilation: labs/c_compilation.md
   - Homework:
