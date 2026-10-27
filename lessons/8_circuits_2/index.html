@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../7_gates_circuits/">
+      
+      
+        <link rel="next" href="../../labs/c_compilation/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>More Circuits: MUX's, Decoders, and Registers - CS 220 - Computer Organization</title>
+        <title>Circuits 2 - MUX and ALU - CS 220 - Computer Organization</title>
       
     
     
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#more-circuits-muxs-decoders-and-registers" class="md-skip">
+        <a href="#circuits-2-mux-and-alu" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              More Circuits: MUX's, Decoders, and Registers
+              Circuits 2 - MUX and ALU
             
           </span>
         </div>
@@ -274,10 +278,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../1_introduction/" class="md-tabs__link">
           
   
@@ -480,28 +486,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -519,7 +528,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -721,6 +730,192 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuits 2 - MUX and ALU
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuits 2 - MUX and ALU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#alu-specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALU Specs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplexers-muxs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiplexers (MUXs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiplexers (MUXs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-1-mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-1 MUX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-1-mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-1 MUX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanding-to-more-bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanding to More Bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alu-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALU Circuits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ALU Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bit-2-op-alu-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-Bit 2-OP ALU Slice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-bit-4-op-alu-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-Bit 4-OP ALU Slice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanding-to-more-bits_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanding to More Bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1071,6 +1266,125 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#alu-specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALU Specs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplexers-muxs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiplexers (MUXs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiplexers (MUXs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-1-mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-1 MUX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-1-mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-1 MUX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanding-to-more-bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanding to More Bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alu-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALU Circuits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ALU Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bit-2-op-alu-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-Bit 2-OP ALU Slice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-bit-4-op-alu-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-Bit 4-OP ALU Slice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanding-to-more-bits_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanding to More Bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1087,6 +1401,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../1_introduction/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -1094,7 +1448,367 @@
 
 
 
-<h1 id="more-circuits-muxs-decoders-and-registers">More Circuits: MUX's, Decoders, and Registers</h1>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id="circuits-2-mux-and-alu">Circuits 2: MUX and ALU</h1>
+<p>To make a CPU fully work, we need more than just the circuits that do the basic operations that we want; AND, OR, adding, etc. We also need a method of conditionally choosing which operation's result we want on the output. This is the job of the Arithmetic and Logic Unit (ALU) in the CPU; it takes in two operand numbers and an operation signal in order to output the result of one operation built into it.</p>
+<h2 id="alu-specs">ALU Specs</h2>
+<p><img alt="" src="../../img/alu.png" /></p>
+<p>The Arithmetic and Logic Unit (ALU) is the part of the CPU that is responsible for computing the result of the simple math and logical operations like adding, AND-ing, and others. The ALU above has the following properties:</p>
+<ul>
+<li><strong>Inputs</strong><ul>
+<li>A and B - the binary number operands for the intended operation</li>
+<li>Op - the signal that selects what operation will be sent to Out</li>
+<li>Status In - one or more signals that alter the operations within the ALU, for example whether addition should start with a carry bit</li>
+</ul>
+</li>
+<li><strong>Outputs</strong><ul>
+<li>Out - The result of the selected operation on A and B</li>
+<li>Status Out - Any status changes after the operation that will be processed elsewhere, for example whether addition resulted in an overflow or not</li>
+</ul>
+</li>
+</ul>
+<p>To describe an ALU, we care about two defining aspects: the <strong>bit length</strong> and the <strong>operations</strong>. The bit length refers to the bit length of the operands A and B as well as the output, Out. The number and types of operations that the ALU has access to is integral for defining the design of the circuit as well. Before defining anything after that, it must be decided what operations the ALU will be able to do. The number of operations defines how many bits we need for the operation signal as well as the entire layout of the finalized ALU. For every <span class="arithmatex">\(2^n\)</span> operations you need <span class="arithmatex">\(n\)</span> bits to select from them. Each bit pattern is assigned an operation that the ALU will parse using a Multiplexer.</p>
+<p>In the above, if we were to read the diagram directly, it would be a 1-bit, 2-operation ALU since there are single-bit inputs and output, as well as 1-bit operation signal. With a single-bit, the signal can either be 0 or 1 and we can map both to an operation:</p>
+<table>
+<thead>
+<tr>
+<th>Op</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Operation 0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Operation 1</td>
+</tr>
+</tbody>
+</table>
+<p>Later we will implement the following op-code table in the demonstration ALU:</p>
+<table>
+<thead>
+<tr>
+<th>Op</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Out &lt;- A AND B</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Out &lt;- A OR B</td>
+</tr>
+</tbody>
+</table>
+<p>Chip designers aim to reduce signal propagation delay as much as possible and strive to make everything happen in parallel when power is supplied, changing functionality based on signals as they are that moment. This translates to the ALU calculating every operation available and selecting from one of the results to connect to out. This allows there to always be a result on the output signal and when the operation signal changes the result is already there to be switched to. It looks like this if we use a component for the Multiplexer:</p>
+<p><img alt="" src="../../img/alu_2_1_mux_0.png" /></p>
+<h2 id="multiplexers-muxs">Multiplexers (MUXs)</h2>
+<p>Multiplexers (MUXs) are circuits that output a single signal chosen from its inputs based on a selection value. As such MUXs are many-to-one circuits that takes in multiple inputs and selectively outputs one of their values based on the selection pattern. </p>
+<p>MUXs are defined by how many inputs they take in and must select from. Since the number of patterns available to a bit string of <span class="arithmatex">\(n\)</span> bits is <span class="arithmatex">\(2^n\)</span> (See Signed/Unsigned Lesson), the number of inputs is always a power of 2. For example, if one wanted to select from 5 possible inputs, they would need 3 selection bits to represent it fully since <span class="arithmatex">\(2^2 = 4\)</span> is insufficient. The resulting MUX would be able to select from <span class="arithmatex">\(2^3 = 8\)</span>, but would only take advantage of the first 5 patterns. For this reason MUXs are usually designed to take in a power of 2 number of inputs and enough bits to cover it, expecting later designs to use the MUX to its fullest. </p>
+<h3 id="2-1-mux">2-1 MUX</h3>
+<p>The simplest MUX is the 2 to 1 MUX (2-1 MUX), which takes in two input signals and a single selection signal. When the signal is 0 it outputs the first input, when it is 1 it outputs the second input. This gives us the following truth table:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>Sel</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>We could simplify it further since when Sel=0 we output whatever the value of A is and when Sel=1 we output whatever the value of B is:</p>
+<table>
+<thead>
+<tr>
+<th>Sel</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+<p>With the truth tables set up we can tackle implementing it into a circuit using boolean expressions. </p>
+<p>Since we want A to be output when Sel=0, we need to invert it in order to use it in later gates. Using that we can AND NOT(Sel) with A to copy the value of A when Sel=0. This results in the following expression:
+- Not(Sel) AND A</p>
+<p>If we break this expression down and make a truth table we can see this:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>Sel</th>
+<th>Not(Sel)</th>
+<th>Not(Sel) AND A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0 = A</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0 = 0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1 = A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0 = 0</td>
+</tr>
+</tbody>
+</table>
+<p>The same principle can be used for B's case, only there is no need to invert Sel as we want B to propagate when Sel=1:
+- Sel AND B</p>
+<table>
+<thead>
+<tr>
+<th>B</th>
+<th>Sel</th>
+<th>Sel AND B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0 = 0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0 = B</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0 = 0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1 = B</td>
+</tr>
+</tbody>
+</table>
+<p>Since Sel and Not(Sel) can never be 1 at the same time, this means that only one of the above expressions have the ability to result in true at any given moment. Using that knowledge, we can combine both expressions using an OR gate:
+- "A" Side : Not(Sel) AND A
+- "B" Side : Sel AND B
+- Combined : (Not(Sel) AND A) OR (Sel AND B)</p>
+<p>This gives the following circuit diagram::</p>
+<p><img alt="" src="../../img/mux_2_1.png" /></p>
+<h3 id="4-1-mux">4-1 MUX</h3>
+<p>We can also extend this to take in 4 inputs, requiring the addition of another Sel signal:</p>
+<table>
+<thead>
+<tr>
+<th>Sel_1</th>
+<th>Sel_0</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>X_0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>X_1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>X_2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>X_3</td>
+</tr>
+</tbody>
+</table>
+<p>Like before, in order to plan the resulting circuit, we can make boolean expressions of each case, OR-ing their results together at the end. The rule of thumb here is that whenever an output case needs one or both of the selection signals to be 0, wrap that input in a NOT, AND-ing the rest together:</p>
+<ul>
+<li>X_0<ul>
+<li>NOT(Sel_1) AND NOT(Sel_0) AND X_0</li>
+</ul>
+</li>
+<li>X_1<ul>
+<li>NOT(Sel_1) AND Sel_0 AND X_1</li>
+</ul>
+</li>
+<li>X_2<ul>
+<li>Sel_1 AND NOT(Sel_0) AND X_2</li>
+</ul>
+</li>
+<li>X_3<ul>
+<li>Sel_1 AND Sel_0 AND X_3</li>
+</ul>
+</li>
+<li>Combined<ul>
+<li>(NOT(Sel_1) AND NOT(Sel_0) AND X_0) OR</li>
+<li>(NOT(Sel_1) AND Sel_0 AND X_1) OR</li>
+<li>(Sel_1 AND NOT(Sel_0) AND X_2) OR</li>
+<li>(Sel_1 AND Sel_0 AND X_3)</li>
+</ul>
+</li>
+</ul>
+<p>Fully drawn out:</p>
+<p><img alt="" src="../../img/mux_4_1.png" /></p>
+<p>Using 3-terminal AND gates:</p>
+<p><img alt="" src="../../img/mux_4_1_and.png" /></p>
+<p>You can also construct larger MUXs from simpler ones. The following is a 4-1 MUX made using 2-1 MUXs.</p>
+<p><img alt="" src="../../img/mux_4_1_mux.png" /></p>
+<p>This approach is used in real chip designs today in certain situations. If one counted, they would see that this takes fewer gates (excluding NOTs) than the method doing the full derivation of the 4-1 MUX. The reason why it is not used always and the construction of these "MUX Trees" must be limited is that for every layer of 2-1 MUXs used, there is a propagation delay in order for the information to transmit through each layer and gate.</p>
+<h3 id="expanding-to-more-bits">Expanding to More Bits</h3>
+<p>The MUXs above all operate on selecting a single-bit from the inputs. However, as we expand our circuits, we will need to select from a series of numbers rather than individual bits. </p>
+<p>The way to select from one of multiple possible input numbers, you apply a MUX to each positional bit of the input numbers. For example, the following is a 2-bit 2-1 MUX:</p>
+<p><img alt="" src="../../img/mux_2_bit.png" /></p>
+<p>This pattern scales up to both more bits and more inputs:
+- For more bits -&gt; Add a MUX for each positional bit
+- For more inputs -&gt; Make each MUX take in more inputs to fit, adding selection signals as needed</p>
+<h2 id="alu-circuits">ALU Circuits</h2>
+<p>We will now expand on the original diagram to show the full 1-bit 2-Op ALU. 1-bit ALUs are called slices and they will be used to construct larger ALUs later. </p>
+<h3 id="1-bit-2-op-alu-slice">1-Bit 2-OP ALU Slice</h3>
+<p><img alt="" src="../../img/alu_2_1_mux_0.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Op</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Out &lt;- A AND B</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Out &lt;- A OR B</td>
+</tr>
+</tbody>
+</table>
+<p>Recall that the goal of the ALU is to find all results of the defined operations and use the operation signal to select which result will be output. This becomes a matter of filling in the MUX fully:</p>
+<p><img alt="" src="../../img/alu_2_1.png" /></p>
+<h3 id="1-bit-4-op-alu-slice">1-Bit 4-OP ALU Slice</h3>
+<p>In order to add more operations, it becomes a matter of:
+- Adding the functional blocks that execute the operation
+- Implementing a large enough MUX to select from the outputs</p>
+<p>Let's expand naturally to the next power of 2 for the number of operations and make a 4-op ALU. We will still be making this a single-bit slice that is meant to be cascaded together in order to be applied to larger numbers. The number of operations available across a larger ALU is determined by the number of operations built into the ALU bit slices.</p>
+<table>
+<thead>
+<tr>
+<th>Op1</th>
+<th>Op0</th>
+<th>Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Out &lt;- A AND B</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>Out &lt;- A OR B</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>Out &lt;- NOT(A)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Out &lt;- A + B</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../../img/alu_1_4.png" /></p>
+<p>In the diagram above, there are 4 distinct blocks of operation that is then fed into a 4-1 MUX circuit.</p>
+<p>Take note of the Full Adder Block that is taking the AND result in order to do the full carry overflow check instead of having an additional AND gate like we have in the original lesson. This is a clear benefit of designing the ALU from the ground up rather than fully relying on composable blocks. Also take note that this block is taking in a C_in signal and outputting a C_out signal in order to do the full adder circuit completely and is able to pass it along to the next ALU block.  </p>
+<h3 id="expanding-to-more-bits_1">Expanding to More Bits</h3>
+<p>To expand to more bits on the input and output, the circuit is expanded by adding 1-bit ALU Slices for each input bit and then passing the same operation signals to each one. Each bit of the inputs is fed into each ALU in order to construct the output, bit-by-bit. For more information or an example, check the full adder block diagram from Circuits 1.</p>
 
 
 
