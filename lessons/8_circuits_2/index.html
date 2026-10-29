@@ -1448,7 +1448,6 @@
 
 
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <h1 id="circuits-2-mux-and-alu">Circuits 2: MUX and ALU</h1>
 <p>To make a CPU fully work, we need more than just the circuits that do the basic operations that we want; AND, OR, adding, etc. We also need a method of conditionally choosing which operation's result we want on the output. This is the job of the Arithmetic and Logic Unit (ALU) in the CPU; it takes in two operand numbers and an operation signal in order to output the result of one operation built into it.</p>
 <h2 id="alu-specs">ALU Specs</h2>
@@ -1593,8 +1592,10 @@
 </tbody>
 </table>
 <p>With the truth tables set up we can tackle implementing it into a circuit using boolean expressions. </p>
-<p>Since we want A to be output when Sel=0, we need to invert it in order to use it in later gates. Using that we can AND NOT(Sel) with A to copy the value of A when Sel=0. This results in the following expression:
-- Not(Sel) AND A</p>
+<p>Since we want A to be output when Sel=0, we need to invert it in order to use it in later gates. Using that we can AND NOT(Sel) with A to copy the value of A when Sel=0. This results in the following expression:</p>
+<ul>
+<li>Not(Sel) AND A</li>
+</ul>
 <p>If we break this expression down and make a truth table we can see this:</p>
 <table>
 <thead>
@@ -1632,8 +1633,10 @@
 </tr>
 </tbody>
 </table>
-<p>The same principle can be used for B's case, only there is no need to invert Sel as we want B to propagate when Sel=1:
-- Sel AND B</p>
+<p>The same principle can be used for B's case, only there is no need to invert Sel as we want B to propagate when Sel=1:</p>
+<ul>
+<li>Sel AND B</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -1665,10 +1668,12 @@
 </tr>
 </tbody>
 </table>
-<p>Since Sel and Not(Sel) can never be 1 at the same time, this means that only one of the above expressions have the ability to result in true at any given moment. Using that knowledge, we can combine both expressions using an OR gate:
-- "A" Side : Not(Sel) AND A
-- "B" Side : Sel AND B
-- Combined : (Not(Sel) AND A) OR (Sel AND B)</p>
+<p>Since Sel and Not(Sel) can never be 1 at the same time, this means that only one of the above expressions have the ability to result in true at any given moment. Using that knowledge, we can combine both expressions using an OR gate:</p>
+<ul>
+<li>"A" Side : Not(Sel) AND A</li>
+<li>"B" Side : Sel AND B</li>
+<li>Combined : (Not(Sel) AND A) OR (Sel AND B)</li>
+</ul>
 <p>This gives the following circuit diagram::</p>
 <p><img alt="" src="../../img/mux_2_1.png" /></p>
 <h3 id="4-1-mux">4-1 MUX</h3>
@@ -1741,9 +1746,11 @@
 <p>The MUXs above all operate on selecting a single-bit from the inputs. However, as we expand our circuits, we will need to select from a series of numbers rather than individual bits. </p>
 <p>The way to select from one of multiple possible input numbers, you apply a MUX to each positional bit of the input numbers. For example, the following is a 2-bit 2-1 MUX:</p>
 <p><img alt="" src="../../img/mux_2_bit.png" /></p>
-<p>This pattern scales up to both more bits and more inputs:
-- For more bits -&gt; Add a MUX for each positional bit
-- For more inputs -&gt; Make each MUX take in more inputs to fit, adding selection signals as needed</p>
+<p>This pattern scales up to both more bits and more inputs:</p>
+<ul>
+<li>For more bits -&gt; Add a MUX for each positional bit</li>
+<li>For more inputs -&gt; Make each MUX take in more inputs to fit, adding selection signals as needed</li>
+</ul>
 <h2 id="alu-circuits">ALU Circuits</h2>
 <p>We will now expand on the original diagram to show the full 1-bit 2-Op ALU. 1-bit ALUs are called slices and they will be used to construct larger ALUs later. </p>
 <h3 id="1-bit-2-op-alu-slice">1-Bit 2-OP ALU Slice</h3>
@@ -1769,9 +1776,11 @@
 <p>Recall that the goal of the ALU is to find all results of the defined operations and use the operation signal to select which result will be output. This becomes a matter of filling in the MUX fully:</p>
 <p><img alt="" src="../../img/alu_2_1.png" /></p>
 <h3 id="1-bit-4-op-alu-slice">1-Bit 4-OP ALU Slice</h3>
-<p>In order to add more operations, it becomes a matter of:
-- Adding the functional blocks that execute the operation
-- Implementing a large enough MUX to select from the outputs</p>
+<p>In order to add more operations, it becomes a matter of:</p>
+<ul>
+<li>Adding the functional blocks that execute the operation</li>
+<li>Implementing a large enough MUX to select from the outputs</li>
+</ul>
 <p>Let's expand naturally to the next power of 2 for the number of operations and make a 4-op ALU. We will still be making this a single-bit slice that is meant to be cascaded together in order to be applied to larger numbers. The number of operations available across a larger ALU is determined by the number of operations built into the ALU bit slices.</p>
 <table>
 <thead>
