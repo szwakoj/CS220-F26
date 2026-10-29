@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Circuits 2: MUX and ALU
 
 To make a CPU fully work, we need more than just the circuits that do the basic operations that we want; AND, OR, adding, etc. We also need a method of conditionally choosing which operation's result we want on the output. This is the job of the Arithmetic and Logic Unit (ALU) in the CPU; it takes in two operand numbers and an operation signal in order to output the result of one operation built into it.
@@ -69,6 +68,7 @@ We could simplify it further since when Sel=0 we output whatever the value of A 
 With the truth tables set up we can tackle implementing it into a circuit using boolean expressions. 
 
 Since we want A to be output when Sel=0, we need to invert it in order to use it in later gates. Using that we can AND NOT(Sel) with A to copy the value of A when Sel=0. This results in the following expression:
+
 - Not(Sel) AND A
 
 If we break this expression down and make a truth table we can see this:
@@ -81,6 +81,7 @@ If we break this expression down and make a truth table we can see this:
 | 1   | 1   | 0        | 0 = 0          |
 
 The same principle can be used for B's case, only there is no need to invert Sel as we want B to propagate when Sel=1:
+
 - Sel AND B
 
 | B   | Sel | Sel AND B |
@@ -91,6 +92,7 @@ The same principle can be used for B's case, only there is no need to invert Sel
 | 1   | 1   | 1 = B     |
 
 Since Sel and Not(Sel) can never be 1 at the same time, this means that only one of the above expressions have the ability to result in true at any given moment. Using that knowledge, we can combine both expressions using an OR gate:
+
 - "A" Side : Not(Sel) AND A
 - "B" Side : Sel AND B
 - Combined : (Not(Sel) AND A) OR (Sel AND B)
@@ -153,6 +155,7 @@ The way to select from one of multiple possible input numbers, you apply a MUX t
 ![](../img/mux_2_bit.png)
 
 This pattern scales up to both more bits and more inputs:
+
 - For more bits -> Add a MUX for each positional bit
 - For more inputs -> Make each MUX take in more inputs to fit, adding selection signals as needed
 ## ALU Circuits
@@ -175,6 +178,7 @@ Recall that the goal of the ALU is to find all results of the defined operations
 ### 1-Bit 4-OP ALU Slice
 
 In order to add more operations, it becomes a matter of:
+
 - Adding the functional blocks that execute the operation
 - Implementing a large enough MUX to select from the outputs
 
